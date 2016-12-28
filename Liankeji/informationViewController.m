@@ -11,9 +11,11 @@
 #import "ZHQScrollMenu.h"
 #import "inforMationTableView.h"
 #import "informationTableViewCell.h"
+//滚动按钮标签基数
+#define SCROLLVIEW_BUTTON_TAG 100
 
 
-@interface informationViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface informationViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>{
     //左右滑动按钮组
     ZHQScrollMenu* scrollViewMenu;
     //当前选择的按钮
@@ -24,6 +26,15 @@
     inforMationTableView *ownNextTableView;
     //当前表视图
     inforMationTableView *ownCurrentTableView;
+    //添加盛放tableView的滑动的scrollView
+    UIScrollView *ownTableScrollView;
+    
+    //标题数组
+    NSArray *buttonTitles;
+    
+    
+    
+    
 }
 
 @end
@@ -35,6 +46,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createScrollButtonGroup];
+    [self addLeftAndRightScrollView];
     //[self createTableView:0];
         
     
@@ -47,39 +59,87 @@
     scrollViewMenu.backgroundColor = [UIColor blueColor];
     [self.view addSubview:scrollViewMenu];
     
-    NSArray *buttonTitles = [NSArray arrayWithObjects:@"新闻",@"热门",@"科技",@"技术",@"前沿",@"最新", nil];
+    buttonTitles = [NSArray arrayWithObjects:@"新闻",@"热门",@"科技",@"技术",@"前沿",@"最新", nil];
     for(NSInteger index = 0; index < buttonTitles.count; index ++){
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:buttonTitles[index] forState:UIControlStateNormal];
-        button.tag = index;
-        [button addTarget:self action:@selector(buttonHandler:) forControlEvents:UIControlEventTouchUpInside];
-        if(button.tag == 0){
+        button.tag = SCROLLVIEW_BUTTON_TAG + index;
+       [button addTarget:self action:@selector(buttonHandler:) forControlEvents:UIControlEventTouchUpInside];
+        if(button.tag == SCROLLVIEW_BUTTON_TAG){
             scrollViewSelectButton = button;
         }
         [scrollViewMenu addButton:button];
+        
+        
     }
 }
+//添加左右滑动切换页面的scrollView
+- (void)addLeftAndRightScrollView{
+    ownTableScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVIGATION_HEIGHT - scrollViewMenu.bounds.size.height)];
+    
+    ownTableScrollView.delegate = self;
+    
+    ownTableScrollView.contentSize = CGSizeMake(SCREEN_WIDTH *buttonTitles.count, ownTableScrollView.bounds.size.height);
+    
+    for(int i = 0; i < buttonTitles.count; i ++){
+        
+        inforMationTableView *ownTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, ownTableScrollView.bounds.size.height) style:UITableViewStylePlain];
+        ownTableView.dataSource = self;
+        ownTableView.delegate = self;
+        ownTableView.tag = i;
+        [ownTableView reloadData];
+        [ownTableScrollView addSubview:ownTableView];
+        
+    }
+    ownTableScrollView.pagingEnabled = YES;
+    //ownTableScrollView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:ownTableScrollView];
+}
 
-
-
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    //利用常用算法计算page
+    CGFloat pageWidth = ownTableScrollView.bounds.size.width;
+    int page = floor((ownTableScrollView.contentOffset.x - pageWidth / 2)/pageWidth) + 1;
+    
+    NSLog(@"page=%d",page);
+    NSLog(@"%lf,%lf",scrollView.contentOffset.x,SCREEN_WIDTH);
+    
+    // NSInteger X = scrollView.contentOffset.x / SCREEN_WIDTH;
+    
+    UIButton *button = [scrollViewMenu viewWithTag:SCROLLVIEW_BUTTON_TAG + page];
+    [scrollViewMenu selected:button];
+   NSLog(@"title=%@",button.titleLabel.text);
+    
+    
+    //NSLog(@"结束拖动=%ld",X);
+}
 
 //按钮组点击事件
 - (void)buttonHandler:(UIButton*)_b{
     if(scrollViewSelectButton != _b){
+        
+        ownTableScrollView.contentOffset = CGPointMake((_b.tag - SCROLLVIEW_BUTTON_TAG) * SCREEN_WIDTH, 0);
+        
         //获取按钮的父亲
-        ZHQScrollMenu *menu = (ZHQScrollMenu*)[_b superview];
-        //跟新选择变化
-        [menu selected:_b];
-        scrollViewSelectButton = _b;
-        //移除上一个当前表视图
-        [self removeCurrentTableView];
-        //滑进下一个表视图
-        [self createTableView:_b.tag];
-        //跟新上一个选择的按钮的索引
-        perfomerButtonIndex = _b.tag;
+        
+        
+//        ZHQScrollMenu *menu = (ZHQScrollMenu*)[_b superview];
+//        //跟新选择变化
+//        [menu selected:_b];
+     scrollViewSelectButton = _b;
+//        //移除上一个当前表视图
+//        [self removeCurrentTableView];
+//        //滑进下一个表视图
+//        [self createTableView:_b.tag];
+//        //跟新上一个选择的按钮的索引
+//        perfomerButtonIndex = _b.tag;
+        
+         NSLog(@"点击按钮%li",_b.tag);
+        
         //重新加载新闻
     }
-    NSLog(@"点击按钮%li",_b.tag);
+   
 }
 
 //移除当前表视图
@@ -133,7 +193,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 50;
+    return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
