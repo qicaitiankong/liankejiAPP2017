@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor yellowColor];
+    self.view.alpha = 0.25;
+    
     //[self.navigationController.navigationItem setTitle:@"链科技"];
     // Do any additional setup after loading the view.
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047E4FBA1E14AB29008A6C66 /* informationDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047E4FB91E14AB29008A6C66 /* informationDetailView.m */; };
 		7B3C91A23811F61D8BFFF1E5 /* libPods-Liankeji.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F252549BA2B14C997713502 /* libPods-Liankeji.a */; };
 		992180091E0788AD00070D46 /* newAnnouncementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 992180081E0788AD00070D46 /* newAnnouncementView.m */; };
 		9921800C1E07AF9700070D46 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921800A1E07AF9700070D46 /* 1.png */; };
@@ -155,6 +156,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		047E4FB81E14AB29008A6C66 /* informationDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = informationDetailView.h; sourceTree = "<group>"; };
+		047E4FB91E14AB29008A6C66 /* informationDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = informationDetailView.m; sourceTree = "<group>"; };
 		171D16133C96CADD3DD4CC71 /* Pods-Liankeji.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liankeji.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liankeji/Pods-Liankeji.debug.xcconfig"; sourceTree = "<group>"; };
 		6F252549BA2B14C997713502 /* libPods-Liankeji.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Liankeji.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		992180051E077F7000070D46 /* groupButttonClickDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = groupButttonClickDelegate.h; sourceTree = "<group>"; };
@@ -610,6 +613,8 @@
 				99C1F9B61E10BE81004DE512 /* informationTableViewCell.m */,
 				99C1F9BC1E10C247004DE512 /* inforMationTableView.h */,
 				99C1F9BD1E10C247004DE512 /* inforMationTableView.m */,
+				047E4FB81E14AB29008A6C66 /* informationDetailView.h */,
+				047E4FB91E14AB29008A6C66 /* informationDetailView.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1162,6 +1167,7 @@
 				9953E2E11E0D22FF00F55604 /* informationViewController.m in Sources */,
 				99E41F851DED696100F32968 /* ShareNetWorkState.m in Sources */,
 				9953E2EF1E0D238700F55604 /* LZHTabBarController.m in Sources */,
+				047E4FBA1E14AB29008A6C66 /* informationDetailView.m in Sources */,
 				9953E2DB1E0D22C300F55604 /* announceViewController.m in Sources */,
 				99AA38E31E08C296000A57BC /* lzhdownMenuView.m in Sources */,
 				9953E2EE1E0D238700F55604 /* LZHTabBigButton.m in Sources */,

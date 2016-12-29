@@ -11,6 +11,10 @@
 #import "ZHQScrollMenu.h"
 #import "inforMationTableView.h"
 #import "informationTableViewCell.h"
+#import "informationDetailView.h"
+
+
+
 //滚动按钮标签基数
 #define SCROLLVIEW_BUTTON_TAG 100
 
@@ -47,8 +51,11 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createScrollButtonGroup];
     [self addLeftAndRightScrollView];
-    //[self createTableView:0];
-        
+    
+   
+    
+    
+    
     
     // Do any additional setup after loading the view.
 }
@@ -98,96 +105,91 @@
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
+    
+    
     //利用常用算法计算page
     CGFloat pageWidth = ownTableScrollView.bounds.size.width;
     int page = floor((ownTableScrollView.contentOffset.x - pageWidth / 2)/pageWidth) + 1;
     
-    NSLog(@"page=%d",page);
-    NSLog(@"%lf,%lf",scrollView.contentOffset.x,SCREEN_WIDTH);
+    //NSLog(@"page=%d",page);
+    //NSLog(@"%lf,%lf",scrollView.contentOffset.x,SCREEN_WIDTH);
     
     // NSInteger X = scrollView.contentOffset.x / SCREEN_WIDTH;
     
     UIButton *button = [scrollViewMenu viewWithTag:SCROLLVIEW_BUTTON_TAG + page];
     [scrollViewMenu selected:button];
-   NSLog(@"title=%@",button.titleLabel.text);
+   //NSLog(@"title=%@",button.titleLabel.text);
     
     
     //NSLog(@"结束拖动=%ld",X);
 }
 
+
+
 //按钮组点击事件
 - (void)buttonHandler:(UIButton*)_b{
     if(scrollViewSelectButton != _b){
         
-        ownTableScrollView.contentOffset = CGPointMake((_b.tag - SCROLLVIEW_BUTTON_TAG) * SCREEN_WIDTH, 0);
         
-        //获取按钮的父亲
+        [scrollViewMenu selected:_b];
         
-        
-//        ZHQScrollMenu *menu = (ZHQScrollMenu*)[_b superview];
-//        //跟新选择变化
-//        [menu selected:_b];
-     scrollViewSelectButton = _b;
-//        //移除上一个当前表视图
-//        [self removeCurrentTableView];
-//        //滑进下一个表视图
-//        [self createTableView:_b.tag];
-//        //跟新上一个选择的按钮的索引
-//        perfomerButtonIndex = _b.tag;
-        
+        [UIView animateWithDuration:0.2 animations:^{
+             ownTableScrollView.contentOffset = CGPointMake((_b.tag - SCROLLVIEW_BUTTON_TAG) * ownTableScrollView.bounds.size.width, 0);
+        }];
          NSLog(@"点击按钮%li",_b.tag);
         
         //重新加载新闻
     }
+    scrollViewSelectButton = _b;
    
 }
 
-//移除当前表视图
--(void)removeCurrentTableView{
-    if(nil != ownCurrentTableView){
-        ownCurrentTableView.hidden = YES;
-        [ownCurrentTableView removeFromSuperview];
-        ownCurrentTableView = nil;
-    }
-}
-
-//创建tableView
-- (void)createTableView:(NSInteger)_tag{
-    if(nil != scrollViewMenu){
-        if( _tag <= perfomerButtonIndex){
-           ownNextTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(-SCREEN_WIDTH, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, 500) style:UITableViewStylePlain];
-            ownNextTableView.alpha = 0.1;
-            [self.view addSubview:ownNextTableView];
-            [UIView animateWithDuration:0.2 animations:^{
-                ownNextTableView.transform = CGAffineTransformMakeTranslation(SCREEN_WIDTH, 0);
-                ownNextTableView.alpha = 1;
-            } completion:^(BOOL finished) {
-                
-            }];
-            
-        }else{
-            ownNextTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, 500) style:UITableViewStylePlain];
-            ownNextTableView.alpha = 0.1;
-            
-            [self.view addSubview:ownNextTableView];
-            [UIView animateWithDuration:0.2 animations:^{
-                ownNextTableView.transform = CGAffineTransformMakeTranslation(-SCREEN_WIDTH, 0);
-                ownNextTableView.alpha = 1;
-            } completion:^(BOOL finished) {
-                
-            }];
-
-        }
-        
-        
-        ownNextTableView.delegate = self;
-        ownNextTableView.dataSource = self;
-        [ownNextTableView reloadData];
-        //跟新当前表视图图
-        ownCurrentTableView = ownNextTableView;
-        
-    }
-}
+////移除当前表视图
+//-(void)removeCurrentTableView{
+//    if(nil != ownCurrentTableView){
+//        ownCurrentTableView.hidden = YES;
+//        [ownCurrentTableView removeFromSuperview];
+//        ownCurrentTableView = nil;
+//    }
+//}
+//
+////创建tableView
+//- (void)createTableView:(NSInteger)_tag{
+//    if(nil != scrollViewMenu){
+//        if( _tag <= perfomerButtonIndex){
+//           ownNextTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(-SCREEN_WIDTH, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, 500) style:UITableViewStylePlain];
+//            ownNextTableView.alpha = 0.1;
+//            [self.view addSubview:ownNextTableView];
+//            [UIView animateWithDuration:0.2 animations:^{
+//                ownNextTableView.transform = CGAffineTransformMakeTranslation(SCREEN_WIDTH, 0);
+//                ownNextTableView.alpha = 1;
+//            } completion:^(BOOL finished) {
+//                
+//            }];
+//            
+//        }else{
+//            ownNextTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, 500) style:UITableViewStylePlain];
+//            ownNextTableView.alpha = 0.1;
+//            
+//            [self.view addSubview:ownNextTableView];
+//            [UIView animateWithDuration:0.2 animations:^{
+//                ownNextTableView.transform = CGAffineTransformMakeTranslation(-SCREEN_WIDTH, 0);
+//                ownNextTableView.alpha = 1;
+//            } completion:^(BOOL finished) {
+//                
+//            }];
+//
+//        }
+//        
+//        
+//        ownNextTableView.delegate = self;
+//        ownNextTableView.dataSource = self;
+//        [ownNextTableView reloadData];
+//        //跟新当前表视图图
+//        ownCurrentTableView = ownNextTableView;
+//        
+//    }
+//}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -212,11 +214,17 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"设置高度");
+    //NSLog(@"设置高度");
     return 100;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIWindow *window = [UIApplication sharedApplication].windows[0];
+    informationDetailView *detaleView = [[informationDetailView alloc]initWithFrame:window.bounds];
+    [window addSubview:detaleView];
+    
+    
+}
 
 
 
