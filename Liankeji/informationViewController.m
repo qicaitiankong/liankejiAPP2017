@@ -11,8 +11,7 @@
 #import "ZHQScrollMenu.h"
 #import "inforMationTableView.h"
 #import "informationTableViewCell.h"
-#import "informationDetailView.h"
-
+#import "informationDetailViewController.h"
 
 
 //滚动按钮标签基数
@@ -144,52 +143,6 @@
    
 }
 
-////移除当前表视图
-//-(void)removeCurrentTableView{
-//    if(nil != ownCurrentTableView){
-//        ownCurrentTableView.hidden = YES;
-//        [ownCurrentTableView removeFromSuperview];
-//        ownCurrentTableView = nil;
-//    }
-//}
-//
-////创建tableView
-//- (void)createTableView:(NSInteger)_tag{
-//    if(nil != scrollViewMenu){
-//        if( _tag <= perfomerButtonIndex){
-//           ownNextTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(-SCREEN_WIDTH, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, 500) style:UITableViewStylePlain];
-//            ownNextTableView.alpha = 0.1;
-//            [self.view addSubview:ownNextTableView];
-//            [UIView animateWithDuration:0.2 animations:^{
-//                ownNextTableView.transform = CGAffineTransformMakeTranslation(SCREEN_WIDTH, 0);
-//                ownNextTableView.alpha = 1;
-//            } completion:^(BOOL finished) {
-//                
-//            }];
-//            
-//        }else{
-//            ownNextTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, 500) style:UITableViewStylePlain];
-//            ownNextTableView.alpha = 0.1;
-//            
-//            [self.view addSubview:ownNextTableView];
-//            [UIView animateWithDuration:0.2 animations:^{
-//                ownNextTableView.transform = CGAffineTransformMakeTranslation(-SCREEN_WIDTH, 0);
-//                ownNextTableView.alpha = 1;
-//            } completion:^(BOOL finished) {
-//                
-//            }];
-//
-//        }
-//        
-//        
-//        ownNextTableView.delegate = self;
-//        ownNextTableView.dataSource = self;
-//        [ownNextTableView reloadData];
-//        //跟新当前表视图图
-//        ownCurrentTableView = ownNextTableView;
-//        
-//    }
-//}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -219,9 +172,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UIWindow *window = [UIApplication sharedApplication].windows[0];
-    informationDetailView *detaleView = [[informationDetailView alloc]initWithFrame:window.bounds];
-    [window addSubview:detaleView];
+    informationDetailViewController *detailViewController = [[informationDetailViewController alloc]init];
+    [self.navigationController pushViewController:detailViewController animated:YES];
     
     
 }

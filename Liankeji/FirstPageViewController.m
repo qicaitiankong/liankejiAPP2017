@@ -23,6 +23,8 @@
 #import "newAnnouncementView.h"
 #import "scinenceHeaderView.h"
 #import "UINavigationBar+NavigationBarBackground.h"
+#import "appCommonAttributes.h"
+
 
 //滚动视图高度
 #define SCROLLVIEW_HEIGHT 200
@@ -126,7 +128,7 @@
 }
 //轮播点击
 -(void)scrollViewDidClickedAtPage:(NSInteger)pageNumber{
-    NSLog(@"点击了%li",pageNumber);
+    NSLog(@"你点击了轮播中的%li",pageNumber);
 }
 //创建最新公告
 - (newAnnouncementView*)createAnounmentView{
@@ -139,7 +141,9 @@
     NSMutableArray *buttonImageArr = [[NSMutableArray alloc]init];
     NSMutableArray *lableTitleArr = [[NSMutableArray alloc]initWithObjects:@"企业",@"专家",@"技术人才",@"高校",@"第三方",@"更多",nil];
     for(NSInteger i = 0 ; i < 6; i ++){
-        UIImage *image = [UIImage imageNamed:@"a1"];
+        
+        NSString *imageName = [NSString stringWithFormat:@"firstpage_buttonGroup_0%li",i];
+        UIImage *image = [UIImage imageNamed:imageName];
         [buttonImageArr addObject:image];
     }
     firstPageButtonGroup *buttonGroup = [[firstPageButtonGroup alloc]initWithFrame:CGRectMake(0, self.scoView.bounds.size.height + self.anounceView.bounds.size.height , SCREEN_WIDTH,BUTTON_GROUP_HEIGHT) titleArray:lableTitleArr imageArr:buttonImageArr groupDelegate:self];
@@ -232,9 +236,7 @@
     return 200;
 }
 
-//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    return @"科技头条";
-//}
+
 //数据库操作
 - (void)operateDataBase{
     ShareDataBase *dataBaseClass = [ShareDataBase shareDataBase];
@@ -255,6 +257,8 @@
     }
     
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

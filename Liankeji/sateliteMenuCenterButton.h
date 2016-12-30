@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SateliteMenu.h"
+#import "sateliteMenuProtocol.h"
+
 
 @interface sateliteMenuCenterButton : UIView
-//卫星菜单是否打开
-@property (assign,nonatomic)BOOL isOpen;
 //指定代理
 @property (assign,nonatomic) id <clickSubButtonDelegate>clickdelegate;
 
