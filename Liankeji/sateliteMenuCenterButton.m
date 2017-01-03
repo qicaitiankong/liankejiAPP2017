@@ -53,6 +53,7 @@
     [self createSubButtton];
     
 }
+//创建子安扭
 - (void)createSubButtton{
     
     for(NSInteger i = 0; i <SUB_BUTTON_COUNT; i ++){

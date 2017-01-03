@@ -7,8 +7,14 @@
 //
 
 #import "informationDetailViewController.h"
+#import "firstOwnCellView.h"
+#import "informationSecondPgeTavCell.h"
 
-@interface informationDetailViewController ()
+
+@interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    
+    UITableView *ownTableView;
+}
 
 @end
 
@@ -16,10 +22,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor grayColor];
+    firstOwnCellView *v1 = [[firstOwnCellView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300) titleString:@"链科技正在打造全国新的技术交流对接链科技正在打造全国新的技术交流对接"];
+    //v1.ownFirstTitleLable.text = @"链科技正在打造全国新的技术交流对接平台其实对的啊天空色彩2017大雪将至";
+    v1.ownAuthorLable.text = @"作者：陈教授";
+    [self.view addSubview:v1];
+    
+    [self testFirstCell];
+    
+    
     
     // Do any additional setup after loading the view.
 }
+
+- (void)testFirstCell{
+     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 600) style:UITableViewStylePlain];
+    [self.view addSubview:ownTableView];
+    ownTableView.delegate = self;
+    ownTableView.dataSource = self;
+    
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 400;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = nil;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"infoSecondPageCell"];
+    if(nil == cell){
+        cell = [[informationSecondPgeTavCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"infoSecondPageCell" tableView:tableView];
+        cell.backgroundColor = [UIColor greenColor];
+    }
+    return cell;
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

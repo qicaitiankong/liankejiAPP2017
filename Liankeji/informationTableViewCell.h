@@ -17,7 +17,15 @@
 
 @property (strong,nonatomic)UILabel *secondLable;
 
-@property (strong,nonatomic)UILabel *thirdLable;
+
+@property (strong,nonnull)NSString *firstSmallNumberString;
+
+
+@property (strong,nonnull)NSString *secondSmallNumberString;
+
+
+@property (strong,nonnull)NSString *thirdSmallNumberString;
+
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView*)_tableView;
 

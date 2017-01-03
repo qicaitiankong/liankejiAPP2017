@@ -33,13 +33,13 @@
     //调整按钮位置
     btn.frame=CGRectMake(5*(buttons.count+1)+100*buttons.count, 0, 100, 40);
     btn.center = CGPointMake(btn.center.x, self.bounds.size.height / 2);
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitleColor:self.norMalTitleColor forState:UIControlStateNormal];
     //线
     if(buttons.count==0)//第一个按钮
     {
-        [btn setTitleColor:[UIColor redColor]  forState:UIControlStateNormal];
+        [btn setTitleColor:self.changeTitleColor  forState:UIControlStateNormal];
         lineView=[[UIView alloc]initWithFrame:CGRectMake(btn.frame.origin.x, btn.frame.origin.y + btn.frame.size.height + 3, 100, 1)];
-        lineView.backgroundColor=[UIColor redColor];
+        lineView.backgroundColor=self.lineColor;
         [self addSubview:lineView];
     }
     //保存到数组中
@@ -57,10 +57,10 @@
     for(UIButton * b in buttons)
     {
         //清除文本改为黑色
-        [b setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [b setTitleColor:self.norMalTitleColor forState:UIControlStateNormal];
     }
     //点亮当前按钮 文本改为红色
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [btn setTitleColor:self.changeTitleColor forState:UIControlStateNormal];
     //动画
     [UIView animateWithDuration:0.2 animations:^{
         //把线移动到当前选中按钮下

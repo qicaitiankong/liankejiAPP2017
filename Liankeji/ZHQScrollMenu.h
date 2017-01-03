@@ -13,6 +13,13 @@
 -(void)addButton:(UIButton *)btn;
 //设置选中按钮
 -(void)selected:(UIButton *)btn;
-//转屏更新控件
+//转屏更新控件（目前用不到）
 -(void)updateUI;
+//标题的正常颜色
+@property (strong,nonatomic)UIColor *norMalTitleColor;
+//标题改变颜色
+@property (strong,nonatomic)UIColor *changeTitleColor;
+//线的颜色
+@property (strong,nonatomic)UIColor *lineColor;
+
 @end

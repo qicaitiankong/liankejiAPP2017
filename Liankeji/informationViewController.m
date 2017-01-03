@@ -35,9 +35,6 @@
     //标题数组
     NSArray *buttonTitles;
     
-    
-    
-    
 }
 
 @end
@@ -51,18 +48,15 @@
     [self createScrollButtonGroup];
     [self addLeftAndRightScrollView];
     
-   
-    
-    
-    
-    
     // Do any additional setup after loading the view.
 }
-
+//创建滑动分类按钮组
 - (void)createScrollButtonGroup{
     //NSLog(@"导航栏高度：%lf", self.navigationController.navigationBar.frame.size.height);
     scrollViewMenu = [[ZHQScrollMenu alloc]initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height, self.view.frame.size.width, 60)];
-    scrollViewMenu.backgroundColor = [UIColor blueColor];
+    scrollViewMenu.norMalTitleColor = RGBA(87, 87, 86, 1);
+    scrollViewMenu.changeTitleColor = RGBA(35, 119, 212, 1);
+    scrollViewMenu.lineColor = RGBA(35, 119,212, 1);
     [self.view addSubview:scrollViewMenu];
     
     buttonTitles = [NSArray arrayWithObjects:@"新闻",@"热门",@"科技",@"技术",@"前沿",@"最新", nil];
@@ -101,7 +95,7 @@
     //ownTableScrollView.backgroundColor = [UIColor redColor];
     [self.view addSubview:ownTableScrollView];
 }
-
+//需要改进，因为当拖动结束时不能准确计算X偏移量
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
     
@@ -157,24 +151,27 @@
         //NSLog(@"cell height = %lf",cell.frame.size.height);
         cell = [[informationTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"informationCell01" tableView:tableView];
         
+        
     }
     
     [cell.ownImageView setImage:[UIImage imageNamed:@"1"]];
     cell.firstLable.text = @"2016年科技发展";
-    cell.secondLable.text = @"科技发展技术对接";
-    cell.thirdLable.text = @"快速定位全国技术专家需求";
+    cell.secondLable.text = @"科技";
+    cell.firstSmallNumberString = @"7000";
+    cell.secondSmallNumberString = @"8000";
+    cell.thirdSmallNumberString = @"5000";
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //NSLog(@"设置高度");
+    NSLog(@"设置高度");
     return 100;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     informationDetailViewController *detailViewController = [[informationDetailViewController alloc]init];
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    
+    //[self.navigationController pushViewController:detailViewController animated:YES];
+    [self presentViewController:detailViewController animated:YES completion:nil];
     
 }
 
