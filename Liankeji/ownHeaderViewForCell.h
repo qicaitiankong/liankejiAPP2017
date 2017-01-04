@@ -1,19 +1,16 @@
 //
-//  informationSecondPgeTavCell.h
+//  ownHeaderViewForCell.h
 //  Liankeji
 //
-//  Created by mac on 2017/1/3.
+//  Created by mac on 2017/1/4.
 //  Copyright © 2017年 haichuanhuiwulianxinxi. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "appCommonAttributes.h"
+#import "cellHeaderView2.h"
 
+@interface ownHeaderViewForCell : UIView
 
-
-@interface informationSecondPgeTavCell : UITableViewCell
-//上面的间隙
-@property (strong,nonatomic)UIView *spaceLineView;
 //用户头像
 @property (strong,nonatomic) UIImageView *userImageView;
 //关注按钮
@@ -27,6 +24,15 @@
 //阅读量
 @property (strong,nonatomic) UILabel *readLable;
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView*)_tableView;
+
+
+@property (strong,nonatomic)cellHeaderView2 *view2;
+
+
+@property (strong,nonatomic) UILabel *mainTitleLable;
+
+@property (strong,nonatomic) UILabel *detailContentLable;
+
+- (instancetype)initWithFrame:(CGRect)frame headerView2Height:(CGFloat)_headerView2Height mainTitleLabHeight:(CGFloat)mainLableHeight detailLableHeight:(CGFloat)detailHeight;
 
 @end

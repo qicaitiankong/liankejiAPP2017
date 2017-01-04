@@ -42,10 +42,6 @@
         self.ownAuthorLable.font = [UIFont systemFontOfSize:13];
         //self.ownAuthorLable.backgroundColor = [UIColor greenColor];
         [self addSubview:self.ownAuthorLable];
-        
-        
-        
-        
     }
     return self;
 }

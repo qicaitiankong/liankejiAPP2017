@@ -30,7 +30,6 @@ UIView *baseView;
         [self addSubview:baseView];
         //行数
         double row = 2;
-        NSLog(@"row=%lf",row);
         //一行规定4个，列数不定
         CGFloat buttonWidth = (baseView.frame.size.width - FIRST_BUTTON_LEFT_SPACE  - LAST_BUTTON_RIGHT_SPACE - 3 * BUTTON_HORINZONTAL_SPACE ) / 4;
         CGFloat buttonHeight = buttonWidth;
