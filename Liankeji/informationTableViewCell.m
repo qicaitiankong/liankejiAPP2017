@@ -51,7 +51,7 @@
         firstLable = [[UILabel alloc]initWithFrame:CGRectMake(ownImageView.frame.origin.x + ownImageView.bounds.size.width + ImageViewSpace, ownImageView.frame.origin.y, lableWidth, lableHeight)];
         //firstLable.backgroundColor = [UIColor grayColor];
         firstLable.textColor = RGBA(87, 86, 86, 1);
-        firstLable.font = [UIFont systemFontOfSize:22];
+        firstLable.font = [UIFont systemFontOfSize:15];
         [self.contentView addSubview:firstLable];
         
         //紧靠图片右边的种类lable
@@ -62,7 +62,7 @@
         
         //secondLable.backgroundColor = [UIColor blueColor];
         secondLable.textColor = RGBA(167, 167, 167, 1);
-        secondLable.font = [UIFont systemFontOfSize:16.5];
+        secondLable.font = [UIFont systemFontOfSize:11];
         [self.contentView addSubview:secondLable];
         //第一个小view浏览量
         firstSmallDisplayView = [[ownImageviewAndLableView alloc]initWithFrame:CGRectMake(secondLable.frame.origin.x + secondLable.frame.size.width + 10, secondLable.frame.origin.y, 80, 40) imageTag:1];

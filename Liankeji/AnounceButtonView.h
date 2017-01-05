@@ -12,6 +12,7 @@
 
 - (void)announceButtonClick:(NSInteger)index;
 
+
 @end
 
 
@@ -25,8 +26,7 @@
 
 @property (assign,nonatomic)id <announceButtonClickDelegate>
     announceDelegate;
-
--(instancetype)initWithFrame:(CGRect)frame delegate:(id<announceButtonClickDelegate>)_delegate buttonTag:(NSInteger)buttonTag;
-
+//frame ,代理,标签，图片占得比例
+-(instancetype)initWithFrame:(CGRect)frame delegate:(id<announceButtonClickDelegate>)_delegate buttonTag:(NSInteger)buttonTag imageViewPropertion:(CGFloat)imageViewPropertion ;
 
 @end

@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "cellHeaderView2.h"
+#import "cellHeaderView3.h"
 
 @interface ownHeaderViewForCell : UIView
 
-//用户头像
+//头像
 @property (strong,nonatomic) UIImageView *userImageView;
 //关注按钮
 @property (strong,nonatomic) UIButton *attentionButton;
-//用户名字
+//名字
 @property (strong,nonatomic) UILabel *userNameLable;
-//用户介绍
+//介绍
 @property (strong,nonatomic) UILabel *introduceLable;
 //阅读量图片
 @property (strong,nonatomic) UIImageView *readImageView;
@@ -33,6 +34,6 @@
 
 @property (strong,nonatomic) UILabel *detailContentLable;
 
-- (instancetype)initWithFrame:(CGRect)frame headerView2Height:(CGFloat)_headerView2Height mainTitleLabHeight:(CGFloat)mainLableHeight detailLableHeight:(CGFloat)detailHeight;
+- (instancetype)initWithFrame:(CGRect)frame headerView2Height:(CGFloat)_headerView2Height mainTitleLabHeight:(CGFloat)mainLableHeight detailLableHeight:(CGFloat)detailHeight clickDelegate:(id<announceButtonClickDelegate>)ownDelegate;
 
 @end

@@ -4,7 +4,7 @@
 //
 //  Created by mac on 2017/1/3.
 //  Copyright © 2017年 haichuanhuiwulianxinxi. All rights reserved.
-//
+//评论的CELL
 
 #import <UIKit/UIKit.h>
 #import "appCommonAttributes.h"
@@ -16,16 +16,16 @@
 @property (strong,nonatomic)UIView *spaceLineView;
 //用户头像
 @property (strong,nonatomic) UIImageView *userImageView;
-//关注按钮
-@property (strong,nonatomic) UIButton *attentionButton;
+//点赞按钮
+@property (strong,nonatomic) UIButton *givePraiseButton;
 //用户名字
 @property (strong,nonatomic) UILabel *userNameLable;
-//用户介绍
-@property (strong,nonatomic) UILabel *introduceLable;
-//阅读量图片
-@property (strong,nonatomic) UIImageView *readImageView;
-//阅读量
-@property (strong,nonatomic) UILabel *readLable;
+//时间
+@property (strong,nonatomic) UILabel *timeLable;
+//点赞量
+@property (strong,nonatomic) UILabel *givePraiseLable;
+//评论
+@property (strong,nonatomic) UILabel *commentLable;
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView*)_tableView;
 

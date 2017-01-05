@@ -19,17 +19,15 @@
 @implementation AnounceButtonView
 
 
--(instancetype)initWithFrame:(CGRect)frame delegate:(id<announceButtonClickDelegate>)_delegate buttonTag:(NSInteger)buttonTag {
+-(instancetype)initWithFrame:(CGRect)frame delegate:(id<announceButtonClickDelegate>)_delegate buttonTag:(NSInteger)buttonTag imageViewPropertion:(CGFloat)imageViewPropertion {
     self = [super initWithFrame:frame];
     if(self){
         self.announceDelegate = _delegate;
-        
-        self.backgroundColor = [UIColor whiteColor];
-        
+        //self.backgroundColor = [UIColor grayColor];
         self.ownImageView = [[UIImageView alloc]init];
         self.ownImageView.userInteractionEnabled = YES;
         
-        self.ownImageView.frame = CGRectMake(0, 0, frame.size.height * 0.6, frame.size.height * 0.6);
+        self.ownImageView.frame = CGRectMake(0, 0, frame.size.height * imageViewPropertion, frame.size.height * imageViewPropertion);
         self.ownImageView.layer.cornerRadius = self.ownImageView.bounds.size.width / 2;
         self.ownImageView.center = CGPointMake(self.bounds.size.width / 2, self.ownImageView.center.y);
         self.ownImageView.backgroundColor = [UIColor whiteColor];
@@ -46,10 +44,9 @@
         
         //lable
         self.ownLable = [[UILabel alloc]init];
-        self.ownLable.frame = CGRectMake(self.ownImageView.frame.origin.x, self.ownImageView.frame.origin.y + self.ownImageView.bounds.size.height + 5, self.ownImageView.bounds.size.width, frame.size.height - self.ownImageView.frame.origin.y - self.ownImageView.bounds.size.height - 5);
-        self.ownLable.text = @"发布设备";
+        self.ownLable.frame = CGRectMake(0, self.ownImageView.frame.origin.y + self.ownImageView.bounds.size.height + 5, self.frame.size.width, 20);
         self.ownLable.textAlignment = NSTextAlignmentCenter;
-        self.ownLable.backgroundColor = [UIColor whiteColor];
+        //self.ownLable.backgroundColor = [UIColor redColor];
         [self addSubview:self.ownLable];
         
         //titleButton 往self上加而不是lable（lable上不能加按钮）
@@ -61,7 +58,6 @@
         self.titleButton.backgroundColor = [UIColor clearColor];
         [self.titleButton addTarget:self action:@selector(buttonHandler:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.titleButton];
-        
         
     }
     return self;

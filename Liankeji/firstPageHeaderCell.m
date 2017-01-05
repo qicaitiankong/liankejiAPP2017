@@ -17,14 +17,17 @@
         //self.backgroundColor = [UIColor grayColor];
         
         _firstTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, _tableView.frame.size.width - 5 * 2, 20)];
-        _firstTitleLable.font = [UIFont systemFontOfSize:24];
+        _firstTitleLable.font = [UIFont systemFontOfSize:18];
+        _firstTitleLable.textColor = RGBA(42, 42, 42, 1);
        // _firstTitleLable.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:_firstTitleLable];
         
         _secondTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(5, 5 + _firstTitleLable.frame.size.height + 2, _firstTitleLable.frame.size.width, 40)];
         _secondTitleLable.textColor = [UIColor lightGrayColor];
-        //_secondTitleLable.textColor = [UIColor blackColor];
+        _secondTitleLable.textColor = RGBA(195, 195, 195, 1);
+        
         _secondTitleLable.numberOfLines = 0;
+        _secondTitleLable.font = [UIFont systemFontOfSize:14];
         //_secondTitleLable.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:_secondTitleLable];
         

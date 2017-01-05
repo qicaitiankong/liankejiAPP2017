@@ -87,8 +87,8 @@
         NSLog(@"垂直开始位置2:%lf",buttonOrignY);
         
         CGRect ButtonViewFrame = CGRectMake(leftSpace + (buttonWidth + buttonHorizontalSpace) * (index % 3), buttonOrignY, buttonWidth, buttonHeight);
-        
-        AnounceButtonView *button = [[AnounceButtonView alloc]initWithFrame:ButtonViewFrame delegate:self buttonTag:index];
+        AnounceButtonView *button = [[AnounceButtonView alloc]initWithFrame:ButtonViewFrame delegate:self buttonTag:index imageViewPropertion:0.6];
+        button.ownLable.textAlignment = NSTextAlignmentCenter;
         button.tag = BUTTON_TAG + index;
         NSString *imageNameStr = [NSString stringWithFormat:@"anounce1_%li",index];
         [button.ownImageView setImage:[UIImage imageNamed:imageNameStr]];

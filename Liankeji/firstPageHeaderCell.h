@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "appCommonAttributes.h"
+
 
 @interface firstPageHeaderCell : UITableViewCell
 //第一个标题LABLE

@@ -11,12 +11,12 @@
 #import "ownHeaderViewForCell.h"
 #import "informationSecondPgeTavCell.h"
 #import "GetCellHeight.h"
+#import "ownTextSpace.h"
 
 
-@interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource,announceButtonClickDelegate>{
     firstOwnCellView *firstView ;
     UITableView *ownTableView;
-    
     UIView *ownHeaderView;
 }
 
@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
     [self addFirstView];
+    [self addReturnButton];
     [self initOwnTableView];
     
         // Do any additional setup after loading the view.
@@ -39,9 +40,24 @@
     firstView.ownAuthorLable.text = @"作者：陈教授";
     [self.view addSubview:firstView];
 }
+//添加返回按钮
+- (void)addReturnButton{
+    UIButton *returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    returnButton.frame = CGRectMake(5, STATUSBAR_HEIGHT, 80, 40);
+    returnButton.titleLabel.textColor = [UIColor whiteColor];
+    [returnButton setTitle:@"返回" forState:UIControlStateNormal];
+    [returnButton addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:returnButton];
+}
+- (void)returnButtonHandler:(UIButton*)_b{
+    [self dismissViewControllerAnimated:self completion:nil];
+}
 
-//添加headerView
+
+
+//添加headerView组头
 - (UIView*)addHeaderView{
+    //为组头的第二个view中的两个LABLE预测高度
     NSString *mainTitleString = @"韩称将推进“萨德”部署 中方：不利和平须停止";
     UILabel *mainLable = [[UILabel alloc]init];
     mainLable.textAlignment = NSTextAlignmentLeft;
@@ -54,37 +70,44 @@
     
     
     GetCellHeight *calculaieLableHeight = [GetCellHeight ShareCellHeight];
-    CGFloat mainTitleLableHeigh =  [calculaieLableHeight cellHeight:mainLable content:mainTitleString Cellwidth:self.view.frame.size.width - 2 * 10];
+    CGFloat mainTitleLableHeigh =  [calculaieLableHeight cellHeight:mainLable content:mainTitleString Cellwidth:self.view.frame.size.width - 2 * 5];
     
-    CGFloat detailTitleLableHeigh =  [calculaieLableHeight cellHeight:detailLable content:detailContentString Cellwidth:self.view.frame.size.width - 2 * 10];
+    CGFloat detailTitleLableHeigh =  [calculaieLableHeight cellHeight:detailLable content:detailContentString Cellwidth:self.view.frame.size.width - 2 * 5];
 
     NSLog(@"2018 :%lf,%lf",mainTitleLableHeigh,detailTitleLableHeigh);
     
-    ownHeaderViewForCell *view1 = [[ownHeaderViewForCell alloc]initWithFrame:CGRectMake(0, firstView.frame.origin.y + firstView.frame.size.height, self.view.frame.size.width, 200) headerView2Height:200 + mainTitleLableHeigh + detailTitleLableHeigh + 60  mainTitleLabHeight:mainTitleLableHeigh detailLableHeight:detailTitleLableHeigh];
+    CGFloat headerView2Height =  mainTitleLableHeigh + detailTitleLableHeigh + 40;
     
-    //ownHeaderViewForCell *view1 = [[ownHeaderViewForCell alloc]initWithFrame:CGRectMake(0, firstView.frame.origin.y + firstView.frame.size.height, self.view.frame.size.width, 200)];
+    ownHeaderViewForCell *view1 = [[ownHeaderViewForCell alloc]initWithFrame:CGRectMake(0,-(200 + headerView2Height + 150), self.view.frame.size.width, 200 + headerView2Height + 150) headerView2Height:headerView2Height mainTitleLabHeight:mainTitleLableHeigh detailLableHeight:detailTitleLableHeigh clickDelegate:self];
+    
+    //给headerView1传值
     [view1.userImageView setImage:[UIImage imageNamed:@"infoSecondPageUserImage"]];
     view1.userNameLable.text = @"罗主席";
     [view1.readImageView setImage:[UIImage imageNamed:@"infoSecondPageReadNumber"]];
     view1.readLable.text = @"已有12345人阅读";
     view1.introduceLable.text = @"罗主席，蝴蝶结和我家的机会我决定和我家大家看完请记得看文件等待即可为加快";
+    [view1.introduceLable sizeToFit];
+    
     [view1.attentionButton setImage:[UIImage imageNamed:@"infoSecondPageGiveAttention"] forState:UIControlStateNormal];
     [view1.attentionButton addTarget:self action:@selector(attentionButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-
+    //给headerView2传值
     view1.mainTitleLable.text = mainTitleString;
     view1.detailContentLable.text = detailContentString;
+    [ownTextSpace setTextSpace:detailContentString targetLable:view1.detailContentLable textSpace:8];
     
     return view1;
 }
 
-
-
 - (void)initOwnTableView{
-     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, firstView.frame.size.height, self.view.frame.size.width, 1000) style:UITableViewStyleGrouped];
+     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, firstView.frame.size.height, self.view.frame.size.width, SCREEN_HEIGHT - firstView.frame.origin.y - firstView.frame.size.height) style:UITableViewStyleGrouped];
     [self.view addSubview:ownTableView];
     ownTableView.delegate = self;
     ownTableView.dataSource = self;
     
+}
+
+-(void)announceButtonClick:(NSInteger)index{
+    NSLog(@"你再点击分享组按钮");
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -97,35 +120,20 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 150;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = nil;
-    //第一种cell
-//    informationSecondPgeTavCell *cell1 = nil;
-//    
-//    if(indexPath.row == 0){
-//        cell = [tableView dequeueReusableCellWithIdentifier:@"infoSecondPageCell"];
-//        if(nil == cell){
-//            //第一种cell
-//            cell1 = [[informationSecondPgeTavCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"infoSecondPageCell" tableView:tableView];
-//            [cell1.userImageView setImage:[UIImage imageNamed:@"infoSecondPageUserImage"]];
-//            cell1.userNameLable.text = @"罗主席";
-//            [cell1.readImageView setImage:[UIImage imageNamed:@"infoSecondPageReadNumber"]];
-//            cell1.readLable.text = @"已有12345人阅读";
-//            cell1.introduceLable.text = @"罗主席，蝴蝶结和我家的机会我决定和我家大家看完请记得看文件等待即可为加快";
-//            [cell1.attentionButton setImage:[UIImage imageNamed:@"infoSecondPageGiveAttention"] forState:UIControlStateNormal];
-//            [cell1.attentionButton addTarget:self action:@selector(attentionButtonClickHandler:) forControlEvents:UIControlEventTouchUpInside];
-//            cell = cell1;
-//            //cell.backgroundColor = [UIColor greenColor];
-//        }
-//    
-//    
-//    }
-    cell = [tableView dequeueReusableCellWithIdentifier:@"test1"];
+    informationSecondPgeTavCell *cell = nil;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"infoSecondPageCell"];
+        
     if(nil == cell){
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test1"];
+        cell = [[informationSecondPgeTavCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"infoSecondPageCell" tableView:tableView];
     }
+    [cell.userImageView setImage:[UIImage imageNamed:@"infoSecondPageCommentUserImage"]];
+    cell.userNameLable.text = @"往事随风";
+    cell.timeLable.text = @"2017-1-5";
+    cell.commentLable.text = @"小编终于说句实话了蝴蝶结设计的话就是的风华看看";
+    cell.givePraiseLable.text = @"123";
     return cell;
 }
 
@@ -136,8 +144,9 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    NSLog(@"设置高度header");
+    
     UIView *views = [self addHeaderView];
+    NSLog(@"设置高度header %lf",views.frame.size.height);
     return views.frame.size.height;
 }
 

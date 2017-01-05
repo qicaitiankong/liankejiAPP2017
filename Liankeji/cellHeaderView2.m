@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = RGBA(246, 246, 246, 1);
-        
+        //self.backgroundColor = [UIColor greenColor];
         self.mainTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(5, 10, self.frame.size.width - 2 * 5, height1)];
         //self.mainTitleLable.backgroundColor = [UIColor blackColor];
         [self addSubview:self.mainTitleLable];
@@ -27,9 +27,9 @@
         self.detailContentLable.font = [UIFont systemFontOfSize:16];
         self.detailContentLable.textColor = RGBA(32, 32, 32, 1);
         self.detailContentLable.numberOfLines = 0;
-        self.detailContentLable.backgroundColor = [UIColor yellowColor];
- 
         
+              //self.detailContentLable.backgroundColor = [UIColor yellowColor];
+ 
     }
     return self;
 }

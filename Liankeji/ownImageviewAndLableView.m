@@ -39,6 +39,7 @@
         self.smallNumLable = [[UILabel alloc]initWithFrame:CGRectMake(self.smallImageView.frame.origin.x + self.smallImageView.frame.size.width + 5, self.smallImageView.frame.origin.y, self.frame.size.width - self.smallImageView.frame.size.width - self.smallImageView.frame.origin.x - 5, self.smallImageView.frame.size.height)];
         //self.smallNumLable.backgroundColor = [UIColor yellowColor];
         self.smallNumLable.textColor = RGBA(107, 107, 107, 1);
+        self.smallNumLable.font = [UIFont systemFontOfSize:10];
         [self addSubview:self.smallNumLable];
         
     }

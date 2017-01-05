@@ -64,6 +64,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:buttonTitles[index] forState:UIControlStateNormal];
         button.tag = SCROLLVIEW_BUTTON_TAG + index;
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
        [button addTarget:self action:@selector(buttonHandler:) forControlEvents:UIControlEventTouchUpInside];
         if(button.tag == SCROLLVIEW_BUTTON_TAG){
             scrollViewSelectButton = button;
@@ -169,9 +170,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     informationDetailViewController *detailViewController = [[informationDetailViewController alloc]init];
-    //[self.navigationController pushViewController:detailViewController animated:YES];
-    [self presentViewController:detailViewController animated:YES completion:nil];
     
+    [self presentViewController:detailViewController animated:YES completion:nil];
 }
 
 

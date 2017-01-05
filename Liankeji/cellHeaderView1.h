@@ -13,7 +13,7 @@
 
 @interface cellHeaderView1 : UIView
 
-//用户头像
+//头像
 @property (strong,nonatomic) UIImageView *userImageView;
 //关注按钮
 @property (strong,nonatomic) UIButton *attentionButton;

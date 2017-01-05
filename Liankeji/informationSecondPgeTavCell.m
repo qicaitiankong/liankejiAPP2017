@@ -17,7 +17,7 @@
     if(self){
         self.contentView.backgroundColor = [UIColor whiteColor];
         //间隙
-        self.spaceLineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 20)];
+        self.spaceLineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 2)];
         self.spaceLineView.backgroundColor = RGBA(246, 246, 246, 1);
         [self.contentView addSubview:self.spaceLineView];
         //用户头像
@@ -27,36 +27,56 @@
         //self.userImageView .backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:self.userImageView ];
         //名字
-        self.userNameLable  = [[UILabel alloc]initWithFrame:CGRectMake(self.userImageView .frame.origin.x + self.userImageView.frame.size.width + 5, self.userImageView.frame.origin.y + self.userImageView.frame.size.height / 2, 200, 40)];
-        self.userNameLable.textColor = RGBA(46, 46, 46, 1);
+        self.userNameLable  = [[UILabel alloc]initWithFrame:CGRectMake(self.userImageView .frame.origin.x + self.userImageView.frame.size.width + 5, self.userImageView.frame.origin.y + 2, 200, 30)];
+        self.userNameLable.textColor = RGBA(77, 149, 237, 1);
         self.userNameLable.font = [UIFont systemFontOfSize:15];
         //self.userNameLable.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:self.userNameLable];
-        //阅读量图片
-        self.readImageView = [[UIImageView alloc]initWithFrame:CGRectMake(_tableView.frame.size.width / 2 + 30, self.userImageView.frame.origin.y + self.userImageView.frame.size.height, 19, 18)];
-        //self.readImageView.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:self.readImageView];
-        //阅读量数字
-        self.readLable = [[UILabel alloc]initWithFrame:CGRectMake(self.readImageView.frame.origin.x + self.readImageView.frame.size.width + 2, self.readImageView.frame.origin.y, _tableView.bounds.size.width - self.readImageView.frame.origin.x - self.readImageView.frame.size.width - 2, self.readImageView.frame.size.height)];
-        self.readLable.font = [UIFont systemFontOfSize:13];
-        self.readLable.textColor = RGBA(94, 94, 94, 1);
-        //self.readLable.backgroundColor = [UIColor yellowColor];
-        [self.contentView addSubview:self.readLable];
-        //lable介绍
-        self.introduceLable = [[UILabel alloc]initWithFrame:CGRectMake(25, self.readImageView.frame.origin.y + self.readImageView.frame.size.height, _tableView.frame.size.width / 2 - 25, 200 - self.readImageView.frame.origin.y - self.readImageView.frame.size.height)];
-        self.introduceLable.textAlignment = NSTextAlignmentLeft;
-        self.introduceLable.numberOfLines = 0;
-        self.introduceLable.font = [UIFont systemFontOfSize:13];
-        self.introduceLable.textColor = RGBA(94, 94, 94, 1);
-        self.introduceLable.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:self.introduceLable];
-        //关注
-        self.attentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.attentionButton.frame = CGRectMake(self.readLable.frame.origin.x, self.readLable.frame.origin.y + self.readImageView.frame.size.height + 20, 85,31);
-        //self.attentionButton.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:self.attentionButton];
         
-    }
+        
+        self.timeLable = [[UILabel alloc]initWithFrame:CGRectMake(self.userNameLable.frame.origin.x, self.userNameLable.frame.origin.y + self.userNameLable.frame.size.height + 5,100, 10)];
+        self.timeLable.font = [UIFont systemFontOfSize:12];
+        self.timeLable.textColor = RGBA(163, 163, 163, 1);
+        //self.timeLable.backgroundColor = [UIColor redColor];
+        [self.contentView addSubview:self.timeLable];
+        
+        self.commentLable = [[UILabel alloc]initWithFrame:CGRectMake(self.timeLable.frame.origin.x, self.timeLable.frame.origin.y + self.timeLable.frame.size.height + 5, _tableView.frame.size.width - self.timeLable.frame.origin.x - 5, 40)];
+        self.commentLable.textColor = RGBA(64, 64, 64, 1);
+        self.commentLable.font = [UIFont systemFontOfSize:15];
+        //self.commentLable.backgroundColor = [UIColor blueColor];
+        [self.contentView addSubview:self.commentLable];
+        
+        self.givePraiseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //self.givePraiseButton.backgroundColor = [UIColor greenColor];
+        self.givePraiseButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        //self.givePraiseButton.imageView.backgroundColor = [UIColor redColor];
+        self.givePraiseButton.frame = CGRectMake(_tableView.frame.size.width - 100, self.userNameLable.frame.origin.y, 20, 20);
+        [self.givePraiseButton setImage:[UIImage imageNamed:@"infoSecondPageNotGiveClick"] forState:UIControlStateNormal];
+        [self.contentView addSubview:self.givePraiseButton];
+        
+        self.givePraiseLable = [[UILabel alloc]initWithFrame:CGRectMake(self.givePraiseButton.frame.origin.x + self.givePraiseButton.frame.size.width + 5, self.givePraiseButton.frame.origin.y, 40, 15)];
+        self.givePraiseLable.center = CGPointMake(self.givePraiseLable.center.x, self.givePraiseButton.center.y);
+        self.givePraiseLable.font = [UIFont systemFontOfSize:12];
+         self.commentLable.textColor = RGBA(163, 163, 163, 1);
+        self.givePraiseLable.text = @"321";
+        [self.contentView addSubview:self.givePraiseLable];
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+     }
     return self;
 }
 - (void)awakeFromNib {
