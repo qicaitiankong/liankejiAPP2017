@@ -16,11 +16,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         self.contentView.backgroundColor = [UIColor whiteColor];
-        //间隙
+        //间隙 2
         self.spaceLineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 2)];
         self.spaceLineView.backgroundColor = RGBA(246, 246, 246, 1);
         [self.contentView addSubview:self.spaceLineView];
-        //用户头像
+        //用户头像 60
         self.userImageView = [[UIImageView alloc]init];
         self.userImageView .frame = CGRectMake(5, self.spaceLineView.frame.origin.y + self.spaceLineView.frame.size.height + 9, 60, 60);
         self.userImageView .layer.cornerRadius = self.userImageView .frame.size.width / 2;
@@ -39,10 +39,11 @@
         self.timeLable.textColor = RGBA(163, 163, 163, 1);
         //self.timeLable.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:self.timeLable];
-        
+        //40
         self.commentLable = [[UILabel alloc]initWithFrame:CGRectMake(self.timeLable.frame.origin.x, self.timeLable.frame.origin.y + self.timeLable.frame.size.height + 5, _tableView.frame.size.width - self.timeLable.frame.origin.x - 5, 40)];
         self.commentLable.textColor = RGBA(64, 64, 64, 1);
         self.commentLable.font = [UIFont systemFontOfSize:15];
+        self.commentLable.numberOfLines = 0;
         //self.commentLable.backgroundColor = [UIColor blueColor];
         [self.contentView addSubview:self.commentLable];
         
@@ -60,23 +61,7 @@
          self.commentLable.textColor = RGBA(163, 163, 163, 1);
         self.givePraiseLable.text = @"321";
         [self.contentView addSubview:self.givePraiseLable];
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-     }
+    }
     return self;
 }
 - (void)awakeFromNib {

@@ -26,7 +26,7 @@
 #define NAVIGATION_HEIGHT self.navigationController.navigationBar.frame.size.height
 //电池栏高度
 #define STATUSBAR_HEIGHT     [UIApplication sharedApplication].statusBarFrame.size.height
-
-
+//主窗口
+#define APP_MAIN_WINDOW [UIApplication sharedApplication].windows[0]
 
 #endif /* appCommonAttributes_h */

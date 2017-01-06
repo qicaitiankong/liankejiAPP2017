@@ -28,11 +28,10 @@
         self.attentionButton = view1.attentionButton;
         //第二个VIEW(标题及详情内容区域)
         cellHeaderView2 *view2 = [[cellHeaderView2 alloc]initWithFrame:CGRectMake(0, view1.frame.origin.y + view1.frame.size.height, self.frame.size.width, _headerView2Height) lable1Height:mainLableHeight lable2Height:detailHeight];
-        
         self.mainTitleLable = view2.mainTitleLable;
         self.detailContentLable = view2.detailContentLable;
         [self addSubview:view2];
-        NSLog(@"组头前两个VIEW高度%lf",view2.frame.origin.y + view2.bounds.size.height);
+        //NSLog(@"组头前两个VIEW高度%lf",view2.frame.origin.y + view2.bounds.size.height);
         //添加分享模块
         cellHeaderView3 *view3 = [[cellHeaderView3 alloc]initWithFrame:CGRectMake(0, view2.frame.origin.y + view2.frame.size.height, self.frame.size.width, 150) clickDelegate:ownDelegate];
         [self addSubview:view3];

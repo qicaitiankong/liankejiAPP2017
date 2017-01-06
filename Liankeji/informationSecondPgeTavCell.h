@@ -4,13 +4,10 @@
 //
 //  Created by mac on 2017/1/3.
 //  Copyright © 2017年 haichuanhuiwulianxinxi. All rights reserved.
-//评论的CELL
 
+//评论的CELL
 #import <UIKit/UIKit.h>
 #import "appCommonAttributes.h"
-
-
-
 @interface informationSecondPgeTavCell : UITableViewCell
 //上面的间隙
 @property (strong,nonatomic)UIView *spaceLineView;

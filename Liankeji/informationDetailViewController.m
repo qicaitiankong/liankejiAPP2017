@@ -12,12 +12,19 @@
 #import "informationSecondPgeTavCell.h"
 #import "GetCellHeight.h"
 #import "ownTextSpace.h"
+#import "commentView.h"
+#import "userWriteCommentView.h"
+#import "cellFootView.h"
 
 
-@interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource,announceButtonClickDelegate>{
+@interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource,announceButtonClickDelegate,UITextViewDelegate>{
     firstOwnCellView *firstView ;
     UITableView *ownTableView;
     UIView *ownHeaderView;
+    commentView *ownCommentView;
+    userWriteCommentView *writeView;
+    
+    NSMutableArray *testCommentArr;
 }
 
 @end
@@ -27,10 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
+    testCommentArr = [[NSMutableArray alloc]initWithObjects:@"的是的范德萨发大幅度发的凤飞飞",@"据中央气象台网站消息，预计6日至8日白天，华北中南部等地霾天气仍将持续。8日夜间受冷空气影响，上述地区霾天气将自北向南减弱消散。昨天至今晨，湖北东部、安徽中南部、江苏南部、江西北部、浙江中北部、上海等地出现中雨，部分地区出现大", nil];
     [self addFirstView];
     [self addReturnButton];
     [self initOwnTableView];
-    
+    [self addCommentView];
         // Do any additional setup after loading the view.
 }
 //添加最上面的view
@@ -49,10 +57,6 @@
     [returnButton addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:returnButton];
 }
-- (void)returnButtonHandler:(UIButton*)_b{
-    [self dismissViewControllerAnimated:self completion:nil];
-}
-
 
 
 //添加headerView组头
@@ -94,33 +98,29 @@
     view1.mainTitleLable.text = mainTitleString;
     view1.detailContentLable.text = detailContentString;
     [ownTextSpace setTextSpace:detailContentString targetLable:view1.detailContentLable textSpace:8];
-    
     return view1;
 }
-
+//创建表视图
 - (void)initOwnTableView{
-     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, firstView.frame.size.height, self.view.frame.size.width, SCREEN_HEIGHT - firstView.frame.origin.y - firstView.frame.size.height) style:UITableViewStyleGrouped];
+     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, firstView.frame.size.height, self.view.frame.size.width, SCREEN_HEIGHT - firstView.frame.origin.y - firstView.frame.size.height - 60) style:UITableViewStyleGrouped];
     [self.view addSubview:ownTableView];
     ownTableView.delegate = self;
     ownTableView.dataSource = self;
     
 }
-
--(void)announceButtonClick:(NSInteger)index{
-    NSLog(@"你再点击分享组按钮");
-}
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 2;
 }
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    UILabel *testLabel = [[UILabel alloc]init];
+    testLabel.font = [UIFont systemFontOfSize:15];
+    GetCellHeight *getHeight = [GetCellHeight ShareCellHeight];
+    CGFloat labelHeight = [getHeight cellHeight:testLabel content:testCommentArr[indexPath.row] Cellwidth:ownTableView.frame.size.width - 75];
+    NSLog(@"评论中的高度%lf",labelHeight);
+    return 76 + labelHeight;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     informationSecondPgeTavCell *cell = nil;
@@ -132,8 +132,10 @@
     [cell.userImageView setImage:[UIImage imageNamed:@"infoSecondPageCommentUserImage"]];
     cell.userNameLable.text = @"往事随风";
     cell.timeLable.text = @"2017-1-5";
-    cell.commentLable.text = @"小编终于说句实话了蝴蝶结设计的话就是的风华看看";
+    cell.commentLable.text = testCommentArr[indexPath.row];
+    [cell.commentLable sizeToFit];
     cell.givePraiseLable.text = @"123";
+    [cell.givePraiseButton addTarget:self action:@selector(praiseHandler:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -142,18 +144,88 @@
     ownHeaderView = [self addHeaderView];
     return ownHeaderView;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    
     UIView *views = [self addHeaderView];
     NSLog(@"设置高度header %lf",views.frame.size.height);
     return views.frame.size.height;
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *footView = [[cellFootView alloc]initWithFrame:CGRectMake(0, tableView.frame.size.height, tableView.frame.size.width, 60)];
+    return footView;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 60;
+}
 
+//添加下部评论的view
+- (void) addCommentView{
+    UIWindow *window = APP_MAIN_WINDOW;
+    ownCommentView = [[commentView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 60, SCREEN_WIDTH, 60)];
+    [ownCommentView.transParentButt addTarget:self action:@selector(commentHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [ownCommentView.givePraiseButton addTarget:self action:@selector(rewardHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [window addSubview:ownCommentView];
+    
+}
+
+//点击返回按钮
+- (void)returnButtonHandler:(UIButton*)_b{
+    //先处理窗口上的界面
+    [ownCommentView removeFromSuperview];
+    [writeView removeFromSuperview];
+    [writeView.textView resignFirstResponder];
+    [self dismissViewControllerAnimated:self completion:nil];
+}
 //点击关注按钮
 - (void)attentionButtonClickHandler:(UIButton*)_b{
     NSLog(@"点击关注按钮");
+}
+//点击了分享组按钮
+-(void)announceButtonClick:(NSInteger)index{
+    NSLog(@"你再点击分享组按钮");
+}
+//点赞
+- (void)praiseHandler:(UIButton*)_b{
+    [_b setImage:[UIImage imageNamed:@"infoSecondPageGivedClick"] forState:UIControlStateNormal];
+    
+
+    NSLog(@"点赞");
+}
+//点击评论区创建编辑界面
+- (void)commentHandler:(UIButton*)_b{
+    UIWindow *window = APP_MAIN_WINDOW;
+    writeView = [[userWriteCommentView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 200 - 400, SCREEN_WIDTH, 200)];
+     [writeView.cancelButton addTarget:self action:@selector(cancelButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [writeView.sendButton addTarget:self action:@selector(sendButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [window addSubview:writeView];
+    
+    ownTableView.userInteractionEnabled = NO;
+}
+
+//取消评论编辑
+- (void)cancelButtonHandler:(UIButton*)_b{
+    [writeView.textView resignFirstResponder];
+    //避免用户误操作
+    _b.userInteractionEnabled = NO;
+    writeView.sendButton.userInteractionEnabled = NO;
+    ownTableView.userInteractionEnabled = YES;
+    [writeView removeFromSuperview];
+    
+}
+//发送评论
+- (void)sendButtonHandler:(UIButton*)_b{
+    [writeView.textView resignFirstResponder];
+    //避免用户误操作
+    _b.userInteractionEnabled = NO;
+    writeView.sendButton.userInteractionEnabled = NO;
+    ownTableView.userInteractionEnabled = YES;
+    [writeView removeFromSuperview];
+}
+
+//打赏按钮
+- (void)rewardHandler:(UIButton*)_b{
+    NSLog(@"打赏");
 }
 
 - (void)didReceiveMemoryWarning {

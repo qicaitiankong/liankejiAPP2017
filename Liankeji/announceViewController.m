@@ -25,6 +25,8 @@
     //取消按钮
     UIButton *cancelButton;
     
+    NSMutableArray *buttonTitleArray;
+    
 }
 
 @end
@@ -33,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    buttonTitleArray = [[NSMutableArray alloc]initWithObjects:@"发布技术",@"发布项目",@"发布需求",@"发布资金",@"发布设备",@"发布文章", nil];
     
     NSLog(@"发布首页");
     
@@ -88,10 +91,11 @@
         
         CGRect ButtonViewFrame = CGRectMake(leftSpace + (buttonWidth + buttonHorizontalSpace) * (index % 3), buttonOrignY, buttonWidth, buttonHeight);
         AnounceButtonView *button = [[AnounceButtonView alloc]initWithFrame:ButtonViewFrame delegate:self buttonTag:index imageViewPropertion:0.6];
-        button.ownLable.textAlignment = NSTextAlignmentCenter;
+       // button.ownLable.textAlignment = NSTextAlignmentCenter;
         button.tag = BUTTON_TAG + index;
         NSString *imageNameStr = [NSString stringWithFormat:@"anounce1_%li",index];
         [button.ownImageView setImage:[UIImage imageNamed:imageNameStr]];
+        button.ownLable.text = buttonTitleArray[index];
         [baseView addSubview:button];
     }
 }

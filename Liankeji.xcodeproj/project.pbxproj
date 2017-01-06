@@ -65,6 +65,9 @@
 		0435BF991E1B7F5B00DE859D /* infoSecondPageQZone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0435BF741E1B7F5B00DE859D /* infoSecondPageQZone@2x.png */; };
 		0435BF9A1E1B7F5B00DE859D /* infoSecondPageQZone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0435BF751E1B7F5B00DE859D /* infoSecondPageQZone@3x.png */; };
 		0435BF9D1E1B8ED300DE859D /* informationSecondPgeTavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435BF9C1E1B8ED300DE859D /* informationSecondPgeTavCell.m */; };
+		049261FD1E1F277F00AFC111 /* commentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FC1E1F277F00AFC111 /* commentView.m */; };
+		049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */; };
+		049262031E1F939A00AFC111 /* cellFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049262021E1F939A00AFC111 /* cellFootView.m */; };
 		04CDD9B31E1DDD3B009330FD /* cellHeaderView3.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD9B21E1DDD3B009330FD /* cellHeaderView3.m */; };
 		04CDD9B61E1E44CB009330FD /* ownTextSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD9B51E1E44CB009330FD /* ownTextSpace.m */; };
 		7B3C91A23811F61D8BFFF1E5 /* libPods-Liankeji.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F252549BA2B14C997713502 /* libPods-Liankeji.a */; };
@@ -279,6 +282,12 @@
 		0435BF751E1B7F5B00DE859D /* infoSecondPageQZone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoSecondPageQZone@3x.png"; sourceTree = "<group>"; };
 		0435BF9B1E1B8ED300DE859D /* informationSecondPgeTavCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = informationSecondPgeTavCell.h; sourceTree = "<group>"; };
 		0435BF9C1E1B8ED300DE859D /* informationSecondPgeTavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = informationSecondPgeTavCell.m; sourceTree = "<group>"; };
+		049261FB1E1F277F00AFC111 /* commentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentView.h; sourceTree = "<group>"; };
+		049261FC1E1F277F00AFC111 /* commentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentView.m; sourceTree = "<group>"; };
+		049261FE1E1F3B9100AFC111 /* userWriteCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userWriteCommentView.h; sourceTree = "<group>"; };
+		049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userWriteCommentView.m; sourceTree = "<group>"; };
+		049262011E1F939A00AFC111 /* cellFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellFootView.h; sourceTree = "<group>"; };
+		049262021E1F939A00AFC111 /* cellFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cellFootView.m; sourceTree = "<group>"; };
 		04CDD9B11E1DDD3B009330FD /* cellHeaderView3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellHeaderView3.h; sourceTree = "<group>"; };
 		04CDD9B21E1DDD3B009330FD /* cellHeaderView3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cellHeaderView3.m; sourceTree = "<group>"; };
 		04CDD9B41E1E44CB009330FD /* ownTextSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ownTextSpace.h; sourceTree = "<group>"; };
@@ -527,6 +536,12 @@
 				0434BDEC1E1CD2060096136E /* ownHeaderViewForCell.m */,
 				04CDD9B11E1DDD3B009330FD /* cellHeaderView3.h */,
 				04CDD9B21E1DDD3B009330FD /* cellHeaderView3.m */,
+				049261FB1E1F277F00AFC111 /* commentView.h */,
+				049261FC1E1F277F00AFC111 /* commentView.m */,
+				049261FE1E1F3B9100AFC111 /* userWriteCommentView.h */,
+				049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */,
+				049262011E1F939A00AFC111 /* cellFootView.h */,
+				049262021E1F939A00AFC111 /* cellFootView.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1454,6 +1469,7 @@
 				99E41F631DED270300F32968 /* NavViewControllerForFirstPage.m in Sources */,
 				0434BDEA1E1CC44B0096136E /* cellHeaderView2.m in Sources */,
 				992D730E1DF1557300FFD2DD /* GetCellHeight.m in Sources */,
+				049261FD1E1F277F00AFC111 /* commentView.m in Sources */,
 				99AA38F01E092C8C000A57BC /* sideMenuButton.m in Sources */,
 				99552E171E013FFF0091EAE9 /* leftDrawerViewController.m in Sources */,
 				9953E2E11E0D22FF00F55604 /* informationViewController.m in Sources */,
@@ -1483,12 +1499,14 @@
 				99AA38EC1E09053B000A57BC /* LMJScrollTextView.m in Sources */,
 				99C1F9E61E1104F7004DE512 /* AnounceButtonView.m in Sources */,
 				0432CF891E15F88F00701F16 /* sateliteMenuCenterButton.m in Sources */,
+				049262031E1F939A00AFC111 /* cellFootView.m in Sources */,
 				9953E2F01E0D238700F55604 /* LZHTabBar.m in Sources */,
 				99C1F9B71E10BE81004DE512 /* informationTableViewCell.m in Sources */,
 				04CDD9B61E1E44CB009330FD /* ownTextSpace.m in Sources */,
 				99554A4E1DF012BF0028A59E /* ShareHomePath.m in Sources */,
 				9961CF9B1E02250D0021D123 /* CommunicateNavigationViewController.m in Sources */,
 				99E41F2C1DED0E0D00F32968 /* main.m in Sources */,
+				049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */,
 				9961CF951E02249F0021D123 /* CommunicateFirstViewController.m in Sources */,
 				99E41F6C1DED2A8900F32968 /* PersonalTableViewController.m in Sources */,
 				992C69821E0A69890052D21B /* UINavigationBar+NavigationBarBackground.m in Sources */,
