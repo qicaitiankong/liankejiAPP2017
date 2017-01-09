@@ -34,7 +34,6 @@
     
     //标题数组
     NSArray *buttonTitles;
-    
 }
 
 @end
@@ -70,8 +69,6 @@
             scrollViewSelectButton = button;
         }
         [scrollViewMenu addButton:button];
-        
-        
     }
 }
 //添加左右滑动切换页面的scrollView
@@ -98,9 +95,6 @@
 }
 //需要改进，因为当拖动结束时不能准确计算X偏移量
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    
-    
-    
     //利用常用算法计算page
     CGFloat pageWidth = ownTableScrollView.bounds.size.width;
     int page = floor((ownTableScrollView.contentOffset.x - pageWidth / 2)/pageWidth) + 1;
@@ -117,9 +111,6 @@
     
     //NSLog(@"结束拖动=%ld",X);
 }
-
-
-
 //按钮组点击事件
 - (void)buttonHandler:(UIButton*)_b{
     if(scrollViewSelectButton != _b){
@@ -173,9 +164,6 @@
     
     [self presentViewController:detailViewController animated:YES completion:nil];
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

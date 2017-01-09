@@ -11,8 +11,9 @@
 @implementation ZHQScrollMenu
 {
     NSMutableArray * buttons;
-    UIView * lineView;
+    
 }
+@synthesize  lineView;
 //设置横竖屏的，用不到
 -(void)updateUI
 {
@@ -23,6 +24,7 @@
     self=[super initWithFrame:frame];
     if(self)
     {
+        //self.backgroundColor = [UIColor grayColor];
         buttons=[[NSMutableArray alloc]init];
         self.showsHorizontalScrollIndicator=NO;
     }

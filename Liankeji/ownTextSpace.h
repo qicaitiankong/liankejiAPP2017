@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-//用于计算和设置文字行间距
+//用于设置文字行间距
 
 @interface ownTextSpace :NSObject
+//字符串，样板label 行间距
 + (void)setTextSpace:(NSString *)textString targetLable:(UILabel*)textLable textSpace:(CGFloat)spaceSize;
 @end

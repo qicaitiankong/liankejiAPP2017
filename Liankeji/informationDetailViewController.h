@@ -8,7 +8,6 @@
 //点击CELL后切换的控制器
 
 #import <UIKit/UIKit.h>
-
 @interface informationDetailViewController : UIViewController
 
 @end

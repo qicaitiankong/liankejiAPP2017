@@ -153,12 +153,25 @@
 - (void)buttonGroupPopIn{
     CGFloat targetTranslationY = 400 + animationImageView.frame.origin.y + animationImageView.bounds.size.height + 10;
     //CGFloat targetTranslationY = 300;
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    [group setDuration:3];
+    NSMutableArray *animationArr = [[NSMutableArray alloc]init];
     for(NSInteger i = 0 ; i < 6; i ++){
         AnounceButtonView *buttonView = [baseView viewWithTag:BUTTON_TAG + i];
         //NSLog(@"tag=%li",buttonView.tag);
         
         [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.45 initialSpringVelocity:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:^{
             buttonView.transform = CGAffineTransformMakeTranslation(0, targetTranslationY);
+//            CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+//            [positionAnimation setFromValue:[NSValue valueWithCGPoint:CGPointMake(buttonView.frame.origin.x, buttonView.frame.origin.y)]];
+//            
+//            [positionAnimation setToValue:[NSValue valueWithCGPoint:CGPointMake(buttonView.frame.origin.x, buttonView.frame.origin.y + 1200)]];
+//            [positionAnimation setDuration:3];
+//            positionAnimation.removedOnCompletion = NO;
+//            positionAnimation.fillMode = kCAFillModeForwards;
+//            [positionAnimation setBeginTime:0.5 * i ];
+//            
+//            [animationArr addObject:positionAnimation];
             
         } completion:^(BOOL finished) {
             //取消按钮跟着显示
@@ -167,6 +180,8 @@
                 cancelButton.userInteractionEnabled = YES;
             }];
         }];
+//        [group setAnimations:animationArr];
+//        [baseView.layer addAnimation:group forKey:nil];
     }
 }
 

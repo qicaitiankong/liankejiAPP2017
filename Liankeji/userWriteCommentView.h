@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 //用户写评论的view
 
-
 @interface userWriteCommentView : UIView
 //取消按钮
 @property (strong,nonatomic)UIButton *cancelButton;

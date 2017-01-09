@@ -22,4 +22,6 @@
 //线的颜色
 @property (strong,nonatomic)UIColor *lineColor;
 
+@property (strong,nonatomic)UIView * lineView;
+
 @end

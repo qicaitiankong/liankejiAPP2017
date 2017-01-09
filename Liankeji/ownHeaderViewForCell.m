@@ -8,6 +8,7 @@
 
 #import "ownHeaderViewForCell.h"
 #import "cellHeaderView1.h"
+#import "HotCommentView.h"
 
 
 @implementation ownHeaderViewForCell
@@ -35,6 +36,9 @@
         //添加分享模块
         cellHeaderView3 *view3 = [[cellHeaderView3 alloc]initWithFrame:CGRectMake(0, view2.frame.origin.y + view2.frame.size.height, self.frame.size.width, 150) clickDelegate:ownDelegate];
         [self addSubview:view3];
+        //添加热门评论
+        HotCommentView *hotView = [[HotCommentView alloc]initWithFrame:CGRectMake(0, view3.frame.origin.y + view3.frame.size.height, self.frame.size.width, 50)];
+        [self addSubview:hotView];
     }
     return self;
 }

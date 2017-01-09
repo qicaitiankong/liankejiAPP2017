@@ -24,6 +24,8 @@
 #import "scinenceHeaderView.h"
 #import "UINavigationBar+NavigationBarBackground.h"
 #import "appCommonAttributes.h"
+#import "centerButtonGroupViewController.h"
+
 
 
 //滚动视图高度
@@ -141,7 +143,6 @@
     NSMutableArray *buttonImageArr = [[NSMutableArray alloc]init];
     NSMutableArray *lableTitleArr = [[NSMutableArray alloc]initWithObjects:@"企业",@"专家",@"技术人才",@"高校",@"第三方",@"更多",nil];
     for(NSInteger i = 0 ; i < 6; i ++){
-        
         NSString *imageName = [NSString stringWithFormat:@"firstpage_buttonGroup_0%li",i];
         UIImage *image = [UIImage imageNamed:imageName];
         [buttonImageArr addObject:image];
@@ -152,6 +153,9 @@
 //中间按钮点击事件
 -(void)groupButtonClickHandler:(NSInteger)buttonIndex{
     NSLog(@"buttonGroup:%li",buttonIndex);
+    centerButtonGroupViewController *detailVC = [[centerButtonGroupViewController alloc]init];
+    [self presentViewController:detailVC animated:NO completion:nil];
+    //[self.navigationController pushViewController:detailVC animated:YES];
 }
 
 //科技头条
