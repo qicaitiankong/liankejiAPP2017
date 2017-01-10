@@ -15,12 +15,14 @@
 #import "commentView.h"
 #import "userCommentParentView.h"
 #import "cellFootView.h"
+#import "exchangeView1.h"
 
-
-@interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource,announceButtonClickDelegate,UITextViewDelegate>{
-    //最上面第一个视图
-    firstOwnCellView *firstView;
-    //表视图
+@interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource,announceButtonClickDelegate,UITextViewDelegate,owntouchDelegate>{
+    //返回按钮
+    UIButton *returnButton;
+    //转场VIEW
+    exchangeView1 *changeView1;
+    //表视图(转场view2)
     UITableView *ownTableView;
     //组头
     UIView *ownHeaderView;
@@ -38,33 +40,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     testCommentArr = [[NSMutableArray alloc]initWithObjects:@"的是的范德萨发大幅度发的凤飞飞",@"据中央气象台网站消息，预计6日至8日白天，华北中南部等地霾天气仍将持续。8日夜间受冷空气影响，上述地区霾天气将自北向南减弱消散。昨天至今晨，湖北东部、安徽中南部、江苏南部、江西北部、浙江中北部、上海等地出现中雨，部分地区出现大", nil];
-    [self addFirstView];
     [self addReturnButton];
+    //转场view2表视图
     [self initOwnTableView];
+    //转场view1
+    [self createExchangeview1];
+    //添加底部评论
     [self addCommentView];
         // Do any additional setup after loading the view.
 }
-//添加最上面的view
--(void)addFirstView{
-    firstView = [[firstOwnCellView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300) titleString:@"链科技正在打造全国新的技术交流对接链科技正在打造全国新的技术交流对接"];
-    firstView.ownAuthorLable.text = @"作者：陈教授";
-    [self.view addSubview:firstView];
-}
 //添加返回按钮
 - (void)addReturnButton{
-    UIButton *returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    returnButton.frame = CGRectMake(5, STATUSBAR_HEIGHT, 80, 40);
-    returnButton.titleLabel.textColor = [UIColor whiteColor];
-    [returnButton setTitle:@"返回" forState:UIControlStateNormal];
-    [returnButton addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [returnButton setTitle:@"<-" forState:UIControlStateNormal];
+    returnButton.frame = CGRectMake(0, STATUSBAR_HEIGHT,20, 20);
+    //returnButton.backgroundColor = [UIColor greenColor];
+    [returnButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.view addSubview:returnButton];
+    [returnButton addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
 }
-
-
+   //添加转场view1
+- (void)createExchangeview1{
+    changeView1 = [[exchangeView1 alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [changeView1.ownImageView setImage:[UIImage imageNamed:@"infotest01.jpeg"]];
+    changeView1.ownDelegate = self;
+    [self.view addSubview:changeView1];
+}
 //添加headerView组头
 - (UIView*)addHeaderView{
+    
     //为组头的第二个view中的两个LABLE预测高度
     NSString *mainTitleString = @"韩称将推进“萨德”部署 中方：不利和平须停止";
     UILabel *mainLable = [[UILabel alloc]init];
@@ -80,7 +86,14 @@
     CGFloat detailTitleLableHeigh =  [calculaieLableHeight cellHeight:detailLable content:detailContentString Cellwidth:self.view.frame.size.width - 2 * 5];
     //NSLog(@"2018 :%lf,%lf",mainTitleLableHeigh,detailTitleLableHeigh);
     CGFloat headerView2Height =  mainTitleLableHeigh + detailTitleLableHeigh + 40;
-    ownHeaderViewForCell *view1 = [[ownHeaderViewForCell alloc]initWithFrame:CGRectMake(0,-(200 + headerView2Height + 150 + 50), self.view.frame.size.width, 200 + headerView2Height + 150 + 50) headerView2Height:headerView2Height mainTitleLabHeight:mainTitleLableHeigh detailLableHeight:detailTitleLableHeigh clickDelegate:self];
+    ownHeaderViewForCell *view1 = [[ownHeaderViewForCell alloc]initWithFrame:CGRectMake(0,-(300 + 200 + headerView2Height + 150 + 50), self.view.frame.size.width, 300 + 200 + headerView2Height + 150 + 50) headerView2Height:headerView2Height mainTitleLabHeight:mainTitleLableHeigh detailLableHeight:detailTitleLableHeigh clickDelegate:self];
+    //给view0传值
+    [view1.firstView0ImageView setImage:[UIImage imageNamed:@"infotest01.jpeg"]];
+    view1.firstView0TitleLabel.text = @"链科技与众多企业合作完成了相关项目转接,准备为下期企业合作整合做准备";
+    [view1.firstView0TitleLabel sizeToFit];
+    
+    view1.firstView0AuthorLabel.text = @"作者：罗主席";
+    
     //给headerView1传值
     [view1.userImageView setImage:[UIImage imageNamed:@"infoSecondPageUserImage"]];
     view1.userNameLable.text = @"罗主席";
@@ -98,7 +111,7 @@
 }
 //创建表视图
 - (void)initOwnTableView{
-     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, firstView.frame.size.height, self.view.frame.size.width, SCREEN_HEIGHT - firstView.frame.origin.y - firstView.frame.size.height - 60) style:UITableViewStyleGrouped];
+     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, returnButton.frame.size.height + STATUSBAR_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - returnButton.frame.size.height) style:UITableViewStyleGrouped];
     [self.view addSubview:ownTableView];
     ownTableView.delegate = self;
     ownTableView.dataSource = self;
@@ -163,13 +176,24 @@
     [ownCommentView.transParentButt addTarget:self action:@selector(commentHandler:) forControlEvents:UIControlEventTouchUpInside];
     [ownCommentView.givePraiseButton addTarget:self action:@selector(rewardHandler:) forControlEvents:UIControlEventTouchUpInside];
    [window addSubview:ownCommentView];
+    //默认隐藏窗口上的评论view
+    ownCommentView.hidden = YES;
+    ownCommentView.userInteractionEnabled = NO;
     
+}
+//转场动画代理
+-(void)exchangeViewHandler:(UIView *)firstView{
+    [UIView transitionFromView:changeView1 toView:ownTableView duration:1.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished){
+        ownCommentView.hidden = NO;
+        ownCommentView.userInteractionEnabled = YES;
+    }];
 }
 
 //点击返回按钮
 - (void)returnButtonHandler:(UIButton*)_b{
     [ownCommentView removeFromSuperview];
     [self dismissViewControllerAnimated:self completion:nil];
+    
 }
 //点击关注按钮
 - (void)attentionButtonClickHandler:(UIButton*)_b{

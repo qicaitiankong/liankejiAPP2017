@@ -24,6 +24,10 @@
 
 @property (strong,nonatomic)UILabel *ownLable;
 
+@property (strong,nonatomic)UIButton *imageButton;
+
+@property (strong,nonatomic)UIButton *titleButton;
+
 @property (assign,nonatomic)id <announceButtonClickDelegate>
     announceDelegate;
 //frame ,代理,标签，图片占得比例

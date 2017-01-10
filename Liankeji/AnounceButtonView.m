@@ -9,9 +9,7 @@
 #import "AnounceButtonView.h"
 @interface AnounceButtonView()
 
-@property (strong,nonatomic)UIButton *imageButton;
 
-@property (strong,nonatomic)UIButton *titleButton;
 
 
 @end
@@ -63,7 +61,7 @@
     return self;
 }
 - (void)buttonHandler:(UIButton*)_b{
-    NSLog(@"你在点击");
+    NSLog(@"你在点击发布按钮");
     if(self.announceDelegate){
         [self.announceDelegate announceButtonClick:_b.tag];
     }

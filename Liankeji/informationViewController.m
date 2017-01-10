@@ -163,6 +163,8 @@
     informationDetailViewController *detailViewController = [[informationDetailViewController alloc]init];
     
     [self presentViewController:detailViewController animated:YES completion:nil];
+    
+    //[self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

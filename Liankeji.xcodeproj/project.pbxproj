@@ -65,6 +65,9 @@
 		0435BF991E1B7F5B00DE859D /* infoSecondPageQZone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0435BF741E1B7F5B00DE859D /* infoSecondPageQZone@2x.png */; };
 		0435BF9A1E1B7F5B00DE859D /* infoSecondPageQZone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0435BF751E1B7F5B00DE859D /* infoSecondPageQZone@3x.png */; };
 		0435BF9D1E1B8ED300DE859D /* informationSecondPgeTavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435BF9C1E1B8ED300DE859D /* informationSecondPgeTavCell.m */; };
+		043FB0071E2479670025EE61 /* ownAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FB0061E2479670025EE61 /* ownAnimation.m */; };
+		043FB00A1E24A96A0025EE61 /* infotest01.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 043FB0091E24A96A0025EE61 /* infotest01.jpeg */; };
+		043FB00D1E24AF400025EE61 /* exchangeView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FB00C1E24AF400025EE61 /* exchangeView1.m */; };
 		049261FD1E1F277F00AFC111 /* commentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FC1E1F277F00AFC111 /* commentView.m */; };
 		049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */; };
 		049262031E1F939A00AFC111 /* cellFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049262021E1F939A00AFC111 /* cellFootView.m */; };
@@ -290,6 +293,11 @@
 		0435BF751E1B7F5B00DE859D /* infoSecondPageQZone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoSecondPageQZone@3x.png"; sourceTree = "<group>"; };
 		0435BF9B1E1B8ED300DE859D /* informationSecondPgeTavCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = informationSecondPgeTavCell.h; sourceTree = "<group>"; };
 		0435BF9C1E1B8ED300DE859D /* informationSecondPgeTavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = informationSecondPgeTavCell.m; sourceTree = "<group>"; };
+		043FB0051E2479670025EE61 /* ownAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ownAnimation.h; sourceTree = "<group>"; };
+		043FB0061E2479670025EE61 /* ownAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ownAnimation.m; sourceTree = "<group>"; };
+		043FB0091E24A96A0025EE61 /* infotest01.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = infotest01.jpeg; sourceTree = "<group>"; };
+		043FB00B1E24AF400025EE61 /* exchangeView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exchangeView1.h; sourceTree = "<group>"; };
+		043FB00C1E24AF400025EE61 /* exchangeView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exchangeView1.m; sourceTree = "<group>"; };
 		049261FB1E1F277F00AFC111 /* commentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentView.h; sourceTree = "<group>"; };
 		049261FC1E1F277F00AFC111 /* commentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentView.m; sourceTree = "<group>"; };
 		049261FE1E1F3B9100AFC111 /* userWriteCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userWriteCommentView.h; sourceTree = "<group>"; };
@@ -522,6 +530,7 @@
 		0435BF321E1B35DD00DE859D /* 资讯页 */ = {
 			isa = PBXGroup;
 			children = (
+				043FB0081E24A91A0025EE61 /* testPiccture */,
 				0435BF501E1B7F2800DE859D /* 资讯首页 */,
 				0435BF4F1E1B7C9700DE859D /* 二级页面 */,
 			);
@@ -570,6 +579,8 @@
 				04A2E9D61E23238500E7F9DF /* userCommentParentView.m */,
 				04A2E9D81E23290C00E7F9DF /* HotCommentView.h */,
 				04A2E9D91E23290C00E7F9DF /* HotCommentView.m */,
+				043FB00B1E24AF400025EE61 /* exchangeView1.h */,
+				043FB00C1E24AF400025EE61 /* exchangeView1.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -641,6 +652,14 @@
 				0435BF3B1E1B360200DE859D /* informationComment@3x.png */,
 			);
 			name = "资讯首页";
+			sourceTree = "<group>";
+		};
+		043FB0081E24A91A0025EE61 /* testPiccture */ = {
+			isa = PBXGroup;
+			children = (
+				043FB0091E24A96A0025EE61 /* infotest01.jpeg */,
+			);
+			name = testPiccture;
 			sourceTree = "<group>";
 		};
 		04A2E9DE1E2333BB00E7F9DF /* M */ = {
@@ -1200,6 +1219,8 @@
 				9923B5921E05702A00420633 /* appCommonAttributes.h */,
 				04CDD9B41E1E44CB009330FD /* ownTextSpace.h */,
 				04CDD9B51E1E44CB009330FD /* ownTextSpace.m */,
+				043FB0051E2479670025EE61 /* ownAnimation.h */,
+				043FB0061E2479670025EE61 /* ownAnimation.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1437,6 +1458,7 @@
 				0435BF7A1E1B7F5B00DE859D /* infoSecondPageNotGiveClick@2x.png in Resources */,
 				99C1F9E01E1102FD004DE512 /* anounce1_cancel.@3x.png in Resources */,
 				0435BF801E1B7F5B00DE859D /* infoSecondPageUserImage@2x.png in Resources */,
+				043FB00A1E24A96A0025EE61 /* infotest01.jpeg in Resources */,
 				99E27A171E0E1063008BCE57 /* icon_fabu@2x.png in Resources */,
 				0435BF411E1B360200DE859D /* informationSkim@3x.png in Resources */,
 				0435BF971E1B7F5B00DE859D /* infoSecondPageQQ@3x.png in Resources */,
@@ -1544,6 +1566,7 @@
 				992180091E0788AD00070D46 /* newAnnouncementView.m in Sources */,
 				99E41F2F1DED0E0D00F32968 /* AppDelegate.m in Sources */,
 				04A2E9D71E23238500E7F9DF /* userCommentParentView.m in Sources */,
+				043FB00D1E24AF400025EE61 /* exchangeView1.m in Sources */,
 				99AA38E81E08C454000A57BC /* scinenceHeaderView.m in Sources */,
 				99C1F9B41E10B11A004DE512 /* ZHQScrollMenu.m in Sources */,
 				04A2E9DA1E23290C00E7F9DF /* HotCommentView.m in Sources */,
@@ -1557,6 +1580,7 @@
 				99AA38F01E092C8C000A57BC /* sideMenuButton.m in Sources */,
 				04A2E9E31E23357600E7F9DF /* centerButtonGroupViewController.m in Sources */,
 				99552E171E013FFF0091EAE9 /* leftDrawerViewController.m in Sources */,
+				043FB0071E2479670025EE61 /* ownAnimation.m in Sources */,
 				9953E2E11E0D22FF00F55604 /* informationViewController.m in Sources */,
 				99E41F851DED696100F32968 /* ShareNetWorkState.m in Sources */,
 				9953E2EF1E0D238700F55604 /* LZHTabBarController.m in Sources */,

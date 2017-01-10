@@ -29,15 +29,15 @@
         self.ownFirstTitleLable.numberOfLines = 0;
         
         //并不是单例，只是没有修改过来
-        GetCellHeight *lableHeight = [GetCellHeight ShareCellHeight];
-        CGFloat firLableHeight = [lableHeight cellHeight:self.ownFirstTitleLable content:titleStr Cellwidth:self.ownFirstTitleLable.frame.size.width];
+//        GetCellHeight *lableHeight = [GetCellHeight ShareCellHeight];
+//        CGFloat firLableHeight = [lableHeight cellHeight:self.ownFirstTitleLable content:titleStr Cellwidth:self.ownFirstTitleLable.frame.size.width];
         //重新根据内容调整高度
-        self.ownFirstTitleLable.frame = CGRectMake(self.ownFirstTitleLable.frame.origin.x, self.ownFirstTitleLable.frame.origin.y, self.ownFirstTitleLable.frame.size.width, firLableHeight);
-        self.ownFirstTitleLable.text = titleStr;
-       // self.ownFirstTitleLable.backgroundColor = [UIColor redColor];
+        self.ownFirstTitleLable.frame = CGRectMake(self.ownFirstTitleLable.frame.origin.x, self.ownFirstTitleLable.frame.origin.y, self.ownFirstTitleLable.frame.size.width, 20);
+        //self.ownFirstTitleLable.text = titleStr;
+       // self.ownFirstTitleLable.backgroundColor = UIColor redColor];
         [self addSubview:self.ownFirstTitleLable];
         
-        self.ownAuthorLable = [[UILabel alloc]initWithFrame:CGRectMake(self.ownFirstTitleLable.frame.origin.x, self.ownFirstTitleLable.frame.origin.y + self.ownFirstTitleLable.frame.size.height + 15, self.ownFirstTitleLable.frame.size.width, 20)];
+        self.ownAuthorLable = [[UILabel alloc]initWithFrame:CGRectMake(self.ownFirstTitleLable.frame.origin.x,self.frame.size.height - 25, self.ownFirstTitleLable.frame.size.width, 20)];
         self.ownAuthorLable.textColor = [UIColor lightGrayColor];
         self.ownAuthorLable.font = [UIFont systemFontOfSize:13];
         //self.ownAuthorLable.backgroundColor = [UIColor greenColor];

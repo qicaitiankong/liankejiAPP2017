@@ -9,7 +9,7 @@
 #import "ownHeaderViewForCell.h"
 #import "cellHeaderView1.h"
 #import "HotCommentView.h"
-
+#import "firstOwnCellView.h"
 
 @implementation ownHeaderViewForCell
 
@@ -18,8 +18,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        
+      firstOwnCellView *firstView = [[firstOwnCellView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300) titleString:@""];
+        self.firstView0ImageView = firstView.ownImageView;
+        self.firstView0TitleLabel = firstView.ownFirstTitleLable;
+        self.firstView0AuthorLabel = firstView.ownAuthorLable;
+        [self addSubview:firstView];
+        
         //第一个view(头像区域)
-        cellHeaderView1 *view1 = [[cellHeaderView1 alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 200)];
+        cellHeaderView1 *view1 = [[cellHeaderView1 alloc]initWithFrame:CGRectMake(0, firstView.frame.origin.y + firstView.frame.size.height, self.frame.size.width, 200)];
         [self addSubview:view1];
         self.userImageView = view1.userImageView;
         self.userNameLable = view1.userNameLable;

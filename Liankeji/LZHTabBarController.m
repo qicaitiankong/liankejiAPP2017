@@ -96,7 +96,7 @@
     [self addOneChildVC:vc3 title:@"发布" imageName:@"icon_fabu@3x" selectedImageName:@"icon_fabu@3x"];
     
     CommunicateFirstViewController *vc4 = [[CommunicateFirstViewController alloc]init];
-    [self addOneChildVC:vc4 title:@"社区" imageName:@"icon_shequ_weidianji@3x" selectedImageName:@"icon_shequ_dianji@3x"];
+    [self addOneChildVC:vc4 title:@"发现" imageName:@"icon_shequ_weidianji@3x" selectedImageName:@"icon_shequ_dianji@3x"];
     
     PersonalTableViewController *vc5 = [[PersonalTableViewController alloc]init];
     [self addOneChildVC:vc5 title:@"我的" imageName:@"icon_wode_weidianji@3x" selectedImageName:@"icon_wode_dianji@3x"];

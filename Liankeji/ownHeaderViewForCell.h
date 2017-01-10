@@ -11,6 +11,13 @@
 #import "cellHeaderView3.h"
 
 @interface ownHeaderViewForCell : UIView
+//第一个视图中的属性
+@property (strong,nonatomic)UIImageView *firstView0ImageView;
+
+@property (strong,nonatomic)UILabel *firstView0TitleLabel;
+
+@property (strong,nonatomic)UILabel *firstView0AuthorLabel;
+//
 //头像
 @property (strong,nonatomic) UIImageView *userImageView;
 //关注按钮
