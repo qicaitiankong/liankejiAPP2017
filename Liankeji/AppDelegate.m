@@ -4,22 +4,12 @@
 //
 //  Created by 李自豪 on 16/11/29.
 //  Copyright © 2016年 haichuanhuiwulianxinxi. All rights reserved.
-//
+//由于导入环信EaseUI时里面就应经有MBProgressHUD (0.9.2)  MJRefresh (3.1.12) MWPhotoBrowser (2.1.2) SDWebImage (3.8.2)所以在pod中不要再显性导入
 
 #import "AppDelegate.h"
 #import "LZHTabBarController.h"
-
-//#import "FirstPageViewController.h"
-//#import "NavViewControllerForFirstPage.h"
-//
-//#import "PersonalTableViewController.h"
-//#import "NavViewControllerForPersonal.h"
-////首页的左右侧拉，实际项目按需要再变化
-//#import "leftDrawerViewController.h"
-//#import "rightDrawerTableController.h"
-//
-//#import "CommunicateFirstViewController.h"
-//#import "CommunicateNavigationViewController.h"
+#import <Hyphenate_CN/EMSDKFull.h>
+#import <EaseUI.h>
 
 @interface AppDelegate ()
 
@@ -30,35 +20,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"%lf,%lf",[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
-    
-//    //首页中的左侧抽屉
-//    leftDrawerViewController *leftVC = [[leftDrawerViewController alloc]init];
-//    rightDrawerTableController *rightTableVC = [[rightDrawerTableController alloc]initWithStyle:UITableViewStylePlain];
-//    //首页
-//    FirstPageViewController *firstpageVC = [[FirstPageViewController alloc]init];
-//    NavViewControllerForFirstPage *firstPageNav = [[NavViewControllerForFirstPage alloc]initWithRootViewController:firstpageVC];
-//    //社区交流
-//    CommunicateFirstViewController *communicateVC = [[CommunicateFirstViewController alloc]init];
-//    CommunicateNavigationViewController *communicateNav = [[CommunicateNavigationViewController alloc]initWithRootViewController:communicateVC];
-//    //个人中心我的
-//    PersonalTableViewController *personalVC = [[PersonalTableViewController alloc]init];
-//    NavViewControllerForPersonal *personalNav = [[NavViewControllerForPersonal alloc]initWithRootViewController:personalVC];
-//    
-//     //创建抽屉对象，即实现类似于QQ界面,若后期给社区和我的添加侧拉，并在TABBAR上显示图标，需要在MMDrawerController.m中设置标题及图片
-//    self.drawer = [[MMDrawerController alloc]initWithCenterViewController:firstPageNav leftDrawerViewController:leftVC rightDrawerViewController:rightTableVC];
-//    //NSLog(@"抽屉地址：%p %p",self.drawer,drawer2);
-//    self.drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-//    self.drawer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
-//    self.drawer.maximumLeftDrawerWidth = 200;
-//    
-//    UITabBarController *tabBarControl = [[UITabBarController alloc]init];
-//    [tabBarControl setViewControllers:@[self.drawer,communicateNav,personalNav]];
-    //self.window.rootViewController = tabBarControl;
+    //初始化环信
+    EMOptions *option = [EMOptions optionsWithAppkey:@"1190161211178584#communicatetestlzh"];
+    option.apnsCertName = @"";
+    EMError *err = [[EMClient sharedClient]initializeSDKWithOptions:option];
+    if(!err){
+        NSLog(@"初始化成功");
+        [[EaseSDKHelper shareHelper]hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:@"1190161211178584#communicatetestlzh" apnsCertName:@"" otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
+    }
     self.window = [[UIWindow alloc]init];
-    
     LZHTabBarController *tab = [[LZHTabBarController alloc]init];
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
+    
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -69,11 +44,15 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    [[EMClient sharedClient]applicationDidEnterBackground:application];
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[EMClient sharedClient]applicationWillEnterForeground:application];
+    
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 

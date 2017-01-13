@@ -7,6 +7,8 @@
 //
 
 #import "CommunicateFirstViewController.h"
+#import <Hyphenate_CN/EMSDKFull.h>
+#import <EaseUI.h>
 
 @interface CommunicateFirstViewController ()
 
@@ -16,8 +18,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.view.alpha = 0.25;
+    //环信注册登录测试
+    [[EMClient sharedClient]registerWithUsername:@"lzhlsh2017" password:@"123" completion:^(NSString *aUsername, EMError *aError) {
+        if(!aError){
+            NSLog(@"注册成功");
+        }else{
+            NSLog(@"注册失败");
+        }
+    }];
+    
+    [[EMClient sharedClient]loginWithUsername:@"lzhlsh2017" password:@"123" completion:^(NSString *aUsername, EMError *aError) {
+        if(!aError){
+            NSLog(@"登录成功");
+            EaseMessageViewController *messageVC = [[EaseMessageViewController  alloc]initWithConversationChatter:@"lsh" conversationType:EMConversationTypeChat];
+            [self presentViewController:messageVC animated:NO completion:nil];
+        }else{
+            NSLog(@"登录失败");
+        }
+    }];
+
+    
     
     //[self.navigationController.navigationItem setTitle:@"链科技"];
     // Do any additional setup after loading the view.

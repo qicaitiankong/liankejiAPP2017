@@ -121,6 +121,7 @@
     
     NavViewControllerForFirstPage *nav = [[NavViewControllerForFirstPage alloc]initWithRootViewController:childVc];
     nav.delegate = self;
+    
     [self addChildViewController:nav];
 }
 //tabBar按钮点击

@@ -12,13 +12,9 @@
 
 - (void)announceButtonClick:(NSInteger)index;
 
-
 @end
 
-
-
 @interface AnounceButtonView : UIView
-
 
 @property (strong,nonatomic)UIImageView *ownImageView;
 

@@ -12,7 +12,7 @@
 #import "ShareUrlString.h"
 #import "NewsTestModel.h"
 
-#import <UIImageView+WebCache.h>
+//#import <UIImageView+WebCache.h>
 #import "GetCellHeight.h"
 
 @interface PersonalTableViewController ()
@@ -32,40 +32,40 @@
     NSString *url2 = @"https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=671277887,1474810111&fm=80&w=179&h=119&img.JPEG";
     self.urlArr = [[NSMutableArray alloc]initWithObjects:url1,url2, nil];
     self.newsArr = [[NSMutableArray alloc]init];
-    [self SDWebImageTest];
+    //[self SDWebImageTest];
      //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 //SDWebImage异步下载图片
 - (void)SDWebImageTest{
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    for(NSInteger i = 0 ;i < self.urlArr.count; i ++){
-        NSURL *url = [NSURL URLWithString:self.urlArr[i]];
-    
-         [manager downloadImageWithURL:url options:SDWebImageDelayPlaceholder progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-            
-        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if(nil == error && image){
-                [self.newsArr addObject:image];
-                NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
-                PersonalTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-                cell.newsImageView.image = image;
-            }
-            if(self.newsArr.count == 2){
-                [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-            }
-        }];
-    }
+//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//    for(NSInteger i = 0 ;i < self.urlArr.count; i ++){
+//        NSURL *url = [NSURL URLWithString:self.urlArr[i]];
+//    
+//         [manager downloadImageWithURL:url options:SDWebImageDelayPlaceholder progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//            
+//        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//            if(nil == error && image){
+//                [self.newsArr addObject:image];
+//                NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
+//                PersonalTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+//                cell.newsImageView.image = image;
+//            }
+//            if(self.newsArr.count == 2){
+//                [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+//            }
+//        }];
+//    }
 }
 
 //处理缓存过多的内存警告
 - (void)dealWithMemoryWarning{
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    //取消正在下载的工作
-    [manager cancelAll];
-    //清除内存缓存
-    [manager.imageCache clearMemory];
-    //清除硬盘缓存
-    [manager.imageCache cleanDisk];
+//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//    //取消正在下载的工作
+//    [manager cancelAll];
+//    //清除内存缓存
+//    [manager.imageCache clearMemory];
+//    //清除硬盘缓存
+//    [manager.imageCache cleanDisk];
     
 }
 - (void)jsonData:(id)_object{

@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DACircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>EaseUI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -20,6 +35,16 @@
 			<false/>
 		</dict>
 		<key>MMDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MWPhotoBrowser-MWPhotoBrowser.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MWPhotoBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,12 +67,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>153162C2D7D33CA3E1C29FF6C9469527</key>
+		<key>1117D734938846089C728D115A4F8EC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,6 +82,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>904276EB24764BF10A2662EA823F752D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
 		<dict>
 			<key>primary</key>
@@ -72,7 +97,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B00705E1E0AFCD27A47F461FB317D64E</key>
+		<key>A48299CC70930D7AA1604AE707B2E566</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8CD795C616C21FCB551E9E5E21B3D05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3305468340509EC6426F5E10D6B5743</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C791F0A928C1A8FE97074DFC9ACF4E75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7AEF65735F98DB89FA815140599F2BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E7C642FEB01C12F9F1D62F0BEE9E6D90</key>
 		<dict>
 			<key>primary</key>
 			<true/>
