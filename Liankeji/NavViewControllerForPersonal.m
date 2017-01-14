@@ -18,6 +18,7 @@
     [super viewDidLoad];
     self.tabBarItem.image = [UIImage imageNamed:@"4"];
     self.tabBarItem.title = @"我";
+    //修改了设置中心
     // Do any additional setup after loading the view.
 }
 
