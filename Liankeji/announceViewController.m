@@ -161,7 +161,6 @@
              targetTranslationY = animationImageView.frame.origin.y + animationImageView.frame.size.height  + buttonView.frame.size.height * 1.5 + 5 ;
         }
         [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:0.45 initialSpringVelocity:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:^{
-           // [ownAnimation ownAnimation:buttonView viewIndex:i animationTime:2 animationSecondControPoint:CGPointMake(animationImageView.center.x, animationImageView.center.y) animationThirdControPoint:CGPointMake(buttonView.center.x,targetTranslationY)];
             [ownAnimation setOwnAnimation:buttonView viewIndex:i animationTime:2 animationSecondControPoint:CGPointMake(animationImageView.center.x, animationImageView.center.y)  animationThirdControPoint:CGPointMake(buttonView.center.x,targetTranslationY) delelgate:self];
         } completion:^(BOOL finished) {
             
