@@ -10,11 +10,14 @@
 #import "appCommonAttributes.h"
 #import "AnounceButtonView.h"
 #import "ownAnimation.h"
-
+#import "anounceSecondPageView.h"
 
 //6个按钮组的tag基数
 #define BUTTON_TAG 100
-
+//按钮最初开始的位置
+#define BUTTON_BEGIN_Y 300
+//按钮垂直间距
+#define BUTTON_VERTICAL_SPACE 10
 @interface announceViewController ()<announceButtonClickDelegate,CAAnimationDelegate>{
     //主窗口
     UIWindow *rootWindow;
@@ -26,9 +29,8 @@
     UIView *buttonAnimationView;
     //取消按钮
     UIButton *cancelButton;
-    
+    //按钮标题数组
     NSMutableArray *buttonTitleArray;
-    
 }
 
 @end
@@ -38,9 +40,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     buttonTitleArray = [[NSMutableArray alloc]initWithObjects:@"发布技术",@"发布项目",@"发布需求",@"发布资金",@"发布设备",@"发布文章", nil];
-    
     NSLog(@"发布首页");
-    
+   
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -48,9 +49,8 @@
     [self addAnimationImageView];
     [self addGroupButton];
     [self addCancelButton];
-    [self animationLogoViewPopIn];
-    NSLog(@"将要出现");
 }
+
 //主窗口添加基view
 - (void)addBaseBackgroundView{
    rootWindow = [UIApplication sharedApplication].windows[0];
@@ -70,35 +70,34 @@
 }
 //添加按钮组
 - (void)addGroupButton{
-    
     CGFloat buttonWidth = 80;
     CGFloat buttonHeight = 100;
-    
     //距离屏幕左边距离
     CGFloat leftSpace = 50;
     //按钮之间水平距离
-    CGFloat buttonHorizontalSpace = (SCREEN_WIDTH - leftSpace * 2 - buttonWidth * 3) * 0.5;
+    CGFloat buttonHorizontalSpace = (baseView.frame.size.width - leftSpace * 2 - buttonWidth * 3) * 0.5;
     //垂直方向开始位置
-    CGFloat buttonOrignY = -400;
-    
-    NSLog(@"垂直开始位置:%lf",buttonOrignY);
+    CGFloat buttonOrignY = BUTTON_BEGIN_Y;
+    //NSLog(@"垂直开始位置:%lf",buttonOrignY);
     //按钮之间的垂直距离
-    CGFloat buttonVerticalSpace = 20;
+    CGFloat buttonVerticalSpace = BUTTON_VERTICAL_SPACE;
     for(NSInteger index = 0; index < 6; index ++){
-        
         if(index != 0 && index % 3 == 0 ){
-            buttonOrignY =buttonOrignY + buttonHeight + buttonVerticalSpace;
+            buttonOrignY = buttonOrignY + buttonHeight + buttonVerticalSpace ;
         }
         //NSLog(@"垂直开始位置2:%lf",buttonOrignY);
         CGRect ButtonViewFrame = CGRectMake(leftSpace + (buttonWidth + buttonHorizontalSpace) * (index % 3), buttonOrignY, buttonWidth, buttonHeight);
         AnounceButtonView *button = [[AnounceButtonView alloc]initWithFrame:ButtonViewFrame delegate:self buttonTag:index imageViewPropertion:0.8];
-       // button.ownLable.textAlignment = NSTextAlignmentCenter;
         button.tag = BUTTON_TAG + index;
         NSString *imageNameStr = [NSString stringWithFormat:@"anounce1_%li",index];
         [button.ownImageView setImage:[UIImage imageNamed:imageNameStr]];
         button.ownLable.text = buttonTitleArray[index];
+        button.userInteractionEnabled = NO;
+        button.hidden = YES;
+        //button.backgroundColor = [UIColor grayColor];
         [baseView addSubview:button];
     }
+    [self animationLogoViewPopIn];
 }
 //添加取消按钮
 - (void)addCancelButton{
@@ -111,32 +110,28 @@
     [baseView addSubview:cancelButton];
     //起初影藏
     cancelButton.userInteractionEnabled = NO;
-    cancelButton.alpha = 0;
+    cancelButton.hidden = YES;
 }
-
-
-
 //logo弹入动画
 - (void)animationLogoViewPopIn{
-    //__weak typeof(self) weakSelf = self;
-    
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.55 initialSpringVelocity:1 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
-        animationImageView.transform  = CGAffineTransformMakeTranslation(0, -(SCREEN_HEIGHT - 0.12 * SCREEN_HEIGHT));
+        animationImageView.transform  = CGAffineTransformMakeTranslation(0, -(baseView.frame.size.height - 0.12 * baseView.frame.size.height));
     } completion:^(BOOL finished) {
         //按钮组随后进入
-        [self buttonGroupPopIn];
+        [weakSelf buttonGroupPopIn];
     }];
     
 }
 //logo弹出动画
 
 - (void)animationLogoViewPopOut{
-    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
         animationImageView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         if(finished){
             //还没完善出场逻辑，
-            [UIView animateWithDuration:0.8 animations:^{
+            [UIView animateWithDuration:0.4 animations:^{
                 baseView.alpha = 0;
                 baseView.userInteractionEnabled = NO;
             } completion:^(BOOL finished) {
@@ -151,69 +146,62 @@
 
 //按钮组弹进动画
 - (void)buttonGroupPopIn{
-    CGFloat targetTranslationY =  0;
+    //NSLog(@"按钮组弹进");
     for(NSInteger i = 0 ; i < 6; i ++){
         AnounceButtonView *buttonView = [baseView viewWithTag:BUTTON_TAG + i];
-        //NSLog(@"tag=%li",buttonView.tag);
-        if(i <= 2){
-            targetTranslationY = animationImageView.frame.origin.y + animationImageView.frame.size.height  + buttonView.frame.size.height / 2;
-        }else{
-             targetTranslationY = animationImageView.frame.origin.y + animationImageView.frame.size.height  + buttonView.frame.size.height * 1.5 + 5 ;
-        }
-        [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:0.45 initialSpringVelocity:1 options:UIViewAnimationOptionTransitionFlipFromTop animations:^{
-            [ownAnimation setOwnAnimation:buttonView viewIndex:i animationTime:2 animationSecondControPoint:CGPointMake(animationImageView.center.x, animationImageView.center.y)  animationThirdControPoint:CGPointMake(buttonView.center.x,targetTranslationY) delelgate:self];
+        [UIView animateWithDuration:1.6 delay:0 usingSpringWithDamping:0.25 initialSpringVelocity:1 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
+            //先隐藏弹出窗口外，因为是帧动画，移动的是层，
+            [ownAnimation setOwnAnimation:buttonView viewIndex:i animationTime:0.01 startPoint:CGPointMake(buttonView.center.x, buttonView.center.y) animationSecondControPoint:CGPointMake(animationImageView.center.x, animationImageView.center.y)  animationThirdControPoint:CGPointMake(buttonView.center.x,-(buttonView.frame.size.height + 20)) delelgate:self];
+            buttonView.hidden = NO;
+            //再显示弹进
+            [ownAnimation setOwnAnimation:buttonView viewIndex:i animationTime:1.5 startPoint:CGPointMake(buttonView.center.x, -(buttonView.frame.size.height + 20)) animationSecondControPoint:CGPointMake(animationImageView.center.x, animationImageView.center.y)  animationThirdControPoint:CGPointMake(buttonView.center.x,buttonView.center.y) delelgate:self];
         } completion:^(BOOL finished) {
-            
-            //取消按钮跟着显示
-            [UIView animateWithDuration:0.5 animations:^{
-                cancelButton.alpha = 1;
-                cancelButton.userInteractionEnabled = YES;
-            }];
+            buttonView.userInteractionEnabled = YES;
         }];
     }
+    //取消按钮跟着显示
+    [UIView animateWithDuration:0.5 animations:^{
+        cancelButton.hidden = NO;
+        cancelButton.userInteractionEnabled = YES;
+    }];
 }
-
-
 //按钮组弹出动画
 - (void)buttonGroupPopOut{
-     CGFloat targetTranslationY = SCREEN_HEIGHT;
     for(NSInteger i = 0 ; i < 6; i ++){
         AnounceButtonView *buttonView = [baseView viewWithTag:BUTTON_TAG + i];
-        NSLog(@"tag=%li",buttonView.tag);
-        
-        [UIView animateWithDuration:0.6 animations:^{
-            //取消按钮退出动画
-            cancelButton.transform = CGAffineTransformMakeTranslation(0, cancelButton.bounds.size.height);
-            //按钮组退出
-            buttonView.transform = CGAffineTransformTranslate(buttonView.transform, 0, targetTranslationY);
-            
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.15 initialSpringVelocity:1 options:UIViewAnimationOptionTransitionCurlDown animations:^{
+            buttonView.userInteractionEnabled = NO;
+            [ownAnimation setOwnAnimation:buttonView viewIndex:i animationTime:0.5 startPoint:CGPointMake(buttonView.center.x, buttonView.center.y) animationSecondControPoint:CGPointMake(buttonView.center.x, buttonView.center.y + 100)  animationThirdControPoint:CGPointMake(buttonView.center.x,baseView.frame.size.height + buttonView.frame.size.height) delelgate:self];
         } completion:^(BOOL finished) {
-            //logo随后弹出
-            [self animationLogoViewPopOut];
         }];
     }
+    
 }
-
+//动画代理方法
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    NSLog(@"end");
-    
-    
+    static NSInteger i = 0;
+    i ++;
+    if(flag){
+        if(0 == i % 18){
+            //logo弹出
+            [self animationLogoViewPopOut];
+        }
+    }
 }
-
 //按钮组点击代理方法
 -(void)announceButtonClick:(NSInteger)index{
     NSLog(@"你在点击按钮:tag = %li",index);
+    UIWindow *window = APP_MAIN_WINDOW;
+    anounceSecondPageView *anounceView = [[anounceSecondPageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    anounceView.ownTitleLabel.text = @"发布技术";
+    [window addSubview:anounceView];
 }
-
 //取消按钮
 - (void)cancelHandler:(UIButton*)_b{
+    cancelButton.hidden = YES;
+    cancelButton.userInteractionEnabled = NO;
     [self buttonGroupPopOut];
-    
 }
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

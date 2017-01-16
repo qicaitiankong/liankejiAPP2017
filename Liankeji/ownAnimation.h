@@ -10,6 +10,8 @@
 #import "AnounceButtonView.h"
 
 @interface ownAnimation : UIView
-//+(void)ownAnimation:(UIView*)animationView viewIndex:(NSInteger)index animationTime:(CGFloat)_animationtime animationSecondControPoint:(CGPoint)secondPoint animationThirdControPoint:(CGPoint)thirdPoint;
-+(instancetype)setOwnAnimation:(AnounceButtonView*)animationView viewIndex:(NSInteger)index animationTime:(CGFloat)_animationtime animationSecondControPoint:(CGPoint)secondPoint animationThirdControPoint:(CGPoint)thirdPoint delelgate:(id<CAAnimationDelegate>) _delegate;
+
++(instancetype)setOwnAnimation:(AnounceButtonView*)animationView viewIndex:(NSInteger)index animationTime:(CGFloat)_animationtime startPoint:(CGPoint)startPoint animationSecondControPoint:(CGPoint)secondPoint animationThirdControPoint:(CGPoint)thirdPoint delelgate:(id<CAAnimationDelegate>) _delegate;
+
+
 @end
