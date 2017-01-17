@@ -67,6 +67,8 @@
 		0435BF9D1E1B8ED300DE859D /* informationSecondPgeTavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435BF9C1E1B8ED300DE859D /* informationSecondPgeTavCell.m */; };
 		043FB00A1E24A96A0025EE61 /* infotest01.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 043FB0091E24A96A0025EE61 /* infotest01.jpeg */; };
 		043FB00D1E24AF400025EE61 /* exchangeView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FB00C1E24AF400025EE61 /* exchangeView1.m */; };
+		04764C691E2DA85A00704C96 /* lzhAlertControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04764C681E2DA85A00704C96 /* lzhAlertControllerViewController.m */; };
+		04764C6C1E2DFD3000704C96 /* annoounceSecondPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04764C6B1E2DFD3000704C96 /* annoounceSecondPageViewController.m */; };
 		047A39C21E2C4E1C00651C7E /* ownAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A39C11E2C4E1C00651C7E /* ownAnimation.m */; };
 		047A39C51E2C4E3500651C7E /* announceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A39C41E2C4E3500651C7E /* announceViewController.m */; };
 		047A39CF1E2C602100651C7E /* lzhReturnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A39CE1E2C602100651C7E /* lzhReturnView.m */; };
@@ -318,6 +320,10 @@
 		043FB0091E24A96A0025EE61 /* infotest01.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = infotest01.jpeg; sourceTree = "<group>"; };
 		043FB00B1E24AF400025EE61 /* exchangeView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exchangeView1.h; sourceTree = "<group>"; };
 		043FB00C1E24AF400025EE61 /* exchangeView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exchangeView1.m; sourceTree = "<group>"; };
+		04764C671E2DA85A00704C96 /* lzhAlertControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhAlertControllerViewController.h; sourceTree = "<group>"; };
+		04764C681E2DA85A00704C96 /* lzhAlertControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhAlertControllerViewController.m; sourceTree = "<group>"; };
+		04764C6A1E2DFD3000704C96 /* annoounceSecondPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = annoounceSecondPageViewController.h; sourceTree = "<group>"; };
+		04764C6B1E2DFD3000704C96 /* annoounceSecondPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = annoounceSecondPageViewController.m; sourceTree = "<group>"; };
 		047A39C01E2C4E1C00651C7E /* ownAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ownAnimation.h; sourceTree = "<group>"; };
 		047A39C11E2C4E1C00651C7E /* ownAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ownAnimation.m; sourceTree = "<group>"; };
 		047A39C31E2C4E3500651C7E /* announceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = announceViewController.h; sourceTree = "<group>"; };
@@ -723,6 +729,8 @@
 		047A39C71E2C5D3F00651C7E /* V */ = {
 			isa = PBXGroup;
 			children = (
+				99C1F9E41E1104F7004DE512 /* AnounceButtonView.h */,
+				99C1F9E51E1104F7004DE512 /* AnounceButtonView.m */,
 				047A39D01E2C678400651C7E /* anounceSecondPageView.h */,
 				047A39D11E2C678400651C7E /* anounceSecondPageView.m */,
 				047A3A041E2C8EAC00651C7E /* announSecondPageSelectView.h */,
@@ -738,6 +746,12 @@
 		047A39C81E2C5D4D00651C7E /* C */ = {
 			isa = PBXGroup;
 			children = (
+				047A39C31E2C4E3500651C7E /* announceViewController.h */,
+				047A39C41E2C4E3500651C7E /* announceViewController.m */,
+				04764C671E2DA85A00704C96 /* lzhAlertControllerViewController.h */,
+				04764C681E2DA85A00704C96 /* lzhAlertControllerViewController.m */,
+				04764C6A1E2DFD3000704C96 /* annoounceSecondPageViewController.h */,
+				04764C6B1E2DFD3000704C96 /* annoounceSecondPageViewController.m */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -900,10 +914,6 @@
 				047A39C81E2C5D4D00651C7E /* C */,
 				047A39C71E2C5D3F00651C7E /* V */,
 				047A39C61E2C5CF300651C7E /* M */,
-				047A39C31E2C4E3500651C7E /* announceViewController.h */,
-				047A39C41E2C4E3500651C7E /* announceViewController.m */,
-				99C1F9E41E1104F7004DE512 /* AnounceButtonView.h */,
-				99C1F9E51E1104F7004DE512 /* AnounceButtonView.m */,
 			);
 			name = announce;
 			sourceTree = "<group>";
@@ -1713,7 +1723,9 @@
 				0434BDEA1E1CC44B0096136E /* cellHeaderView2.m in Sources */,
 				992D730E1DF1557300FFD2DD /* GetCellHeight.m in Sources */,
 				049261FD1E1F277F00AFC111 /* commentView.m in Sources */,
+				04764C6C1E2DFD3000704C96 /* annoounceSecondPageViewController.m in Sources */,
 				04EE47511E2A247A00C24B67 /* test3.m in Sources */,
+				04764C691E2DA85A00704C96 /* lzhAlertControllerViewController.m in Sources */,
 				04A2EA5B1E23575900E7F9DF /* AddressPickerView.m in Sources */,
 				99AA38F01E092C8C000A57BC /* sideMenuButton.m in Sources */,
 				047A3A121E2CB3A800651C7E /* announSecondPageNextStepView.m in Sources */,

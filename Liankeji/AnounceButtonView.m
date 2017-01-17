@@ -8,10 +8,6 @@
 
 #import "AnounceButtonView.h"
 @interface AnounceButtonView()
-
-
-
-
 @end
 
 @implementation AnounceButtonView
@@ -61,13 +57,10 @@
     return self;
 }
 - (void)buttonHandler:(UIButton*)_b{
-    NSLog(@"你在点击发布按钮");
+    //NSLog(@"你在点击发布按钮");
     if(self.announceDelegate){
         [self.announceDelegate announceButtonClick:_b.tag];
     }
-    
-    
-    NSLog(@"你在点击中");
 }
 
 

@@ -13,6 +13,6 @@
 @property (strong,nonatomic)UIButton *ownSelectButt;
 
 @property (strong,nonatomic)UILabel *ownContentLabe;
-
+//是否选中
 @property (assign,nonatomic)BOOL isSelected;
 @end

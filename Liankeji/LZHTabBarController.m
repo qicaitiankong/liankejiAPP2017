@@ -7,7 +7,6 @@
 //
 
 #import "LZHTabBarController.h"
-#import "LZHTabBar.h"
 #import "NavViewControllerForFirstPage.h"
 
 @interface LZHTabBarController ()<UITabBarControllerDelegate,UINavigationControllerDelegate,LZHTabBarDelegate>
@@ -15,16 +14,23 @@
 
 @property (strong,nonatomic)NSMutableArray *items;
 
-@property (strong,nonatomic)LZHTabBar *myTabBar;
 
 @property (assign,nonatomic)NSInteger lastSelectIndex;
 
 @property (strong,nonatomic)id popDelegate;
 
 @end
-
+static LZHTabBarController * shareTabBar = nil;
 @implementation LZHTabBarController
 
+
++(LZHTabBarController*)shareLZHTabbarController{
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        shareTabBar = [[LZHTabBarController alloc]init];
+    });
+    return shareTabBar;
+}
 
 +(void)initialize{
     //设置普通文字
@@ -67,20 +73,13 @@
 
 }
 
-
 //添加自定义tabBar
 - (void)setOwnTabBar{
-    LZHTabBar *tabBar = [[LZHTabBar alloc]initWithFrame:self.tabBar.frame];
-    
-    tabBar.items = self.items;
-    tabBar.delegate = self;
+   self.myTabBar = [[LZHTabBar alloc]initWithFrame:self.tabBar.frame];
+    self.myTabBar.items = self.items;
+   self.myTabBar.delegate = self;
     //tabBar.frame = self.tabBar.frame;
-    [self.view addSubview:tabBar];
-   
-    
-   
-    self.myTabBar = tabBar;
-    
+    [self.view addSubview:self.myTabBar];
 }
 //添加所有的子控制器
 - (void)addSubChildVC{
@@ -108,35 +107,33 @@
     childVc.tabBarItem.title = title;
     UIImage *image = [UIImage imageNamed:imageName];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
     childVc.tabBarItem.image = image;
-    
     UIImage *selectImage = [UIImage imageNamed:selectedImageName];
-    
     selectImage = [selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
     childVc.tabBarItem.selectedImage = selectImage;
     //添加所有控制器对应的按钮的内容
     [self.items addObject:childVc.tabBarItem];
-    
-    NavViewControllerForFirstPage *nav = [[NavViewControllerForFirstPage alloc]initWithRootViewController:childVc];
-    nav.delegate = self;
-    
-    [self addChildViewController:nav];
+    //中间大按钮不加入导航栏
+    if([childVc isMemberOfClass:[announceViewController class]]){
+        [self addChildViewController:childVc];
+        
+    }else{
+        NavViewControllerForFirstPage *nav = [[NavViewControllerForFirstPage alloc]initWithRootViewController:childVc];
+        nav.delegate = self;
+        [self addChildViewController:nav];
+    }
 }
 //tabBar按钮点击
 - (void)tabBar:(LZHTabBar*)tabBar didClickBtn:(NSInteger)index{
+     //NSLog(@"点击的tabBar下部索引%li",index);
     [super setSelectedIndex:index];
 }
 
 //让tabBar选中对应的按钮
-
 -(void)setSelectedIndex:(NSUInteger)selectedIndex{
     // 通过mytabbar的通知处理页面切换
     self.myTabBar.selectIndex = selectedIndex;
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

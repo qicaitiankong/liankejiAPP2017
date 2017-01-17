@@ -29,7 +29,7 @@
         [[EaseSDKHelper shareHelper]hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:@"1190161211178584#communicatetestlzh" apnsCertName:@"" otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
     }
     self.window = [[UIWindow alloc]init];
-    LZHTabBarController *tab = [[LZHTabBarController alloc]init];
+    LZHTabBarController *tab = [LZHTabBarController shareLZHTabbarController];
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
     

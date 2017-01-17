@@ -10,7 +10,8 @@
 #import "appCommonAttributes.h"
 #import "AnounceButtonView.h"
 #import "ownAnimation.h"
-#import "anounceSecondPageView.h"
+#import "LZHTabBarController.h"
+#import "annoounceSecondPageViewController.h"
 
 //6个按钮组的tag基数
 #define BUTTON_TAG 100
@@ -19,6 +20,7 @@
 //按钮垂直间距
 #define BUTTON_VERTICAL_SPACE 10
 @interface announceViewController ()<announceButtonClickDelegate,CAAnimationDelegate>{
+    annoounceSecondPageViewController *secondVC;
     //主窗口
     UIWindow *rootWindow;
     //基视图
@@ -31,6 +33,8 @@
     UIButton *cancelButton;
     //按钮标题数组
     NSMutableArray *buttonTitleArray;
+    //上一个点击的tabbar按钮索引
+    NSInteger previousTabbarIndex;
 }
 
 @end
@@ -40,20 +44,28 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     buttonTitleArray = [[NSMutableArray alloc]initWithObjects:@"发布技术",@"发布项目",@"发布需求",@"发布资金",@"发布设备",@"发布文章", nil];
-    NSLog(@"发布首页");
-   
-    // Do any additional setup after loading the view.
-}
--(void)viewWillAppear:(BOOL)animated{
+    
     [self addBaseBackgroundView];
     [self addAnimationImageView];
     [self addGroupButton];
     [self addCancelButton];
+    secondVC = [[annoounceSecondPageViewController alloc]init];
+    [self presentViewController:secondVC animated:NO completion:nil];
+    secondVC.anounceView.baseView = baseView;
+    // Do any additional setup after loading the view.
 }
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    previousTabbarIndex = [LZHTabBarController shareLZHTabbarController].myTabBar.selectButton.tag - 12000;
+    NSLog(@"发布页面上一个按钮的索引%li",previousTabbarIndex);
+}
+
+
+//以下11个方法中控件代码baseView是添加窗口上
 //主窗口添加基view
 - (void)addBaseBackgroundView{
-   rootWindow = [UIApplication sharedApplication].windows[0];
+    rootWindow = [UIApplication sharedApplication].windows[0];
     baseView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rootWindow.bounds.size.width, rootWindow.bounds.size.height)];
     baseView.backgroundColor =[UIColor whiteColor];
     [rootWindow addSubview:baseView];
@@ -124,7 +136,6 @@
     
 }
 //logo弹出动画
-
 - (void)animationLogoViewPopOut{
     [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
         animationImageView.transform = CGAffineTransformIdentity;
@@ -136,10 +147,13 @@
                 baseView.userInteractionEnabled = NO;
             } completion:^(BOOL finished) {
                 if(baseView){
-                   //[baseView removeFromSuperview];
+                   [baseView removeFromSuperview];
                 }
+                //恢复上一个标签视图及切换标签栏按钮
+                [[LZHTabBarController shareLZHTabbarController]tabBar:nil didClickBtn:previousTabbarIndex];
+                [[LZHTabBarController shareLZHTabbarController].myTabBar setSelectIndex:previousTabbarIndex];
             }];
-            NSLog(@"弹出logo");
+            //NSLog(@"弹出logo");
         }
     }];
 }
@@ -175,14 +189,14 @@
         } completion:^(BOOL finished) {
         }];
     }
-    
 }
+
 //动画代理方法
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     static NSInteger i = 0;
     i ++;
     if(flag){
-        if(0 == i % 18){
+        if(0 == i % 18){//按钮组弹出完成
             //logo弹出
             [self animationLogoViewPopOut];
         }
@@ -191,16 +205,18 @@
 //按钮组点击代理方法
 -(void)announceButtonClick:(NSInteger)index{
     NSLog(@"你在点击按钮:tag = %li",index);
-    UIWindow *window = APP_MAIN_WINDOW;
-    anounceSecondPageView *anounceView = [[anounceSecondPageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    anounceView.ownTitleLabel.text = @"发布技术";
-    [window addSubview:anounceView];
+    [UIView animateWithDuration:0.01 animations:^{
+        baseView.transform = CGAffineTransformMakeTranslation(-SCREEN_WIDTH, 0);
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 //取消按钮
 - (void)cancelHandler:(UIButton*)_b{
     cancelButton.hidden = YES;
     cancelButton.userInteractionEnabled = NO;
     [self buttonGroupPopOut];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

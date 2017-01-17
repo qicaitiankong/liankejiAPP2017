@@ -15,12 +15,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.ownButt = [UIButton buttonWithType:UIButtonTypeCustom];
-        NSLog(@"height=%lf",self.frame.size.height);
         self.ownButt.frame = CGRectMake(5, 5, 50, self.frame.size.height - 2 * 5);
         self.ownButt.center = CGPointMake(self.ownButt.center.x, self.frame.size.height / 2);
         self.ownButt.backgroundColor = [UIColor grayColor];
         [self addSubview:self.ownButt];
-        
         self.ownTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width / 2, self.ownButt.frame.origin.y, 100, self.frame.size.height  - self.ownButt.frame.origin.y * 2)];
         self.ownTitleLabel.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
         self.ownTitleLabel.textAlignment = NSTextAlignmentCenter;

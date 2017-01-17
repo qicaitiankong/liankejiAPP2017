@@ -5,9 +5,6 @@
 //  Created by mac on 2017/1/16.
 //  Copyright © 2017年 haichuanhuiwulianxinxi. All rights reserved.
 //
-
-
-
 #import "announSecondPageNextStepView.h"
 #import "lzhReturnView.h"
 #import "announceSecondPageNextStepButt.h"
@@ -27,16 +24,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        //添加上部返回view
-        lzhReturnView *returnView = [[lzhReturnView alloc]initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT, self.frame.size.width, 40)];
-        self.ownButt = returnView.ownButt;
-        self.ownTitleLabel = returnView.ownTitleLabel;
-        [self.ownButt setTitle:@"返回" forState:UIControlStateNormal];
-        [self.ownButt addTarget:self action:@selector(returnHandler:) forControlEvents:UIControlEventTouchUpInside];
-        returnView.backgroundColor = [UIColor blueColor];
-        [self addSubview:returnView];
         //交付
-        UILabel *payTypeLabel = [[UILabel alloc]initWithFrame:CGRectMake(30, returnView.frame.origin.y + returnView.frame.size.height + VERTICAL_SPACE, 100,30 )];
+        UILabel *payTypeLabel = [[UILabel alloc]initWithFrame:CGRectMake(30,  VERTICAL_SPACE, 100,30 )];
         payTypeLabel.text = @"交付形式：";
         [payTypeLabel sizeToFit];
         [self addSubview:payTypeLabel];
@@ -79,19 +68,22 @@
         //提交
         announceSecondPageNextStepButt *commitButt = [[announceSecondPageNextStepButt alloc]initWithFrame:CGRectMake(goodTechnologeLabe.frame.origin.x, writeGoodView.frame.origin.y + writeGoodView.frame.size.height + 10, self.frame.size.width - 2 * goodTechnologeLabe.frame.origin.x, 40)];
         [commitButt.nextButt setTitle:@"提交" forState:UIControlStateNormal];
+        commitButt.previousButt.userInteractionEnabled = YES;
+        commitButt.nextButt.userInteractionEnabled = YES;
+         [commitButt.previousButt setBackgroundImage:[UIImage imageNamed:@"nextButton"] forState:UIControlStateNormal];
+         [commitButt.nextButt setBackgroundImage:[UIImage imageNamed:@"nextButton"] forState:UIControlStateNormal];
         [commitButt.previousButt addTarget:self action:@selector(returnHandler:) forControlEvents:UIControlEventTouchUpInside];
-         [commitButt.previousButt addTarget:self action:@selector(commitHandler:) forControlEvents:UIControlEventTouchUpInside];
+         [commitButt.nextButt addTarget:self action:@selector(commitHandler:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:commitButt];
         
     }
     return self;
 }
 - (void)returnHandler:(UIButton*)_b{
-    NSLog(@"返回");
+    NSLog(@"上一步");
     [UIView animateWithDuration:1 animations:^{
         self.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
-        [self removeFromSuperview];
     }];
 }
 - (void)commitHandler:(UIButton*)_b{

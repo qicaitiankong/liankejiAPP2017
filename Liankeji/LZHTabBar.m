@@ -15,8 +15,8 @@
 #define TABBAR_BUTTON_LEFT_SPACE 20
 
 @interface LZHTabBar ()
-//保持对上一次点的按钮的记忆
-@property (nonatomic,weak) UIButton *selectButton;
+
+
 //大按钮
 @property (nonatomic,weak)LZHTabBigButton *bigButton;
 
@@ -29,9 +29,7 @@
 @implementation LZHTabBar
 //tabBar tag
 static NSInteger const LZHTabBarTag = 12000;
-
 //首页，资讯、发布。社区，我的 tag = 12000,12001,12002,12003,12004
-
 UIImageView *backImageView;
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -153,14 +151,17 @@ UIImageView *backImageView;
     }
     self.selectButton.selected = NO;
     _b.selected = YES;
-    self.selectButton = _b;
     if([_delegate respondsToSelector:@selector(tabBar:didClickBtn:)]){
+        
         [_delegate tabBar:self didClickBtn:_b.tag - LZHTabBarTag];
     }
+     NSLog(@"上次的的tabBar下部索引%li",self.selectButton.tag);
+    self.selectButton = _b;
 }
 
 //外界索引页跟着跳转
 -(void)setSelectIndex:(NSInteger)selectIndex{
+    NSLog(@"外界索引跟着跳转");
     _selectIndex = selectIndex;
     UIButton *button = [self viewWithTag:LZHTabBarTag + selectIndex];
     [self btnClick:button];

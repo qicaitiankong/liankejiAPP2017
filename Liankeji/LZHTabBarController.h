@@ -12,9 +12,19 @@
 #import "announceViewController.h"
 #import "CommunicateFirstViewController.h"
 #import "PersonalTableViewController.h"
+#import "LZHTabBar.h"
 
 
 
 @interface LZHTabBarController : UITabBarController
+
+@property (assign,nonatomic)NSInteger previousSelectTabbarButTag;
+
+@property (strong,nonatomic) LZHTabBar *myTabBar ;
+//单利
++(LZHTabBarController*)shareLZHTabbarController;
+
+//切换标签（发布中用到）
+- (void)tabBar:(LZHTabBar*)tabBar didClickBtn:(NSInteger)index;
 
 @end
