@@ -25,22 +25,17 @@
 #import "UINavigationBar+NavigationBarBackground.h"
 #import "appCommonAttributes.h"
 #import "centerButtonGroupViewController.h"
-
+#import "searchViewController.h"
 
 
 //滚动视图高度
 #define SCROLLVIEW_HEIGHT 200
 //中间按钮组整体的高度 这个指定只是在创建时有用，显示时是按屏幕的宽度来计算高度，所以该指定只是预指定，并非实际高度
 #define BUTTON_GROUP_HEIGHT 250
-//首页滚动多高时导航栏发生渐变
-
-#define NAVBAR_CHANGE_POINT 64
-
 
 @interface FirstPageViewController ()<FFScrollViewDelegate,clickSubButtonDelegate,pullDownMenuDelegate,groupButtonDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (strong,nonatomic)NSMutableArray *newsArr;
-
 
 //表视图
 @property (strong,nonatomic)UITableView *tableView;
@@ -71,23 +66,22 @@
 }
 //设置导航栏透明
 - (void)setNavigationControlerrTransparent{
-    self.navigationItem.title = @"链科技";
-    
-    
+    self.navigationItem.title = @"链科技ChinaTech";
     [self.navigationController.navigationBar hy_setBackgroundViewWithColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar hy_setBackgroundViewWithAlpha:0];
 }
 //处理上滑导航栏的渐变
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offsetY = scrollView.contentOffset.y;
-    if (offsetY > 64) {
-        CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
+    if (offsetY > STATUSBAR_HEIGHT + NAVIGATION_HEIGHT) {
+        CGFloat alpha = MIN(1, 1 - ( STATUSBAR_HEIGHT + NAVIGATION_HEIGHT - offsetY) / (STATUSBAR_HEIGHT + NAVIGATION_HEIGHT));
         if(alpha > 0.8){
             alpha = 0.8;
         }
         [self.navigationController.navigationBar hy_setBackgroundViewWithAlpha:alpha];
         //修改标题颜色
-         [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+        UIColor *titleColor = NAVIGATION_TITLE_COLOR;
+         [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:titleColor}];
     } else {
         [self.navigationController.navigationBar hy_setBackgroundViewWithAlpha:0];
         //恢复标题颜色
@@ -95,12 +89,10 @@
     }
 
 }
-
 //设置导航栏的左右按钮
 - (void)setNavigationButton{
     //导航栏左按钮点击事件
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav1"] style:UIBarButtonItemStyleDone target:self action:@selector(leftNavBarHandler:)];
-    
     UIImage *searchImage = [UIImage imageNamed:@"nav2"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:searchImage style:UIBarButtonItemStyleDone target:self action:@selector(rightSearchHandler:)];
 }
@@ -117,6 +109,10 @@
 }
 //导航栏右侧搜索按钮
 - (void)rightSearchHandler:(UIBarButtonItem*)_u{
+    searchViewController *searchVC = [[searchViewController alloc]init];
+    [self presentViewController:searchVC animated:YES completion:^{
+        
+    }];
     
 }
 //滚动视图
@@ -154,7 +150,7 @@
 -(void)groupButtonClickHandler:(NSInteger)buttonIndex{
     NSLog(@"buttonGroup:%li",buttonIndex);
     centerButtonGroupViewController *detailVC = [[centerButtonGroupViewController alloc]init];
-    [self presentViewController:detailVC animated:NO completion:nil];
+    [self presentViewController:detailVC animated:YES completion:nil];
     //[self.navigationController pushViewController:detailVC animated:YES];
 }
 

@@ -16,10 +16,11 @@
 #import "userCommentParentView.h"
 #import "cellFootView.h"
 #import "exchangeView1.h"
+#import "lzhReturnView.h"
 
 @interface informationDetailViewController ()<UITableViewDelegate,UITableViewDataSource,announceButtonClickDelegate,UITextViewDelegate,owntouchDelegate>{
     //返回按钮
-    UIButton *returnButton;
+    lzhReturnView *returnView;
     //转场VIEW
     exchangeView1 *changeView1;
     //表视图(转场view2)
@@ -32,6 +33,8 @@
     userCommentParentView *writeView;
     //测试评论数组
     NSMutableArray *testCommentArr;
+    
+    
 }
 
 @end
@@ -53,14 +56,12 @@
 }
 //添加返回按钮
 - (void)addReturnButton{
-    returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [returnButton setTitle:@"<-" forState:UIControlStateNormal];
-    returnButton.frame = CGRectMake(0, STATUSBAR_HEIGHT,20, 20);
-    //returnButton.backgroundColor = [UIColor greenColor];
-    [returnButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [self.view addSubview:returnButton];
-    [returnButton addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    returnView = [[lzhReturnView alloc]initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT, self.view.frame.size.width,40)];
+    [returnView.ownButt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [returnView.ownButt addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:returnView];
 }
+
    //添加转场view1
 - (void)createExchangeview1{
     changeView1 = [[exchangeView1 alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -111,7 +112,7 @@
 }
 //创建表视图
 - (void)initOwnTableView{
-     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, returnButton.frame.size.height + STATUSBAR_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - returnButton.frame.size.height) style:UITableViewStyleGrouped];
+     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, returnView.frame.origin.y + returnView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - returnView.frame.origin.y - returnView.frame.size.height) style:UITableViewStyleGrouped];
     [self.view addSubview:ownTableView];
     ownTableView.delegate = self;
     ownTableView.dataSource = self;

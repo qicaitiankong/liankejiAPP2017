@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "groupButttonClickDelegate.h"
+#import <Masonry.h>
 
 @interface CenterSmallView : UIView
 

@@ -10,9 +10,12 @@
 #import "ZHQScrollMenu.h"
 #import "appCommonAttributes.h"
 #import "cityPickerView.h"
+#import "lzhReturnView.h"
 
 
-@interface centerButtonGroupViewController ()<cityPickerDelegate>//地点选择器
+@interface centerButtonGroupViewController ()<cityPickerDelegate>{
+    lzhReturnView *returnView;
+}
 @end
 
 @implementation centerButtonGroupViewController
@@ -27,13 +30,10 @@
 }
 //添加返回按钮
 - (void)addReturnButton{
-    UIButton *returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    returnButton.frame = CGRectMake(5, STATUSBAR_HEIGHT, 80, 40);
-    //returnButton.backgroundColor = [UIColor greenColor];
-    [returnButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [returnButton setTitle:@"返回" forState:UIControlStateNormal];
-    [returnButton addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:returnButton];
+    returnView = [[lzhReturnView alloc]initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT, self.view.frame.size.width,40)];
+    [returnView.ownButt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [returnView.ownButt addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:returnView];
 }
 - (void)returnButtonHandler:(UIButton*)_b{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -42,7 +42,7 @@
 //添加上部按钮组
 - (void)AddButtonGroup{
     NSArray *titleArr = @[@"地区",@"时间",@"方向",@"其他"];
-    ZHQScrollMenu *categoryButtonGroup = [[ZHQScrollMenu alloc]initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT + 40, self.view.frame.size.width, 40)];
+    ZHQScrollMenu *categoryButtonGroup = [[ZHQScrollMenu alloc]initWithFrame:CGRectMake(0, returnView.frame.origin.y + returnView.frame.size.height, self.view.frame.size.width, 40)];
     [self.view addSubview:categoryButtonGroup];
     categoryButtonGroup.lineView.hidden = YES;
     categoryButtonGroup.norMalTitleColor = [UIColor grayColor];

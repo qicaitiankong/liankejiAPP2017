@@ -11,7 +11,7 @@
 #import "informationViewController.h"
 #import "announceViewController.h"
 #import "CommunicateFirstViewController.h"
-#import "PersonalTableViewController.h"
+#import "personalFirstPageViewController.h"
 #import "LZHTabBar.h"
 
 

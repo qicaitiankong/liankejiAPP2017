@@ -56,7 +56,6 @@ static LZHTabBarController * shareTabBar = nil;
     self.delegate = self;
     [self addSubChildVC];
     [self setOwnTabBar];
-    
     // Do any additional setup after loading the view.
 }
 
@@ -66,7 +65,9 @@ static LZHTabBarController * shareTabBar = nil;
     //把系统的tabBar按钮干掉
     [self.tabBar removeFromSuperview];
     for(UIView *childView in self.tabBar.subviews){
-        if(![childView isKindOfClass:[LZHTabBar class]]){
+        if(![childView isMemberOfClass:[LZHTabBar class]]){
+//          childView.hidden = YES;
+//          childView.userInteractionEnabled = NO;
             [childView removeFromSuperview];
         }
     }
@@ -97,10 +98,8 @@ static LZHTabBarController * shareTabBar = nil;
     CommunicateFirstViewController *vc4 = [[CommunicateFirstViewController alloc]init];
     [self addOneChildVC:vc4 title:@"发现" imageName:@"icon_shequ_weidianji@3x" selectedImageName:@"icon_shequ_dianji@3x"];
     
-    PersonalTableViewController *vc5 = [[PersonalTableViewController alloc]init];
+    personalFirstPageViewController *vc5 = [[personalFirstPageViewController alloc]init];
     [self addOneChildVC:vc5 title:@"我的" imageName:@"icon_wode_weidianji@3x" selectedImageName:@"icon_wode_dianji@3x"];
-    
-    
 }
 
 -(void)addOneChildVC:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName {

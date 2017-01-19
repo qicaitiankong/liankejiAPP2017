@@ -38,6 +38,9 @@
             self.anounceView.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
             self.anounceView.baseView.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
+            [self dismissViewControllerAnimated:NO completion:^{
+                
+            }];
         }];
 }
 

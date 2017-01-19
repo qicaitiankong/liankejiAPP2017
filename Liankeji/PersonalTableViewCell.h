@@ -4,12 +4,18 @@
 //
 //  Created by 李自豪 on 16/11/29.
 //  Copyright © 2016年 haichuanhuiwulianxinxi. All rights reserved.
-//
+//第一页第二种cell
 
 #import <UIKit/UIKit.h>
 
 @interface PersonalTableViewCell : UITableViewCell
-@property (strong,nonatomic)UIImageView *newsImageView;
-@property (strong,nonatomic)UILabel *newsTitleLable;
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier _tableviewWidth:(UITableView*)_tableView;
+
+@property (strong,nonatomic)UIImageView *firstImageView;
+
+@property (strong,nonatomic)UILabel *secondTitleLable;
+
+@property (strong,nonatomic) UILabel *flagGoLabel;
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier _tableview:(UITableView*)_tableView;
+
 @end

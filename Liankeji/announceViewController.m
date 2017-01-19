@@ -44,7 +44,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     buttonTitleArray = [[NSMutableArray alloc]initWithObjects:@"发布技术",@"发布项目",@"发布需求",@"发布资金",@"发布设备",@"发布文章", nil];
-    
     [self addBaseBackgroundView];
     [self addAnimationImageView];
     [self addGroupButton];
@@ -52,12 +51,15 @@
     secondVC = [[annoounceSecondPageViewController alloc]init];
     [self presentViewController:secondVC animated:NO completion:nil];
     secondVC.anounceView.baseView = baseView;
-    // Do any additional setup after loading the view.
+    previousTabbarIndex = [LZHTabBarController shareLZHTabbarController].myTabBar.selectButton.tag - 12000;
+        // Do any additional setup after loading the view.
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    previousTabbarIndex = [LZHTabBarController shareLZHTabbarController].myTabBar.selectButton.tag - 12000;
+    
+    
+
     NSLog(@"发布页面上一个按钮的索引%li",previousTabbarIndex);
 }
 
@@ -213,6 +215,12 @@
 }
 //取消按钮
 - (void)cancelHandler:(UIButton*)_b{
+    if(secondVC){
+        NSLog(@"发布中第二个控制器还存在");
+        [secondVC dismissViewControllerAnimated:NO completion:^{
+            
+        }];
+    }
     cancelButton.hidden = YES;
     cancelButton.userInteractionEnabled = NO;
     [self buttonGroupPopOut];

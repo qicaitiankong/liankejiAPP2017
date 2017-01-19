@@ -8,19 +8,29 @@
 
 #import "PersonalTableViewCell.h"
 
+#define ROW_HEIGHT 40
+
 @implementation PersonalTableViewCell
 
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier _tableviewWidth:(UITableView*)_tableView{
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier _tableview:(UITableView*)_tableView{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        self.newsImageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 100, 100)];
+        self.firstImageView = [[UIImageView alloc]initWithFrame:CGRectMake(35, 10, 20, 20)];
+        NSLog(@"cellheight = %lf",self.frame.size.height);
+        //self.firstImageView.backgroundColor = [UIColor redColor];
+        self.firstImageView.center = CGPointMake(self.firstImageView.center.x, ROW_HEIGHT / 2);
+        [self.contentView addSubview:self.firstImageView];
+        self.secondTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(self.firstImageView.frame.origin.x + self.firstImageView.frame.size.width + 100, 5, 100, ROW_HEIGHT * 0.6)];
+        //self.secondTitleLable.backgroundColor = [UIColor blueColor];
+        self.secondTitleLable.center = CGPointMake(self.secondTitleLable.center.x, ROW_HEIGHT / 2);
+        [self.contentView addSubview:self.secondTitleLable];
         
-        //self.newsImageView.backgroundColor = [UIColor purpleColor];
-        [self.contentView addSubview:self.newsImageView];
-        self.newsTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(110, 5, _tableView.frame.size.width - 115, 30)];
-        //self.newsTitleLable.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:self.newsTitleLable];
+        self.flagGoLabel = [[UILabel alloc]initWithFrame:CGRectMake(_tableView.frame.size.width - 30, self.secondTitleLable.frame.origin.y, 30, 20)];
+        //self.flagGoLabel.backgroundColor = [UIColor grayColor];
+        self.flagGoLabel.text = @">";
+        [self.contentView addSubview:self.flagGoLabel];
+        
     }
     return self;
 }

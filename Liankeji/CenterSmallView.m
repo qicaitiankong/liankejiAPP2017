@@ -34,7 +34,10 @@
     }
     return self;
 }
-
+//给自己做适配
+-(void)adaptationForSelf{
+    
+}
 - (void)buttonHandler:(UIButton*)_b{
     if(self.groupdelegate){
         [self.groupdelegate groupButtonClickHandler:_b.tag];

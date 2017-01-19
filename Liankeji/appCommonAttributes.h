@@ -8,9 +8,11 @@
 
 #ifndef appCommonAttributes_h
 #define appCommonAttributes_h
-
+#import "LZHTabBarController.h"
 //自定义颜色
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a];
+//导航栏标题颜色
+#define NAVIGATION_TITLE_COLOR RGBA(201,201,201,1);
 
 #define RED_COLOR RGBA(255,0,0,1);
 #define ORANGE_COLOR RGBA(255,165,0,1);
@@ -26,6 +28,10 @@
 #define NAVIGATION_HEIGHT self.navigationController.navigationBar.frame.size.height
 //电池栏高度
 #define STATUSBAR_HEIGHT     [UIApplication sharedApplication].statusBarFrame.size.height
+
+//标签栏高度
+#define TABBAR_HEIGHT [LZHTabBarController shareLZHTabbarController].myTabBar.frame.size.height
+
 //主窗口
 #define APP_MAIN_WINDOW [UIApplication sharedApplication].windows[0]
 
