@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LMJScrollTextView.h"
-
+#import <Masonry.h>
 
 @interface newAnnouncementView : UIView
 

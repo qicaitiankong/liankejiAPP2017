@@ -11,17 +11,22 @@
 
 @implementation scinenceHeaderView
 
--(instancetype)initWithFrame:(CGRect)frame{
+-(instancetype)initWithFrßame:(CGRect)frame{
     self = [super initWithFrame:frame];
-    
     self.backgroundColor = RGBA(244, 244, 244, 1);
     if(self){
-        UILabel *headerLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, self.frame.size.width, frame.size.height - 2 * 10)];
+        UILabel *headerLable = [[UILabel alloc]init];
         headerLable.backgroundColor = [UIColor whiteColor];
         headerLable.textAlignment = NSTextAlignmentCenter;
         [headerLable setTextColor:[UIColor blueColor]];
         headerLable.text = @"科技头条";
         [self addSubview:headerLable];
+        [headerLable mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self);
+            make.width.equalTo(self);
+            make.top.equalTo(self).offset(SCREEN_HEIGHT * 0.018);
+            make.bottom.equalTo(self).offset(-SCREEN_HEIGHT * 0.018);
+        }];
     }
     return  self;
 }

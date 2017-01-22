@@ -14,46 +14,61 @@
 #define FIRST_BUTTON_LEFT_SPACE 10
 #define LAST_BUTTON_RIGHT_SPACE 10
 
-//BUTTON与BUTTON水平方向的间隔
-#define BUTTON_HORINZONTAL_SPACE 5
 //button垂直方向的间隔
 #define BUTTON_VERTICAL_SPACE 5
-UIView *baseView;
 @implementation firstPageButtonGroup
+NSMutableArray *buttonArr1;
+NSMutableArray *buttonArr2;
 
 -(UIView*)initWithFrame:(CGRect)frame titleArray:(NSMutableArray*)_titleArray imageArr:(NSMutableArray*)_imageArr groupDelegate:(id<groupButtonDelegate>)_groupDelegate{
     self = [super initWithFrame:frame];
     self.backgroundColor = [UIColor whiteColor];
     if(self){
-        baseView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        //baseView.backgroundColor = [UIColor grayColor];
-        [self addSubview:baseView];
-        //行数
-        double row = 2;
-        //一行规定4个，列数不定
-        CGFloat buttonWidth = (baseView.frame.size.width - FIRST_BUTTON_LEFT_SPACE  - LAST_BUTTON_RIGHT_SPACE - 3 * BUTTON_HORINZONTAL_SPACE ) / 4;
-        CGFloat buttonHeight = buttonWidth;
-        NSInteger j = 0;
+        buttonArr1 = [[NSMutableArray alloc]init];
+        buttonArr2 = [[NSMutableArray alloc]init];
         for(NSInteger i = 0; i < _titleArray.count; i ++){
-            if(i % 4 == 0 && i != 0){
-                j ++;
+            CenterSmallView *smallView = [[CenterSmallView alloc]initWithFrame:CGRectZero image:_imageArr[i] lableTitle:_titleArray[i] lableTextCenter:YES delegate:_groupDelegate buttonTag:i + 1];
+            if(i < 4){
+                [buttonArr1 addObject:smallView];
+            }else{
+                [buttonArr2 addObject:smallView];
             }
-            CGRect buttonFrame = CGRectMake(FIRST_BUTTON_LEFT_SPACE + i % 4 * (buttonWidth + BUTTON_HORINZONTAL_SPACE) , BUTTON_VERTICAL_SPACE + j * (buttonHeight + BUTTON_VERTICAL_SPACE), buttonWidth, buttonHeight);
-            //检查长度设置对齐方式
-            BOOL iscenter = NO;
-            NSString *title = _titleArray[i];
-            if(title.length <= 3){
-                iscenter = YES;
-            }
-            CenterSmallView *smallView = [[CenterSmallView alloc]initWithFrame:buttonFrame image:_imageArr[i] lableTitle:_titleArray[i] lableTextCenter:iscenter delegate:_groupDelegate buttonTag:i + 1];
-            [baseView addSubview:smallView];
+            [self addSubview:smallView];
         }
-        //设置完按钮之后，重置self与baseView高度
-        baseView.frame = CGRectMake(0, 0, baseView.frame.size.width, BUTTON_VERTICAL_SPACE * 3 + buttonHeight * 2);
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, BUTTON_VERTICAL_SPACE * 3 + buttonHeight * 2);
-        }
+    }
+        [self addAdaptation];
        return self;
 }
+
+- (void)addAdaptation{
+    [buttonArr1 mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:self.frame.size.width * 0.08 leadSpacing:self.frame.size.width * 0.041 tailSpacing:self.frame.size.width * 0.041];
+    [buttonArr1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(5);
+        make.height.mas_equalTo((self.frame.size.height - 15) * 0.5);
+    }];
+    UIButton *button1 = buttonArr1[0];
+    UIButton *button2 = buttonArr1[1];
+    //第二行两个按钮
+    UIView *view1 = buttonArr2[0];
+    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(button1.mas_leading);
+        make.top.equalTo(button1.mas_bottom).offset(5);
+        make.width.equalTo(button1.mas_width);
+        make.height.equalTo(button1.mas_height);
+    }];
+    UIView *view2 = buttonArr2[1];
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(button2.mas_leading);
+        make.top.equalTo(button2.mas_bottom).offset(5);
+        make.width.equalTo(button2.mas_width);
+        make.height.equalTo(button2.mas_height);
+    }];
+    
+    
+}
+
+
+
 
 //设置view样式
 - (void)setStyleOfView :(UIView*)_view{

@@ -67,6 +67,7 @@
 		0435BF9D1E1B8ED300DE859D /* informationSecondPgeTavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435BF9C1E1B8ED300DE859D /* informationSecondPgeTavCell.m */; };
 		043FB00A1E24A96A0025EE61 /* infotest01.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 043FB0091E24A96A0025EE61 /* infotest01.jpeg */; };
 		043FB00D1E24AF400025EE61 /* exchangeView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FB00C1E24AF400025EE61 /* exchangeView1.m */; };
+		046CFB751E34548100E80E9F /* lzhDealNavigationColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CFB741E34548100E80E9F /* lzhDealNavigationColor.m */; };
 		047335371E305BCF00671F44 /* findFirstPageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047335361E305BCF00671F44 /* findFirstPageCollectionViewCell.m */; };
 		047335391E308B1F00671F44 /* a2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047335381E308B1F00671F44 /* a2.jpg */; };
 		0473353C1E30A6D300671F44 /* searchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473353B1E30A6D300671F44 /* searchViewController.m */; };
@@ -349,6 +350,8 @@
 		043FB0091E24A96A0025EE61 /* infotest01.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = infotest01.jpeg; sourceTree = "<group>"; };
 		043FB00B1E24AF400025EE61 /* exchangeView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exchangeView1.h; sourceTree = "<group>"; };
 		043FB00C1E24AF400025EE61 /* exchangeView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exchangeView1.m; sourceTree = "<group>"; };
+		046CFB731E34548100E80E9F /* lzhDealNavigationColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhDealNavigationColor.h; sourceTree = "<group>"; };
+		046CFB741E34548100E80E9F /* lzhDealNavigationColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhDealNavigationColor.m; sourceTree = "<group>"; };
 		047335351E305BCF00671F44 /* findFirstPageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = findFirstPageCollectionViewCell.h; sourceTree = "<group>"; };
 		047335361E305BCF00671F44 /* findFirstPageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = findFirstPageCollectionViewCell.m; sourceTree = "<group>"; };
 		047335381E308B1F00671F44 /* a2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a2.jpg; sourceTree = "<group>"; };
@@ -916,6 +919,8 @@
 				04A2EA5E1E23641C00E7F9DF /* cityPickerView.h */,
 				04A2EA5F1E23641C00E7F9DF /* cityPickerView.m */,
 				04A2EA631E2374D700E7F9DF /* cityPickerDelegate.h */,
+				046CFB731E34548100E80E9F /* lzhDealNavigationColor.h */,
+				046CFB741E34548100E80E9F /* lzhDealNavigationColor.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1862,6 +1867,7 @@
 				99E41F691DED29FD00F32968 /* FirstPageViewController.m in Sources */,
 				99E41F631DED270300F32968 /* NavViewControllerForFirstPage.m in Sources */,
 				0434BDEA1E1CC44B0096136E /* cellHeaderView2.m in Sources */,
+				046CFB751E34548100E80E9F /* lzhDealNavigationColor.m in Sources */,
 				992D730E1DF1557300FFD2DD /* GetCellHeight.m in Sources */,
 				049261FD1E1F277F00AFC111 /* commentView.m in Sources */,
 				04764C6C1E2DFD3000704C96 /* annoounceSecondPageViewController.m in Sources */,

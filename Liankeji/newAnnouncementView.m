@@ -15,25 +15,32 @@
     self = [super initWithFrame:frame];
     if(self){
         self.backgroundColor = [UIColor whiteColor];
-    
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(35, 5, 20, frame.size.height - 5 * 2)];
+        UIImageView *imageView = [[UIImageView alloc]init];
         //imageView.backgroundColor = [UIColor grayColor];
         [imageView setImage:[UIImage imageNamed:@"1_25"]];
         [self addSubview:imageView];
-        
-        CGFloat textView_x = imageView.frame.origin.x + imageView.bounds.size.width + 25 ;
-        
-        CGFloat textView_width = self.bounds.size.width - (imageView.frame.origin.x + imageView.bounds.size.width )- (25 + 19);
-        
-        self.textScrollView = [[LMJScrollTextView alloc]initWithFrame:CGRectMake(textView_x, 5,textView_width,frame.size.height - 5 * 2) textScrollModel:LMJTextScrollFromOutside direction:LMJTextScrollMoveLeft];
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(SCREEN_WIDTH * 0.047);
+            make.height.equalTo(self).multipliedBy(0.6);
+            make.width.equalTo(imageView.mas_height);
+            make.centerY.equalTo(self);
+        }];
+        //最新公告轮播
+        self.textScrollView = [[LMJScrollTextView alloc]initWithFrame:CGRectMake(0,0,0,0) textScrollModel:LMJTextScrollFromOutside direction:LMJTextScrollMoveLeft];
         self.textScrollView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.textScrollView];
         [self.textScrollView setMoveSpeed:0.2];
         [self.textScrollView startScrollWithText:@"最新公告：链科技正在打造国际一流技术对接平台，期望您的加入！" textColor: [UIColor lightGrayColor] font:[UIFont boldSystemFontOfSize:16]];
-        
+        NSLog(@"最新公告间距%lf",SCREEN_WIDTH * 0.033);
+         //NSLog(@"imageview width = %lf",imageView.bounds.size.width);
+        [self.textScrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(SCREEN_WIDTH * 0.047 + SCREEN_WIDTH * 0.033 + self.frame.size.height * 0.6);
+            make.right.equalTo(self).offset(-5);
+            make.height.equalTo(imageView);
+            make.centerY.equalTo(self);
+        }];
         //添加灰色线
-        
-        UIView *styleLine = [[UIView alloc]initWithFrame:CGRectMake(0, frame.size.height - 2 , frame.size.width, 2)];
+        UIView *styleLine = [[UIView alloc]initWithFrame:CGRectMake(0, frame.size.height - 1 , frame.size.width, 1)];
         styleLine.backgroundColor = [UIColor grayColor];
         [self addSubview:styleLine];
     }

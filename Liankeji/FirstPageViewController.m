@@ -22,18 +22,20 @@
 #import "lzhdownMenuView.h"
 #import "newAnnouncementView.h"
 #import "scinenceHeaderView.h"
-#import "UINavigationBar+NavigationBarBackground.h"
 #import "appCommonAttributes.h"
 #import "centerButtonGroupViewController.h"
 #import "searchViewController.h"
+#import "lzhDealNavigationColor.h"
 
 
 //滚动视图高度
 #define SCROLLVIEW_HEIGHT 200
 //中间按钮组整体的高度 这个指定只是在创建时有用，显示时是按屏幕的宽度来计算高度，所以该指定只是预指定，并非实际高度
-#define BUTTON_GROUP_HEIGHT 250
+#define BUTTON_GROUP_HEIGHT 150
 
 @interface FirstPageViewController ()<FFScrollViewDelegate,clickSubButtonDelegate,pullDownMenuDelegate,groupButtonDelegate,UITableViewDelegate,UITableViewDataSource>
+
+@property (strong,nonatomic)lzhDealNavigationColor* dealNavigationColor;
 
 @property (strong,nonatomic)NSMutableArray *newsArr;
 
@@ -45,7 +47,7 @@
 @property (strong,nonatomic)UIView *tableHeaderView;
 //中间按钮组
 @property (strong,nonatomic)firstPageButtonGroup *groupButton;
-//滚动视图
+//轮播图
 @property (strong,nonatomic)UIView *scoView;
 //公告VIEW
 @property (strong,nonatomic)newAnnouncementView* anounceView;
@@ -56,38 +58,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationControlerrTransparent];
+    self.navigationItem.title = @"链科技ChinaTech";
+    self.dealNavigationColor = [lzhDealNavigationColor setNavigationControlerrTransparent:self.navigationController];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.newsArr = [[NSMutableArray alloc]initWithCapacity:2];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setNavigationButton];
     [self addSateliteMenu];
     [self initTableView];
 }
-//设置导航栏透明
-- (void)setNavigationControlerrTransparent{
-    self.navigationItem.title = @"链科技ChinaTech";
-    [self.navigationController.navigationBar hy_setBackgroundViewWithColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar hy_setBackgroundViewWithAlpha:0];
-}
-//处理上滑导航栏的渐变
+//处理滑动导航栏的渐变
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat offsetY = scrollView.contentOffset.y;
-    if (offsetY > STATUSBAR_HEIGHT + NAVIGATION_HEIGHT) {
-        CGFloat alpha = MIN(1, 1 - ( STATUSBAR_HEIGHT + NAVIGATION_HEIGHT - offsetY) / (STATUSBAR_HEIGHT + NAVIGATION_HEIGHT));
-        if(alpha > 0.8){
-            alpha = 0.8;
-        }
-        [self.navigationController.navigationBar hy_setBackgroundViewWithAlpha:alpha];
-        //修改标题颜色
-        UIColor *titleColor = NAVIGATION_TITLE_COLOR;
-         [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:titleColor}];
-    } else {
-        [self.navigationController.navigationBar hy_setBackgroundViewWithAlpha:0];
-        //恢复标题颜色
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    }
-
+    [self.dealNavigationColor dealNavigationColor:scrollView navigation:self.navigationController];
 }
 //设置导航栏的左右按钮
 - (void)setNavigationButton{
@@ -111,9 +93,7 @@
 - (void)rightSearchHandler:(UIBarButtonItem*)_u{
     searchViewController *searchVC = [[searchViewController alloc]init];
     [self presentViewController:searchVC animated:YES completion:^{
-        
     }];
-    
 }
 //滚动视图
 - (UIView*)addScrollView{
@@ -157,7 +137,6 @@
 //科技头条
 - (scinenceHeaderView*)createScientHeaderView{
     scinenceHeaderView *scienceView = [[scinenceHeaderView alloc]initWithFrame:CGRectMake(0, self.groupButton.frame.origin.y+ self.groupButton.bounds.size.height, SCREEN_WIDTH, 60)];
-    
     return scienceView;
 }
 
