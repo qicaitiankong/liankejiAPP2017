@@ -7,7 +7,8 @@
 //第一页第二种cell
 
 #import <UIKit/UIKit.h>
-
+#import "appCommonAttributes.h"
+#import <Masonry.h>
 @interface PersonalTableViewCell : UITableViewCell
 
 @property (strong,nonatomic)UIImageView *firstImageView;

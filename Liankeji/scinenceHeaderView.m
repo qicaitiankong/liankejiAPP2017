@@ -11,7 +11,7 @@
 
 @implementation scinenceHeaderView
 
--(instancetype)initWithFrßame:(CGRect)frame{
+-(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     self.backgroundColor = RGBA(244, 244, 244, 1);
     if(self){

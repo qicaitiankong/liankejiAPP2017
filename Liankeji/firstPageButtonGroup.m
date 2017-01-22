@@ -41,6 +41,7 @@ NSMutableArray *buttonArr2;
 }
 
 - (void)addAdaptation{
+    NSLog(@"中间按钮组高度=%lf",self.frame.size.height);
     [buttonArr1 mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:self.frame.size.width * 0.08 leadSpacing:self.frame.size.width * 0.041 tailSpacing:self.frame.size.width * 0.041];
     [buttonArr1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(5);

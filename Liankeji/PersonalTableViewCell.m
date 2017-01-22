@@ -8,7 +8,6 @@
 
 #import "PersonalTableViewCell.h"
 
-#define ROW_HEIGHT 40
 
 @implementation PersonalTableViewCell
 
@@ -16,15 +15,31 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier _tableview:(UITableView*)_tableView{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        self.firstImageView = [[UIImageView alloc]initWithFrame:CGRectMake(35, 10, 20, 20)];
-        NSLog(@"cellheight = %lf",self.frame.size.height);
+        CGFloat rowHeight = SCREEN_HEIGHT * 0.073;
+        self.firstImageView = [[UIImageView alloc]init];
+        //NSLog(@"cellheight = %lf",self.frame.size.height);
         //self.firstImageView.backgroundColor = [UIColor redColor];
-        self.firstImageView.center = CGPointMake(self.firstImageView.center.x, ROW_HEIGHT / 2);
+        
         [self.contentView addSubview:self.firstImageView];
-        self.secondTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(self.firstImageView.frame.origin.x + self.firstImageView.frame.size.width + 100, 5, 100, ROW_HEIGHT * 0.6)];
+        [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(SCREEN_WIDTH * 0.042);
+            make.height.mas_equalTo(rowHeight * 0.33);
+            make.width.equalTo(self.firstImageView.mas_height);
+            make.centerY.equalTo(self.contentView);
+        }];
+        
+        
+        self.secondTitleLable = [[UILabel alloc]init];
         //self.secondTitleLable.backgroundColor = [UIColor blueColor];
-        self.secondTitleLable.center = CGPointMake(self.secondTitleLable.center.x, ROW_HEIGHT / 2);
+        //self.secondTitleLable.center = CGPointMake(self.secondTitleLable.center.x, ROW_HEIGHT / 2);
         [self.contentView addSubview:self.secondTitleLable];
+        [self.secondTitleLable mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(SCREEN_WIDTH * 0.233 + rowHeight * 0.33);
+            //make.right.equalTo(self.ce).offset(-100);
+            make.height.equalTo(self).multipliedBy(0.6);
+            make.centerY.equalTo(self.contentView);
+        }];
+        
         
         self.flagGoLabel = [[UILabel alloc]initWithFrame:CGRectMake(_tableView.frame.size.width - 30, self.secondTitleLable.frame.origin.y, 30, 20)];
         //self.flagGoLabel.backgroundColor = [UIColor grayColor];
