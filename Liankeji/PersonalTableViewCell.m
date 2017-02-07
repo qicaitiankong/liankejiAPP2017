@@ -28,7 +28,6 @@
             make.centerY.equalTo(self.contentView);
         }];
         
-        
         self.secondTitleLable = [[UILabel alloc]init];
         //self.secondTitleLable.backgroundColor = [UIColor blueColor];
         //self.secondTitleLable.center = CGPointMake(self.secondTitleLable.center.x, ROW_HEIGHT / 2);

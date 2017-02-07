@@ -159,7 +159,7 @@
     }
     
     [cell.ownImageView setImage:[UIImage imageNamed:@"1"]];
-    cell.firstLable.text = @"2016年科技发展";
+    cell.firstLable.text = @"2016年科技发展技术情况签订协议结果将于2017年";
     cell.secondLable.text = @"科技";
     cell.firstSmallNumberString = @"7000";
     cell.secondSmallNumberString = @"8000";

@@ -9,12 +9,17 @@
 #import "informationTableViewCell.h"
 #import"appCommonAttributes.h"
 #import "ownImageviewAndLableView.h"
+#import <Masonry.h>
+#import "appCommonAttributes.h"
+#import "infomaFirstPageViewForCell.h"
+
+#define CELL_HEIGHT 100
 
 @interface informationTableViewCell(){
     ownImageviewAndLableView *firstSmallDisplayView;
     ownImageviewAndLableView *secondSmallDisplayView;
     ownImageviewAndLableView *thirdSmallDisplayView;
-
+    infomaFirstPageViewForCell *groupView;
 }
 @end
 
@@ -28,69 +33,31 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView*)_tableView{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        //NSLog(@"selfheight=%lf,contentviewheight=%lf,selfWidth=%lf,contentViewWidth=%lf,tableViewWidth=%lf",self.frame.size.height,self.contentView.frame.size.height,self.frame.size.width,self.contentView.frame.size.width,_tableView.frame.size.width);
-        
-        
-        CGFloat ImageViewSpace = 5;
-        //行高按100先设置的
-        //NSLog(@"inittableview = %lf",);
-        CGFloat imageViewHeight = 100 - ImageViewSpace * 2;
-        CGFloat imageViewWidth = imageViewHeight;
-        
-        //lable上下之间的间距
-        CGFloat lableSpace = 2;
-        
-        CGFloat lableWidth = _tableView.frame.size.width - imageViewWidth - 3 * ImageViewSpace;
-        
-        CGFloat lableHeight = (imageViewHeight - lableSpace * 4) / 3;
-        //cell中左边图片
-        ownImageView = [[UIImageView alloc]initWithFrame:CGRectMake(ImageViewSpace, ImageViewSpace, imageViewWidth, imageViewHeight)];
+        //左边图片
+        ownImageView = [[UIImageView alloc]init];
         ownImageView.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:ownImageView];
         //首标题LABLE
-        firstLable = [[UILabel alloc]initWithFrame:CGRectMake(ownImageView.frame.origin.x + ownImageView.bounds.size.width + ImageViewSpace, ownImageView.frame.origin.y, lableWidth, lableHeight)];
+        firstLable = [[UILabel alloc]init];
         //firstLable.backgroundColor = [UIColor grayColor];
         firstLable.textColor = RGBA(87, 86, 86, 1);
+        firstLable.numberOfLines = 2;
         firstLable.font = [UIFont systemFontOfSize:15];
         [self.contentView addSubview:firstLable];
         
         //紧靠图片右边的种类lable
-        CGFloat secondLableWidth = 40;
-        CGFloat secondLableHeight = 30;
-        
-        secondLable = [[UILabel alloc]initWithFrame:CGRectMake(firstLable.frame.origin.x, ownImageView.frame.origin.y + ownImageView.frame.size.height - secondLableHeight, secondLableWidth,secondLableHeight)];
-        
+        secondLable = [[UILabel alloc]init];
         //secondLable.backgroundColor = [UIColor blueColor];
         secondLable.textColor = RGBA(167, 167, 167, 1);
         secondLable.font = [UIFont systemFontOfSize:11];
         [self.contentView addSubview:secondLable];
-        //第一个小view浏览量
-        firstSmallDisplayView = [[ownImageviewAndLableView alloc]initWithFrame:CGRectMake(secondLable.frame.origin.x + secondLable.frame.size.width + 10, secondLable.frame.origin.y, 80, 40) imageTag:1];
-        
-        UIImage *firstImage = [UIImage imageNamed:@"informationSkim"];
-        [firstSmallDisplayView.smallImageView setImage:firstImage];
-        firstSmallDisplayView.smallNumLable.text = self.firstSmallNumberString;
-        [self.contentView addSubview:firstSmallDisplayView];
-        
-        //评论量view
-        secondSmallDisplayView = [[ownImageviewAndLableView alloc]initWithFrame:CGRectMake(firstSmallDisplayView.frame.origin.x + firstSmallDisplayView.frame.size.width, firstSmallDisplayView.frame.origin.y, 80, 40) imageTag:2];
-        
-        UIImage *secondImage = [UIImage imageNamed:@"informationComment"];
-    
-        
-        [secondSmallDisplayView.smallImageView setImage:secondImage];
-        secondSmallDisplayView.smallNumLable.text = self.secondSmallNumberString;
-        [self.contentView addSubview:secondSmallDisplayView];
-
-        //悬赏view
-        thirdSmallDisplayView = [[ownImageviewAndLableView alloc]initWithFrame:CGRectMake(secondSmallDisplayView.frame.origin.x + secondSmallDisplayView.frame.size.width, secondSmallDisplayView.frame.origin.y, 80, 40) imageTag:3];
-        
-        UIImage *thirdImage = [UIImage imageNamed:@"informationReward"];
-        //NSLog(@"imageWidth = %lf:%lf",thirdImage.size.width,thirdImage.size.height);
-        [thirdSmallDisplayView.smallImageView setImage:thirdImage];
-        
-        thirdSmallDisplayView.smallNumLable.text = self.thirdSmallNumberString;
-        [self.contentView addSubview:thirdSmallDisplayView];
+        //浏览量评论量打赏的总VIEW
+        groupView = [[infomaFirstPageViewForCell alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+        firstSmallDisplayView = groupView.firstSmallDisplayView;
+        secondSmallDisplayView = groupView.secondSmallDisplayView;
+        thirdSmallDisplayView = groupView.thirdSmallDisplayView;
+        [self.contentView addSubview:groupView];
+        [self myUpdateConstraints];
 
     }
     return self;
@@ -104,6 +71,38 @@
     thirdSmallDisplayView.smallNumLable.text = self.thirdSmallNumberString;
 }
 
+
+-(void)myUpdateConstraints{
+    //适配图片
+    [ownImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView).offset(SCREEN_WIDTH * 0.019);
+        make.top.mas_equalTo (self.contentView).offset(SCREEN_HEIGHT * 0.0187);
+        make.bottom.mas_equalTo (self.contentView).offset(-SCREEN_HEIGHT * 0.0187);
+        make.width.mas_equalTo(ownImageView.mas_height).multipliedBy(1.35);
+    }];
+    //首标题
+    [firstLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(ownImageView.mas_right).offset(SCREEN_WIDTH * 0.019);
+        make.right.mas_equalTo(self.contentView).offset(-SCREEN_WIDTH * 0.019);
+        make.top.mas_equalTo(ownImageView.mas_top);
+        
+        make.height.mas_equalTo(ownImageView.mas_height).multipliedBy(0.45);
+    }];
+    //种类标题
+    [secondLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(firstLable.mas_left);
+        make.width.mas_equalTo(50);
+        make.height.mas_equalTo(secondLable.mas_width).multipliedBy(0.5);
+        make.bottom.mas_equalTo(ownImageView.mas_bottom).offset(0);
+    }];
+    
+    [groupView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(secondLable.mas_right).offset(20);
+        make.right.mas_equalTo(self.contentView.mas_right).offset(-10);
+        make.height.mas_equalTo(secondLable.mas_height);
+        make.bottom.mas_equalTo(secondLable.mas_bottom);
+    }];
+   }
 
 - (void)awakeFromNib {
     // Initialization code

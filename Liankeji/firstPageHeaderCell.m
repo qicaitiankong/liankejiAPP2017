@@ -8,6 +8,8 @@
 //首页中科技头条的CELL
 
 #import "firstPageHeaderCell.h"
+#import "appCommonAttributes.h"
+#import <Masonry.h>
 
 @implementation firstPageHeaderCell
 
@@ -26,7 +28,7 @@
         _secondTitleLable.textColor = [UIColor lightGrayColor];
         _secondTitleLable.textColor = RGBA(195, 195, 195, 1);
         
-        _secondTitleLable.numberOfLines = 0;
+        _secondTitleLable.numberOfLines = 2;
         _secondTitleLable.font = [UIFont systemFontOfSize:14];
         //_secondTitleLable.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:_secondTitleLable];
@@ -35,8 +37,32 @@
         //_ownImageView.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:_ownImageView];
         
+        [self myMakeConstrains];
+        
     }
     return self;
+}
+
+-(void)myMakeConstrains{
+    [_firstTitleLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView).offset( 0.026 * SCREEN_WIDTH);
+        make.right.mas_equalTo(self.contentView).offset(-0.026 * SCREEN_WIDTH);
+        make.top.mas_equalTo(self.contentView.mas_top).offset(0.018 * SCREEN_HEIGHT);
+        make.height.mas_equalTo(0.033 * SCREEN_HEIGHT);
+    }];
+    
+    [_secondTitleLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_firstTitleLable.mas_left);
+        make.right.mas_equalTo(_firstTitleLable.mas_right);
+        make.top.mas_equalTo(_firstTitleLable.mas_bottom).offset(0.019 * SCREEN_HEIGHT);
+        make.height.mas_equalTo(0.048 * SCREEN_HEIGHT);
+    }];
+    [_ownImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_secondTitleLable.mas_left);
+        make.right.mas_equalTo(_secondTitleLable.mas_right);
+        make.top.mas_equalTo(_secondTitleLable.mas_bottom).offset(0.019 * SCREEN_HEIGHT);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom).offset(- 0.024 * SCREEN_HEIGHT);
+    }];
 }
 
 - (void)awakeFromNib {

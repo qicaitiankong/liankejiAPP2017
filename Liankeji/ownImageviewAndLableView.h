@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//资讯首页中cell中的关注量等加数字显示的view
+//资讯首页中cell中的关注量等加数字显示的分项view
 
 
 @interface ownImageviewAndLableView : UIView

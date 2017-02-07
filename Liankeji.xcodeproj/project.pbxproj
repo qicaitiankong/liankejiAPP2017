@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04030AE51E15EAF700988359 /* informationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04030AE41E15EAF700988359 /* informationDetailViewController.m */; };
 		04030AE81E15EBBC00988359 /* informationDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04030AE71E15EBBC00988359 /* informationDetailTableViewCell.m */; };
+		0412CD9E1E499B5000F664BA /* infomaFirstPageViewForCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412CD9D1E499B5000F664BA /* infomaFirstPageViewForCell.m */; };
 		0432CF851E15F82400701F16 /* firstpage_buttonGroup_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 0432CF821E15F82400701F16 /* firstpage_buttonGroup_04.png */; };
 		0432CF861E15F82400701F16 /* firstpage_buttonGroup_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0432CF831E15F82400701F16 /* firstpage_buttonGroup_04@2x.png */; };
 		0432CF871E15F82400701F16 /* firstpage_buttonGroup_04@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0432CF841E15F82400701F16 /* firstpage_buttonGroup_04@3x.png */; };
@@ -285,6 +286,8 @@
 		04030AE41E15EAF700988359 /* informationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = informationDetailViewController.m; sourceTree = "<group>"; };
 		04030AE61E15EBBC00988359 /* informationDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = informationDetailTableViewCell.h; sourceTree = "<group>"; };
 		04030AE71E15EBBC00988359 /* informationDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = informationDetailTableViewCell.m; sourceTree = "<group>"; };
+		0412CD9C1E499B5000F664BA /* infomaFirstPageViewForCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = infomaFirstPageViewForCell.h; sourceTree = "<group>"; };
+		0412CD9D1E499B5000F664BA /* infomaFirstPageViewForCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = infomaFirstPageViewForCell.m; sourceTree = "<group>"; };
 		0432CF821E15F82400701F16 /* firstpage_buttonGroup_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstpage_buttonGroup_04.png; sourceTree = "<group>"; };
 		0432CF831E15F82400701F16 /* firstpage_buttonGroup_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstpage_buttonGroup_04@2x.png"; sourceTree = "<group>"; };
 		0432CF841E15F82400701F16 /* firstpage_buttonGroup_04@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstpage_buttonGroup_04@3x.png"; sourceTree = "<group>"; };
@@ -1212,6 +1215,8 @@
 				04030AE71E15EBBC00988359 /* informationDetailTableViewCell.m */,
 				0435BF451E1B379C00DE859D /* ownImageviewAndLableView.h */,
 				0435BF461E1B379C00DE859D /* ownImageviewAndLableView.m */,
+				0412CD9C1E499B5000F664BA /* infomaFirstPageViewForCell.h */,
+				0412CD9D1E499B5000F664BA /* infomaFirstPageViewForCell.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1920,6 +1925,7 @@
 				99E41F2C1DED0E0D00F32968 /* main.m in Sources */,
 				049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */,
 				9961CF951E02249F0021D123 /* CommunicateFirstViewController.m in Sources */,
+				0412CD9E1E499B5000F664BA /* infomaFirstPageViewForCell.m in Sources */,
 				047A39C21E2C4E1C00651C7E /* ownAnimation.m in Sources */,
 				0480EAB11E2EFF740000E084 /* personalFirstPageViewController.m in Sources */,
 				992C69821E0A69890052D21B /* UINavigationBar+NavigationBarBackground.m in Sources */,

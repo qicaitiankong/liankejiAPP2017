@@ -19,6 +19,8 @@
         headerLable.backgroundColor = [UIColor whiteColor];
         headerLable.textAlignment = NSTextAlignmentCenter;
         [headerLable setTextColor:[UIColor blueColor]];
+        headerLable.font = [UIFont systemFontOfSize:16];
+        headerLable.textColor = RGBA(52, 124, 205, 1);
         headerLable.text = @"科技头条";
         [self addSubview:headerLable];
         [headerLable mas_makeConstraints:^(MASConstraintMaker *make) {

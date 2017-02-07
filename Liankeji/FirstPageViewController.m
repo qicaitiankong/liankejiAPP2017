@@ -110,7 +110,7 @@
 }
 //创建最新公告
 - (newAnnouncementView*)createAnounmentView{
-    newAnnouncementView *anounmentView = [[newAnnouncementView alloc]initWithFrame:CGRectMake(0, self.scoView.bounds.size.height, SCREEN_WIDTH, 30)];
+    newAnnouncementView *anounmentView = [[newAnnouncementView alloc]initWithFrame:CGRectMake(0, self.scoView.bounds.size.height, SCREEN_WIDTH, SCREEN_HEIGHT * 0.067)];
     return anounmentView;
 }
 
@@ -136,7 +136,7 @@
 
 //科技头条
 - (scinenceHeaderView*)createScientHeaderView{
-    scinenceHeaderView *scienceView = [[scinenceHeaderView alloc]initWithFrame:CGRectMake(0, self.groupButton.frame.origin.y+ self.groupButton.bounds.size.height, SCREEN_WIDTH, 60)];
+    scinenceHeaderView *scienceView = [[scinenceHeaderView alloc]initWithFrame:CGRectMake(0, self.groupButton.frame.origin.y+ self.groupButton.bounds.size.height, SCREEN_WIDTH, SCREEN_HEIGHT * 0.1)];
     return scienceView;
 }
 
@@ -212,7 +212,7 @@
 }
 //cell高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 200;
+    return SCREEN_HEIGHT * 0.346;
 }
 
 
