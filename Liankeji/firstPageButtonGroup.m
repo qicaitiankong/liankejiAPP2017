@@ -8,14 +8,6 @@
 
 #import "firstPageButtonGroup.h"
 #import "appCommonAttributes.h"
-
-
-
-#define FIRST_BUTTON_LEFT_SPACE 10
-#define LAST_BUTTON_RIGHT_SPACE 10
-
-//button垂直方向的间隔
-#define BUTTON_VERTICAL_SPACE 5
 @implementation firstPageButtonGroup
 NSMutableArray *buttonArr1;
 NSMutableArray *buttonArr2;
@@ -41,7 +33,7 @@ NSMutableArray *buttonArr2;
 }
 
 - (void)addAdaptation{
-    NSLog(@"中间按钮组高度=%lf",self.frame.size.height);
+    //NSLog(@"中间按钮组高度=%lf",self.frame.size.height);
     [buttonArr1 mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:self.frame.size.width * 0.08 leadSpacing:self.frame.size.width * 0.041 tailSpacing:self.frame.size.width * 0.041];
     [buttonArr1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(5);
@@ -64,12 +56,7 @@ NSMutableArray *buttonArr2;
         make.width.equalTo(button2.mas_width);
         make.height.equalTo(button2.mas_height);
     }];
-    
-    
 }
-
-
-
 
 //设置view样式
 - (void)setStyleOfView :(UIView*)_view{

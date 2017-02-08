@@ -7,7 +7,16 @@
 //
 
 #import "FFScrollView.h"
+#import <Masonry.h>
+#import "appCommonAttributes.h"
 #define IMAGEVIEW_CONTENTMODE UIViewContentModeScaleToFill
+
+@interface FFScrollView (){
+    //lzh
+    NSMutableArray *contentViewArr;
+    NSInteger imageCount;
+}
+@end
 
 @implementation FFScrollView
 @synthesize scrollView;
@@ -55,23 +64,25 @@
     //firstImageView.contentMode = IMAGEVIEW_CONTENTMODE;
     firstImageView.image = [UIImage imageNamed:[sourceArr lastObject]];
     [self.scrollView addSubview:firstImageView];
-    
+    [contentViewArr addObject:self.scrollView];
     for (int i = 0; i < sourceArr.count; i++) {
         UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(width*(i+1), 0, width, height)];
         //imageview.contentMode = IMAGEVIEW_CONTENTMODE;
         imageview.image = [UIImage imageNamed:[sourceArr objectAtIndex:i]];
         [self.scrollView addSubview:imageview];
+        [contentViewArr addObject:imageview];
     }
     
     UIImageView *lastImageView = [[UIImageView alloc]initWithFrame:CGRectMake(width*(sourceArr.count+1), 0, width, height)];
     //lastImageView.contentMode = IMAGEVIEW_CONTENTMODE;
     lastImageView.image = [UIImage imageNamed:[sourceArr objectAtIndex:0]];
     [self.scrollView addSubview:lastImageView];
-    
+    [contentViewArr addObject:lastImageView];
     self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, height-30, width, 30)];
     self.pageControl.numberOfPages = sourceArr.count;
     self.pageControl.currentPage = 0;
     self.pageControl.enabled = YES;
+    //self.pageControl.backgroundColor = [UIColor grayColor];
     [self addSubview:self.pageControl];
     
     [self.scrollView scrollRectToVisible:CGRectMake(width, 0, width, height) animated:NO];
@@ -80,8 +91,30 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTap.numberOfTapsRequired = 1;
     [self addGestureRecognizer:singleTap];
+    
+    [self lzhMakeConstrains];
 }
-
+//自己添加的适配方法
+- (void)lzhMakeConstrains{
+    [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(self);
+        make.right.bottom.mas_equalTo(self);
+    }];
+    //对轮播图片没有masonry做适配,和动画冲突
+    //[contentViewArr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:-sourceArr.count * SCREEN_WIDTH];
+    //[contentViewArr mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.scrollView);
+//        make.width.mas_equalTo((sourceArr.count + 2)* SCREEN_WIDTH);
+//        make.height.mas_equalTo(self.scrollView);
+//    }];
+    
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        //0.022
+        make.left.right.mas_equalTo(self);
+        make.top.mas_equalTo(self.mas_bottom).offset(-SCREEN_HEIGHT * 0.022);
+        make.height.mas_equalTo(SCREEN_HEIGHT * 0.022);
+    }];
+}
 #pragma mark --- custom methods
 //自动滚动到下一页
 -(void)nextPage:(id)sender
@@ -109,6 +142,8 @@
         currPageNumber = 0;
     }
     self.pageControl.currentPage = currPageNumber;
+    
+    
 }
 
 //点击图片的时候 触发

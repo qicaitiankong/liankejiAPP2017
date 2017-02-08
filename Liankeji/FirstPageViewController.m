@@ -13,10 +13,7 @@
 #import "ShareDataBase.h"
 #import "NewsTestModel.h"
 #import "GetCellHeight.h"
-#import "FFScrollView.h"
-#import <UIViewController+MMDrawerController.h>
 #import "sateliteMenuCenterButton.h"
-#import "firstPageButtonGroup.h"
 #import "CenterSmallView.h"
 #import "firstPageHeaderCell.h"
 #import "lzhdownMenuView.h"
@@ -26,31 +23,27 @@
 #import "centerButtonGroupViewController.h"
 #import "searchViewController.h"
 #import "lzhDealNavigationColor.h"
-
-
+#import "lzhTableHeaderViewForFirstPage.h"
 //滚动视图高度
-#define SCROLLVIEW_HEIGHT 200
-//中间按钮组整体的高度 这个指定只是在创建时有用，显示时是按屏幕的宽度来计算高度，所以该指定只是预指定，并非实际高度
-#define BUTTON_GROUP_HEIGHT 150
+#define SCROLLVIEW_HEIGHT SCREEN_HEIGHT * 0.374
+//中间按钮组整体的高度
+#define BUTTON_GROUP_HEIGHT SCREEN_HEIGHT * 0.287
+//公告
+#define ANNOUNCE_HEIGHT SCREEN_HEIGHT * 0.067
+//科技头条
+#define SCIENCE_HEADER_HEIGHT SCREEN_HEIGHT * 0.1
 
 @interface FirstPageViewController ()<FFScrollViewDelegate,clickSubButtonDelegate,pullDownMenuDelegate,groupButtonDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (strong,nonatomic)lzhDealNavigationColor* dealNavigationColor;
 
 @property (strong,nonatomic)NSMutableArray *newsArr;
-
 //表视图
 @property (strong,nonatomic)UITableView *tableView;
-//科技头条
-@property (strong,nonatomic)scinenceHeaderView*scinenceView;
 //表头
 @property (strong,nonatomic)UIView *tableHeaderView;
-//中间按钮组
-@property (strong,nonatomic)firstPageButtonGroup *groupButton;
-//轮播图
-@property (strong,nonatomic)UIView *scoView;
-//公告VIEW
-@property (strong,nonatomic)newAnnouncementView* anounceView;
+//表头高度
+@property (assign,nonatomic) CGFloat tableHeaderHeight;
 
 @end
 
@@ -58,8 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"链科技ChinaTech";
-    self.dealNavigationColor = [lzhDealNavigationColor setNavigationControlerrTransparent:self.navigationController];
+    self.tableHeaderHeight = SCROLLVIEW_HEIGHT + ANNOUNCE_HEIGHT + BUTTON_GROUP_HEIGHT + SCIENCE_HEADER_HEIGHT;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.newsArr = [[NSMutableArray alloc]initWithCapacity:2];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -73,6 +65,8 @@
 }
 //设置导航栏的左右按钮
 - (void)setNavigationButton{
+    self.navigationItem.title = @"链科技ChinaTech";
+    self.dealNavigationColor = [lzhDealNavigationColor setNavigationControlerrTransparent:self.navigationController];
     //导航栏左按钮点击事件
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav1"] style:UIBarButtonItemStyleDone target:self action:@selector(leftNavBarHandler:)];
     UIImage *searchImage = [UIImage imageNamed:@"nav2"];
@@ -80,10 +74,11 @@
 }
 //点击左侧navgationBAR
 - (void)leftNavBarHandler:(UIBarButtonItem*)_u{
-    //下拉菜单
-    lzhdownMenuView *menuView = [[lzhdownMenuView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) menuSize:CGSizeMake(SCREEN_WIDTH / 4, SCREEN_HEIGHT - 64 - 49) titleArray:@[@"菜单1",@"菜单2",@"菜单3",@"菜单4"] delegate:self];
-   UIWindow *window = [UIApplication sharedApplication].windows[0];
-    [window addSubview:menuView];
+    //侧拉菜单
+    lzhdownMenuView *menuView = [[lzhdownMenuView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH / 4, SCREEN_HEIGHT - 64 - 49) titleArray:@[@"菜单1",@"菜单2",@"菜单3",@"菜单4"] delegate:self];
+//    UIWindow *window = [UIApplication sharedApplication].windows[0];
+//    [window addSubview:menuView];
+    [self.view addSubview:menuView];
 }
 //侧拉菜单点击代理方法
 -(void)downMenuSelect:(NSInteger)_index{
@@ -95,36 +90,9 @@
     [self presentViewController:searchVC animated:YES completion:^{
     }];
 }
-//滚动视图
-- (UIView*)addScrollView{
-    NSArray *imageSources = @[@"1",@"2"];
-    FFScrollView *scrollView = [[FFScrollView alloc]initPageViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCROLLVIEW_HEIGHT) views:imageSources];
-    scrollView.backgroundColor = [UIColor whiteColor];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    scrollView.pageViewDelegate = self;
-    return scrollView;
-}
 //轮播点击
 -(void)scrollViewDidClickedAtPage:(NSInteger)pageNumber{
     NSLog(@"你点击了轮播中的%li",pageNumber);
-}
-//创建最新公告
-- (newAnnouncementView*)createAnounmentView{
-    newAnnouncementView *anounmentView = [[newAnnouncementView alloc]initWithFrame:CGRectMake(0, self.scoView.bounds.size.height, SCREEN_WIDTH, SCREEN_HEIGHT * 0.067)];
-    return anounmentView;
-}
-
-//中间button按钮组
-- (firstPageButtonGroup*)testButtonGroup{
-    NSMutableArray *buttonImageArr = [[NSMutableArray alloc]init];
-    NSMutableArray *lableTitleArr = [[NSMutableArray alloc]initWithObjects:@"企业",@"专家",@"技术人才",@"高校",@"第三方",@"更多",nil];
-    for(NSInteger i = 0 ; i < 6; i ++){
-        NSString *imageName = [NSString stringWithFormat:@"firstpage_buttonGroup_0%li",i];
-        UIImage *image = [UIImage imageNamed:imageName];
-        [buttonImageArr addObject:image];
-    }
-    firstPageButtonGroup *buttonGroup = [[firstPageButtonGroup alloc]initWithFrame:CGRectMake(0, self.scoView.bounds.size.height + self.anounceView.bounds.size.height , SCREEN_WIDTH,BUTTON_GROUP_HEIGHT) titleArray:lableTitleArr imageArr:buttonImageArr groupDelegate:self];
-    return buttonGroup;
 }
 //中间按钮点击事件
 -(void)groupButtonClickHandler:(NSInteger)buttonIndex{
@@ -133,14 +101,6 @@
     [self presentViewController:detailVC animated:YES completion:nil];
     //[self.navigationController pushViewController:detailVC animated:YES];
 }
-
-//科技头条
-- (scinenceHeaderView*)createScientHeaderView{
-    scinenceHeaderView *scienceView = [[scinenceHeaderView alloc]initWithFrame:CGRectMake(0, self.groupButton.frame.origin.y+ self.groupButton.bounds.size.height, SCREEN_WIDTH, SCREEN_HEIGHT * 0.1)];
-    return scienceView;
-}
-
-
 //添加卫星菜单
 - (void)addSateliteMenu{
     NSArray *windowArr = [UIApplication sharedApplication].windows;
@@ -152,24 +112,11 @@
 -(void)dealClickHandler:(NSInteger)buttonIndex{
     NSLog(@"点击了卫星菜单中的：%li",buttonIndex);
 }
-
-////添加表头
+//添加表头
 - (UIView*)crateTableHeaderView{
-   self.scoView = [self addScrollView];
-   self.anounceView = [self createAnounmentView];
-   self.groupButton = [self testButtonGroup];
-   self.scinenceView = [self createScientHeaderView];
-    
-   self.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, -(self.scoView.bounds.size.height + self.groupButton.bounds.size.height + self.anounceView.bounds.size.height + self.scinenceView.bounds.size.height), SCREEN_WIDTH, self.scoView.bounds.size.height + self.anounceView.bounds.size.height + self.groupButton.bounds.size.height + self.scinenceView.bounds.size.height)];
-    
-    [self.tableHeaderView addSubview:self.scoView];
-    [self.tableHeaderView addSubview:self.anounceView];
-    [self.tableHeaderView addSubview:self.groupButton];
-    [self.tableHeaderView addSubview:self.scinenceView];
-    //NSLog(@"科技头条高度：%lf",self.scinenceView.bounds.size.height);
-    return self.tableHeaderView;
+    UIView *headerView = [[lzhTableHeaderViewForFirstPage alloc]initWithFrame:CGRectMake(0, -self.tableHeaderHeight, SCREEN_WIDTH, self.tableHeaderHeight) targetDelegate:self];
+    return headerView;
 }
-
 //初始化tableView
 - (void)initTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,  0  , SCREEN_WIDTH, 1000) style:UITableViewStyleGrouped];
@@ -177,7 +124,7 @@
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    }
+}
 
 //没有数据，先写死了
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -198,24 +145,19 @@
     [cell.ownImageView setImage:[UIImage imageNamed:@"1"]];
     return cell;
 }
-
 //设置表头
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    NSLog(@"返回表头");
-       return self.tableHeaderView;
+    self.tableHeaderView =  [self crateTableHeaderView];
+    return self.tableHeaderView;
 }
-
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     //NSLog(@"表头高度%lf",self.tableHeaderView.bounds.size.height);
-    [self crateTableHeaderView];
-    return self.tableHeaderView.bounds.size.height;
+    return self.tableHeaderHeight;
 }
 //cell高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return SCREEN_HEIGHT * 0.346;
 }
-
-
 //数据库操作
 - (void)operateDataBase{
     ShareDataBase *dataBaseClass = [ShareDataBase shareDataBase];
@@ -232,11 +174,8 @@
     }
     if(tableCreateSuc){
        // NSLog(@"成功");
-        
     }
-    
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

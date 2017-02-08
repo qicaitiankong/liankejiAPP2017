@@ -96,6 +96,7 @@
 		047A3A0C1E2C907200651C7E /* announSecondPageSelectTrue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 047A3A091E2C907200651C7E /* announSecondPageSelectTrue@3x.png */; };
 		047A3A0F1E2CACA600651C7E /* announceSecondPageNextStepButt.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A3A0E1E2CACA600651C7E /* announceSecondPageNextStepButt.m */; };
 		047A3A121E2CB3A800651C7E /* announSecondPageNextStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A3A111E2CB3A800651C7E /* announSecondPageNextStepView.m */; };
+		047F2C4F1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F2C4E1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.m */; };
 		0480EAB11E2EFF740000E084 /* personalFirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0480EAB01E2EFF740000E084 /* personalFirstPageViewController.m */; };
 		0480EAB41E2F00D30000E084 /* personalViewOfFirstPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0480EAB31E2F00D30000E084 /* personalViewOfFirstPage.m */; };
 		0480EAB71E2F04D90000E084 /* personalSmallViewOfFirstPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0480EAB61E2F04D90000E084 /* personalSmallViewOfFirstPage.m */; };
@@ -393,6 +394,8 @@
 		047A3A0E1E2CACA600651C7E /* announceSecondPageNextStepButt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = announceSecondPageNextStepButt.m; sourceTree = "<group>"; };
 		047A3A101E2CB3A800651C7E /* announSecondPageNextStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = announSecondPageNextStepView.h; sourceTree = "<group>"; };
 		047A3A111E2CB3A800651C7E /* announSecondPageNextStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = announSecondPageNextStepView.m; sourceTree = "<group>"; };
+		047F2C4D1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhTableHeaderViewForFirstPage.h; sourceTree = "<group>"; };
+		047F2C4E1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhTableHeaderViewForFirstPage.m; sourceTree = "<group>"; };
 		0480EAAF1E2EFF740000E084 /* personalFirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personalFirstPageViewController.h; sourceTree = "<group>"; };
 		0480EAB01E2EFF740000E084 /* personalFirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personalFirstPageViewController.m; sourceTree = "<group>"; };
 		0480EAB21E2F00D30000E084 /* personalViewOfFirstPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personalViewOfFirstPage.h; sourceTree = "<group>"; };
@@ -1378,6 +1381,8 @@
 			children = (
 				99EF897D1E03B28F002836B3 /* firstPageHeaderCell.h */,
 				99EF897E1E03B28F002836B3 /* firstPageHeaderCell.m */,
+				047F2C4D1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.h */,
+				047F2C4E1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1918,6 +1923,7 @@
 				047A39C51E2C4E3500651C7E /* announceViewController.m in Sources */,
 				9953E2F01E0D238700F55604 /* LZHTabBar.m in Sources */,
 				99C1F9B71E10BE81004DE512 /* informationTableViewCell.m in Sources */,
+				047F2C4F1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.m in Sources */,
 				04CDD9B61E1E44CB009330FD /* ownTextSpace.m in Sources */,
 				99554A4E1DF012BF0028A59E /* ShareHomePath.m in Sources */,
 				047A3A061E2C8EAC00651C7E /* announSecondPageSelectView.m in Sources */,

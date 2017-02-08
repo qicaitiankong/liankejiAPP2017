@@ -22,6 +22,8 @@
 //记录下拉菜单高度
 @property (assign,nonatomic)CGFloat menuHeight;
 //创建下拉菜单方法
--(instancetype)initWithFrame:(CGRect)frame menuSize:(CGSize)_menuSize titleArray:(NSArray*)_titleArr delegate:(id <pullDownMenuDelegate>) _delegate;
+-(instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray*)_titleArr delegate:(id <pullDownMenuDelegate>) _delegate;
+
+- (void)popAnimation:(BOOL)cancelButtonClick;
 
 @end
