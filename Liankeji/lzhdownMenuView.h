@@ -15,15 +15,11 @@
 @interface lzhdownMenuView : UIView
 //代理属性
 @property (assign,nonatomic) id <pullDownMenuDelegate> downMenuDelegate;
-//遮罩按钮（整个屏幕）
-@property (strong,nonatomic)UIButton *backgroundbutton;
-//
-@property (strong,nonatomic)UIButton *baseView;
-//记录下拉菜单高度
-@property (assign,nonatomic)CGFloat menuHeight;
+//是否弹出
+@property (assign,nonatomic)BOOL isOut;
 //创建下拉菜单方法
 -(instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray*)_titleArr delegate:(id <pullDownMenuDelegate>) _delegate;
-
+//弹出弹入动画
 - (void)popAnimation:(BOOL)cancelButtonClick;
 
 @end

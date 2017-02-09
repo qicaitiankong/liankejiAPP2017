@@ -44,6 +44,8 @@
 @property (strong,nonatomic)UIView *tableHeaderView;
 //表头高度
 @property (assign,nonatomic) CGFloat tableHeaderHeight;
+//侧拉菜单
+@property (strong,nonatomic) lzhdownMenuView *sideMenuView;
 
 @end
 
@@ -58,6 +60,7 @@
     [self setNavigationButton];
     [self addSateliteMenu];
     [self initTableView];
+    [self createSideMenu];
 }
 //处理滑动导航栏的渐变
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -72,13 +75,15 @@
     UIImage *searchImage = [UIImage imageNamed:@"nav2"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:searchImage style:UIBarButtonItemStyleDone target:self action:@selector(rightSearchHandler:)];
 }
-//点击左侧navgationBAR
+//点击左侧navgabar弹出菜单
 - (void)leftNavBarHandler:(UIBarButtonItem*)_u{
+    [self.sideMenuView popAnimation:!self.sideMenuView.isOut];
+}
+//创建侧拉菜单
+- (void)createSideMenu{
     //侧拉菜单
-    lzhdownMenuView *menuView = [[lzhdownMenuView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH / 4, SCREEN_HEIGHT - 64 - 49) titleArray:@[@"菜单1",@"菜单2",@"菜单3",@"菜单4"] delegate:self];
-//    UIWindow *window = [UIApplication sharedApplication].windows[0];
-//    [window addSubview:menuView];
-    [self.view addSubview:menuView];
+    self.sideMenuView = [[lzhdownMenuView alloc]initWithFrame:CGRectMake(-SCREEN_WIDTH, NAVIGATION_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TABBAR_HEIGHT) titleArray:@[@"菜单1",@"菜单2",@"菜单3",@"菜单4"] delegate:self];
+    [self.view addSubview:self.sideMenuView];
 }
 //侧拉菜单点击代理方法
 -(void)downMenuSelect:(NSInteger)_index{

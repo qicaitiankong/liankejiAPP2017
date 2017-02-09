@@ -128,6 +128,7 @@
 		0480EAED1E2F302C0000E084 /* personalFirstPageMyMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480EAD21E2F302C0000E084 /* personalFirstPageMyMessage@2x.png */; };
 		0480EAEE1E2F302C0000E084 /* personalFirstPageMyMessage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480EAD31E2F302C0000E084 /* personalFirstPageMyMessage@3x.png */; };
 		0480EAF41E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0480EAF31E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m */; };
+		0489F3D91E4C3C3E0050AC8E /* announceWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489F3D81E4C3C3E0050AC8E /* announceWindowView.m */; };
 		049261FD1E1F277F00AFC111 /* commentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FC1E1F277F00AFC111 /* commentView.m */; };
 		049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */; };
 		049262031E1F939A00AFC111 /* cellFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049262021E1F939A00AFC111 /* cellFootView.m */; };
@@ -431,6 +432,8 @@
 		0480EAD31E2F302C0000E084 /* personalFirstPageMyMessage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personalFirstPageMyMessage@3x.png"; sourceTree = "<group>"; };
 		0480EAF21E2F3CD90000E084 /* personalFirstPageUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personalFirstPageUserTableViewCell.h; sourceTree = "<group>"; };
 		0480EAF31E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personalFirstPageUserTableViewCell.m; sourceTree = "<group>"; };
+		0489F3D71E4C3C3E0050AC8E /* announceWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = announceWindowView.h; sourceTree = "<group>"; };
+		0489F3D81E4C3C3E0050AC8E /* announceWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = announceWindowView.m; sourceTree = "<group>"; };
 		049261FB1E1F277F00AFC111 /* commentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentView.h; sourceTree = "<group>"; };
 		049261FC1E1F277F00AFC111 /* commentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentView.m; sourceTree = "<group>"; };
 		049261FE1E1F3B9100AFC111 /* userWriteCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userWriteCommentView.h; sourceTree = "<group>"; };
@@ -825,6 +828,8 @@
 				047A3A0E1E2CACA600651C7E /* announceSecondPageNextStepButt.m */,
 				047A3A101E2CB3A800651C7E /* announSecondPageNextStepView.h */,
 				047A3A111E2CB3A800651C7E /* announSecondPageNextStepView.m */,
+				0489F3D71E4C3C3E0050AC8E /* announceWindowView.h */,
+				0489F3D81E4C3C3E0050AC8E /* announceWindowView.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1893,6 +1898,7 @@
 				04030AE51E15EAF700988359 /* informationDetailViewController.m in Sources */,
 				99AA38E31E08C296000A57BC /* lzhdownMenuView.m in Sources */,
 				9953E2EE1E0D238700F55604 /* LZHTabBigButton.m in Sources */,
+				0489F3D91E4C3C3E0050AC8E /* announceWindowView.m in Sources */,
 				99C1F9BE1E10C247004DE512 /* inforMationTableView.m in Sources */,
 				9961CFA41E026DF20021D123 /* firstPageButtonGroup.m in Sources */,
 				999D99471DF04C950067CFBA /* ShareDataBase.m in Sources */,

@@ -48,13 +48,12 @@
             [imageArr addObject:image];
         }
         for(NSInteger i = 0; i < 4; i ++){
-            
             CGFloat leftSpace = 26;
             CGFloat buttonSpace = 5;
             
             CGFloat buttonImageViewWidth = (frame.size.width - 2 * leftSpace - (imageArr.count - 1) * buttonSpace) / imageArr.count;
             
-            AnounceButtonView *buttonView = [[AnounceButtonView alloc]initWithFrame:CGRectMake(leftSpace + i * (buttonImageViewWidth + buttonSpace), shareLable.frame.origin.y + shareLable.frame.size.height + 20, buttonImageViewWidth, buttonImageViewWidth+ 20)  delegate:ownDelegate buttonTag:i imageViewPropertion:0.4];
+            AnounceButtonView *buttonView = [[AnounceButtonView alloc]initWithFrame:CGRectMake(leftSpace + i * (buttonImageViewWidth + buttonSpace), shareLable.frame.origin.y + shareLable.frame.size.height + 20, buttonImageViewWidth, buttonImageViewWidth+ 20)  delegate:ownDelegate buttonTag:i imageViewPropertion:0.8];
             [buttonView.ownImageView setImage:imageArr[i]];
             buttonView.ownLable.text = titleArr[i];
             buttonView.ownLable.font = [UIFont systemFontOfSize:13];

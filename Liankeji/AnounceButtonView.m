@@ -7,6 +7,8 @@
 //
 
 #import "AnounceButtonView.h"
+#import <Masonry.h>
+
 @interface AnounceButtonView()
 @end
 
@@ -20,32 +22,27 @@
         //self.backgroundColor = [UIColor grayColor];
         self.ownImageView = [[UIImageView alloc]init];
         self.ownImageView.userInteractionEnabled = YES;
-        
-        self.ownImageView.frame = CGRectMake(0, 0, frame.size.height * imageViewPropertion, frame.size.height * imageViewPropertion);
         self.ownImageView.layer.cornerRadius = self.ownImageView.bounds.size.width / 2;
         self.ownImageView.center = CGPointMake(self.bounds.size.width / 2, self.ownImageView.center.y);
         self.ownImageView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.ownImageView];
         //添加imageView上的透明按钮,与ownimageView大小一致
         self.imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        self.imageButton.frame = CGRectMake(0, 0, self.ownImageView.bounds.size.width, self.ownImageView.bounds.size.width);
         self.imageButton.tag = buttonTag;
         self.imageButton.backgroundColor = [UIColor clearColor];
         self.imageButton.layer.cornerRadius = self.imageButton.bounds.size.width / 2;
         [self.imageButton addTarget:self action:@selector(buttonHandler:) forControlEvents:UIControlEventTouchUpInside];
         [self.ownImageView addSubview:self.imageButton];
-        
         //lable
         self.ownLable = [[UILabel alloc]init];
-        self.ownLable.frame = CGRectMake(0, self.ownImageView.frame.origin.y + self.ownImageView.bounds.size.height + 5, self.frame.size.width, 20);
+        self.ownLable.font = [UIFont systemFontOfSize:16];
         self.ownLable.textAlignment = NSTextAlignmentCenter;
         //self.ownLable.backgroundColor = [UIColor redColor];
         [self addSubview:self.ownLable];
         
         //titleButton 往self上加而不是lable（lable上不能加按钮）
         self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.titleButton.frame = self.ownLable.frame;
+        //self.titleButton.frame = self.ownLable.frame;
         self.titleButton.tag = buttonTag;
         
         self.titleButton.backgroundColor = [UIColor yellowColor];
@@ -53,6 +50,29 @@
         [self.titleButton addTarget:self action:@selector(buttonHandler:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.titleButton];
         
+        //适配
+        [self.ownImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(self).multipliedBy(imageViewPropertion);
+            make.height.mas_equalTo(self.mas_width).multipliedBy(imageViewPropertion);
+            make.top.mas_equalTo(self);
+            make.centerX.mas_equalTo(self.mas_centerX);
+        }];
+        [self.imageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(self.ownImageView);
+            make.height.mas_equalTo(self.ownImageView);
+            make.center.mas_equalTo(self.ownImageView);
+        }];
+        [self.ownLable mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self);
+            make.right.mas_equalTo(self);
+            make.top.mas_equalTo(self.ownImageView.mas_bottom).offset(5);
+            make.bottom.mas_equalTo(self);
+        }];
+        [self.titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(self);
+            make.width.mas_equalTo(self.ownLable);
+            make.height.mas_equalTo(self.ownLable);
+        }];
     }
     return self;
 }

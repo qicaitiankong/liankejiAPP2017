@@ -8,127 +8,105 @@
 
 #import "lzhdownMenuView.h"
 #import "sideMenuButton.h"
+#import "appCommonAttributes.h"
 #import <QuartzCore/QuartzCore.h>
-//弧形效果的宽度
-#define SIDEIMAGEVIEW_WIDTH 150
-//盛放按钮组的baseView的宽度
-#define BASEVIEWWIDTH SIDEIMAGEVIEW_WIDTH * 0.7
-
+#import <Masonry.h>
 @implementation lzhdownMenuView
-@synthesize backgroundbutton;
-//盛放按钮组的button
-@synthesize baseView;
-//弧形效果
-UIImageView *sideImageView;
+//分项按钮
+sideMenuButton *sideButton;
 
 -(instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray*)_titleArr delegate:(id <pullDownMenuDelegate>) _delegate{
     self = [super initWithFrame:frame];
     if(self){
-        //if( nil == backgroundbutton){
-            //指定代理
-//            self.downMenuDelegate = _delegate;
-//            //创建背景遮罩按钮
-//           backgroundbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-//            backgroundbutton.frame = self.frame;
-//            backgroundbutton.backgroundColor = [UIColor clearColor];
-//            [backgroundbutton addTarget:self action:@selector(backbuttonHandler:) forControlEvents:UIControlEventTouchDown];
-//            [self addSubview:backgroundbutton];
-        
-            //添加弧形效果
-//            sideImageView= [[UIImageView alloc]initWithFrame:CGRectMake(-SIDEIMAGEVIEW_WIDTH, 64, SIDEIMAGEVIEW_WIDTH, backgroundbutton.bounds.size.height - 64 - 49)];
-//            sideImageView.backgroundColor = [UIColor clearColor];
-//            sideImageView.alpha = 0.8;
-//            [sideImageView setImage:[UIImage imageNamed:@"sidemenu_362"]];
-//            //sideImageView.alpha = 0.3;
-//            [backgroundbutton addSubview:sideImageView];
-            //创建盛放按钮组的button
-//            baseView = [UIButton buttonWithType:UIButtonTypeCustom];
-//            baseView.frame = CGRectMake(-BASEVIEWWIDTH , 64, BASEVIEWWIDTH, backgroundbutton.bounds.size.height - 64 - 49);
-//            baseView.backgroundColor = [UIColor clearColor];
-            
-            
-            //baseView.alpha = 0;
-            //baseView.backgroundColor = [UIColor greenColor];
-            //[baseView setImage:[UIImage imageNamed:@"sidemenu_362"] forState:UIControlStateNormal];
-//            [baseView addTarget:self action:@selector(backbuttonHandler:) forControlEvents:UIControlEventTouchUpInside];
-//            [backgroundbutton addSubview:baseView];
-            
-            
-            
-            //往baseView上添加用户头像按钮
+        NSMutableArray *buttonArr = [[NSMutableArray alloc]initWithCapacity:4];
+        self.downMenuDelegate = _delegate;
+        self.backgroundColor = [UIColor darkGrayColor];
+            //添加用户头像按钮
             UIButton *userButton = [UIButton buttonWithType:UIButtonTypeCustom];
             userButton.tag = 0;
-            userButton.frame = CGRectMake(2, self.frame.size.height * 0.2, self.frame.size.width / 2, self.frame.size.width / 2);
+            userButton.frame = CGRectMake(0, self.frame.size.height * 0.15, self.frame.size.width * 0.10, self.frame.size.width * 0.10);
             userButton.layer.cornerRadius = userButton.bounds.size.width / 2;
             userButton.backgroundColor = [UIColor whiteColor];
             [userButton setImage:[UIImage imageNamed:@"user"] forState:UIControlStateNormal];
             [userButton addTarget:self action:@selector(menuButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:userButton];
-        
-            //下拉菜单高度
-            //_menuHeight = _menuSize.height;
             //添加按钮
-            CGFloat imageButtonWidth = self.frame.size.width * 0.25;
-            CGFloat imageButtonHeight = 50;
-            CGFloat titleButtonWidth = self.frame.size.width * 0.75;
-            CGFloat titleButtonHeight = imageButtonHeight;
             for(NSInteger i = 0; i <_titleArr.count; i ++ ){
-                sideMenuButton *sideButton = [[sideMenuButton alloc]initWithFrame:CGRectMake(0, 200 + i *60, self.frame.size.width, 60)];
+               sideButton = [[sideMenuButton alloc]initWithFrame:CGRectMake(0, userButton.frame.origin.y + userButton.frame.size.height + 20 + i *40, self.frame.size.width * 0.25, 40)];
                 sideButton.tag = i + 1;
                 [self addSubview:sideButton];
                 [sideButton.ownImageView setImage:[UIImage imageNamed:@"test"]];
                 sideButton.ownTitleLable.text = _titleArr[i];
                 [sideButton addTarget:self action:@selector(menuButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+                [buttonArr addObject:sideButton];
             }
-        //}
-        //弹出动画
-        [self popAnimation:NO];
+        //适配
+        if(buttonArr.count > 0){
+            CGFloat leadSpace = self.frame.size.height * 0.35;
+            CGFloat trailingSpace = self.frame.size.height * 0.35;
+            [buttonArr mas_distributeViewsAlongAxis:MASAxisTypeVertical withFixedSpacing:5 leadSpacing:leadSpace tailSpacing:trailingSpace];
+            [buttonArr mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(self);
+                make.width.mas_equalTo(self.mas_width).multipliedBy(0.25);
+            }];
+        }
+        //最后给头像做适配
+        UIButton *button0 = buttonArr[0];
+        [userButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(self.mas_width).multipliedBy(0.1);
+            make.width.mas_equalTo(userButton.mas_height);
+            make.bottom.mas_equalTo(button0.mas_top).offset(-0.011 * SCREEN_HEIGHT);
+            make.left.mas_equalTo(self).offset(5);
+        }];
     }
     return self;
 }
 //代理事件
 - (void)menuButtonHandler:(UIButton*)_b{
+    //NSLog(@"点击有效");
     if(self.downMenuDelegate){
         [self.downMenuDelegate downMenuSelect:_b.tag];
-        //[self removeFromSuperview];
     }
 }
 
 //弹出动画
 - (void)popAnimation:(BOOL)cancelButtonClick{
     if(cancelButtonClick){
-        [UIView animateWithDuration:0.3 animations:^{
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            self.transform = CGAffineTransformMakeTranslation(self.frame.size.width, 0);
+
+        } completion:^(BOOL finished) {
+            self.isOut = YES;
+        }];
+    }else{
+        [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
             self.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
-            NSLog(@"移除");
-            [self removeFromSuperview];
-        }];
-
-    }else{
-        [UIView animateWithDuration:0.5 animations:^{
-            self.transform = CGAffineTransformMakeTranslation(self.frame.size.width, 0);
-        } completion:^(BOOL finished) {
-            
+            self.isOut = NO;
         }];
     }
 }
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-//- (void)drawRect:(CGRect)rect {
-    //CGContextRef context =
-   // CGContextSetRGBStrokeColor(context, 0, 0, 1, 1);//改变画笔颜色
+- (void)drawRect:(CGRect)rect {
+    //画蒙版layer
+    UIBezierPath *path = [[UIBezierPath alloc]init];
+    [path moveToPoint:CGPointMake(0,0)];
+    [path addLineToPoint:CGPointMake(0,self.frame.size.height)];
     
-//    CGContextMoveToPoint(context, 140, 80);//开始坐标p1
-//    
-//    //CGContextAddArcToPoint(CGContextRef c, CGFloat x1, CGFloat y1,CGFloat x2, CGFloat y2, CGFloat radius)
-//    //x1,y1跟p1形成一条线的坐标p2，x2,y2结束坐标跟p3形成一条线的p3,radius半径,注意, 需要算好半径的长度,
-//    CGContextAddArcToPoint(context, 148, 68, 156, 80, 10);
-//    
-//    CGContextStrokePath(context);//绘画路径
-//    [super drawRect:rect];
-    // Drawing code
-//}
-
+    [path addCurveToPoint:CGPointMake(0,0) controlPoint1:CGPointMake(self.frame.size.width * 0.15, self.frame.size.height * 0.75) controlPoint2:CGPointMake(self.frame.size.width * 0.4,self.frame.size.height / 2)];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.path = [path CGPath];
+    //maskLayer.fillColor = [UIColor yellowColor].CGColor;
+    self.layer.mask = maskLayer;
+    [super drawRect:rect];
+}
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self popAnimation:NO];
+    
+    
+}
 
 @end
