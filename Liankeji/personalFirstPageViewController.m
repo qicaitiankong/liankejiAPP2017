@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = RGBA(246, 246, 246, 1);
     [self setNavigationButton];
     secondSectionImageArr = @[[UIImage imageNamed:@"personalFirstPageMyMessage"],[UIImage imageNamed:@"personalFirstPageMyPraise"],[UIImage imageNamed:@"personalFirstPageMyCollection"]];
      secondSectionTitleArr = @[@"我的消息",@"我的点赞",@"我的收藏"];
@@ -42,10 +42,10 @@
     fourthSectionImageArr = @[[UIImage imageNamed:@"personalFirstPageCustomer"],[UIImage imageNamed:@"personalFirstPageUs"]];
     fourthSectionTitleArr = @[@"客服中心",@"关于我们"];
     
-    secondHeaderView = [[personalViewOfFirstPage alloc]initWithFrame:CGRectMake(0, - 80, self.view.frame.size.width, 80) numArr:@[@"123",@"23",@"322"] titleArray:@[@"发布的消息",@"关注",@"粉丝"]];
-    spaceView = [[UIView alloc]initWithFrame:CGRectMake(0,  - 20, self.view.frame.size.width, 20)];
+    secondHeaderView = [[personalViewOfFirstPage alloc]initWithFrame:CGRectMake(0, - SCREEN_HEIGHT * 0.089, self.view.frame.size.width, SCREEN_HEIGHT * 0.089) numArr:@[@"123",@"23",@"322"] titleArray:@[@"发布的消息",@"关注",@"粉丝"]];
+    spaceView = [[UIView alloc]initWithFrame:CGRectMake(0,  - SCREEN_HEIGHT * 0.02, self.view.frame.size.width, SCREEN_HEIGHT * 0.02)];
     spaceView.backgroundColor = RGBA(246, 246, 246, 1);
-    spaceView2 = [[UIView alloc]initWithFrame:CGRectMake(0,  - 20, self.view.frame.size.width, 20)];
+    spaceView2 = [[UIView alloc]initWithFrame:CGRectMake(0,  - SCREEN_HEIGHT * 0.02, self.view.frame.size.width, SCREEN_HEIGHT * 0.02)];
     spaceView2.backgroundColor = RGBA(246, 246, 246, 1);
     [self initTableView];
     
@@ -64,10 +64,12 @@
 }
 
 - (void)initTableView{
-    ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT, self.view.frame.size.width, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TABBAR_HEIGHT)];
     ownTableView.backgroundColor = RGBA(246, 246, 246, 1);
     ownTableView.delegate = self;
     ownTableView.dataSource = self;
+    //ownTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //ownTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:ownTableView];
     
 }
@@ -142,9 +144,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat rowHeight = 0;
     if(indexPath.section == 0){
-        rowHeight = 80;
+        rowHeight = SCREEN_HEIGHT * 0.107;
     }else{
-        rowHeight = 40;
+        rowHeight = SCREEN_HEIGHT * 0.073;
     }
     return rowHeight;
 }

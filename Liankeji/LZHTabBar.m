@@ -155,13 +155,13 @@ UIImageView *backImageView;
         
         [_delegate tabBar:self didClickBtn:_b.tag - LZHTabBarTag];
     }
-     NSLog(@"上次的的tabBar下部索引%li",self.selectButton.tag);
+     //NSLog(@"上次的的tabBar下部索引%li",self.selectButton.tag);
     self.selectButton = _b;
 }
 
 //外界索引页跟着跳转
 -(void)setSelectIndex:(NSInteger)selectIndex{
-    NSLog(@"外界索引跟着跳转");
+   // NSLog(@"外界索引跟着跳转");
     _selectIndex = selectIndex;
     UIButton *button = [self viewWithTag:LZHTabBarTag + selectIndex];
     [self btnClick:button];

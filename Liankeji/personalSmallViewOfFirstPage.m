@@ -7,6 +7,7 @@
 //
 
 #import "personalSmallViewOfFirstPage.h"
+#import <Masonry.h>
 
 @implementation personalSmallViewOfFirstPage
 
@@ -23,10 +24,24 @@
         self.secondLabelOfTitle.textAlignment = NSTextAlignmentCenter;
         //self.secondLabelOfTitle.backgroundColor = [UIColor grayColor];
         [self addSubview:self.secondLabelOfTitle];
-        
-        
+        [self lzhMakeConstrains];
     }
     return self;
+}
+- (void)lzhMakeConstrains{
+    [self.firstLabelOfNum mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self);
+        make.top.mas_equalTo(self);
+        make.height.mas_equalTo(self).multipliedBy(0.4);
+    }];
+    
+    [self.secondLabelOfTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self);
+        make.top.mas_equalTo(self.firstLabelOfNum.mas_bottom).offset(self.frame.size.height * 0.2);
+        make.bottom.mas_equalTo(self);
+    }];
+
+    
 }
 
 /*

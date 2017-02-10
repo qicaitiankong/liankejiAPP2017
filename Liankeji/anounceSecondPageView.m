@@ -13,7 +13,6 @@
 #import "announceSecondPageNextStepButt.h"
 #import "announSecondPageNextStepView.h"
 
-
 //选择控件的宽度
 #define SELECT_BUTTON_WIDTH 80
 //选择控件的高度
@@ -38,11 +37,12 @@
         self.backgroundColor = [UIColor whiteColor];
         //添加上部返回view
         returnView = [[lzhReturnView alloc]initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT, self.frame.size.width, 40)];
+        returnView.ownTitleLabel.textColor = [UIColor whiteColor];
         self.ownButt = returnView.ownButt;
         self.ownTitleLabel = returnView.ownTitleLabel;
-        [self.ownButt setTitle:@"返回" forState:UIControlStateNormal];
+        [self.ownButt setTitle:@"<<" forState:UIControlStateNormal];
         [returnView.ownButt addTarget:self action:@selector(returnHandler:) forControlEvents:UIControlEventTouchUpInside];
-        returnView.backgroundColor = [UIColor blueColor];
+        returnView.backgroundColor = RGBA(135,206,250, 1);
         [self addSubview:returnView];
         //上传图片按钮
         self.photoButt = [UIButton buttonWithType:UIButtonTypeCustom];

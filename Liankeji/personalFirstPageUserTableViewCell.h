@@ -4,7 +4,7 @@
 //
 //  Created by mac on 2017/1/18.
 //  Copyright © 2017年 haichuanhuiwulianxinxi. All rights reserved.
-//
+//第一种cell
 
 #import <UIKit/UIKit.h>
 

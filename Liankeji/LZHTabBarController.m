@@ -19,6 +19,8 @@
 
 @property (strong,nonatomic)id popDelegate;
 
+@property (strong,nonatomic) announceViewController *vc3;
+
 @end
 static LZHTabBarController * shareTabBar = nil;
 @implementation LZHTabBarController
@@ -92,8 +94,8 @@ static LZHTabBarController * shareTabBar = nil;
     informationViewController *vc2 = [[informationViewController alloc]init];
     [self addOneChildVC:vc2 title:@"资讯" imageName:@"icon_zixun_weidianji" selectedImageName:@"icon_zixun_dianji"];
     
-    announceViewController *vc3 = [[announceViewController alloc]init];
-    [self addOneChildVC:vc3 title:@"发布" imageName:@"icon_fabu@3x" selectedImageName:@"icon_fabu@3x"];
+    self.vc3 = [[announceViewController alloc]init];
+    [self addOneChildVC:self.vc3 title:@"发布" imageName:@"icon_fabu@3x" selectedImageName:@"icon_fabu@3x"];
     
     CommunicateFirstViewController *vc4 = [[CommunicateFirstViewController alloc]init];
     [self addOneChildVC:vc4 title:@"发现" imageName:@"icon_shequ_weidianji@3x" selectedImageName:@"icon_shequ_dianji@3x"];
@@ -124,7 +126,10 @@ static LZHTabBarController * shareTabBar = nil;
 }
 //tabBar按钮点击
 - (void)tabBar:(LZHTabBar*)tabBar didClickBtn:(NSInteger)index{
-     //NSLog(@"点击的tabBar下部索引%li",index);
+    // NSLog(@"点击的tabBar下部索引%li",index);
+    if(index == 2){
+        self.vc3.isExchangeFromeOut = YES;
+    }
     [super setSelectedIndex:index];
 }
 

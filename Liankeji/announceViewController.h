@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface announceViewController : UIViewController
+//windowView是否是从外面切换来的
+@property (assign,nonatomic)BOOL isExchangeFromeOut;
 
 @end

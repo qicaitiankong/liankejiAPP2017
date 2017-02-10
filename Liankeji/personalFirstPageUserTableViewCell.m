@@ -8,12 +8,15 @@
 
 #import "personalFirstPageUserTableViewCell.h"
 #import "appCommonAttributes.h"
+#import <Masonry.h>
+
 //行高
-#define ROW_HEIGHT 80
+#define ROW_HEIGHT SCREEN_HEIGHT * 0.107
 
 @implementation personalFirstPageUserTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier _tableview:(UITableView*)_tableView{
+    
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         self.backgroundColor = [UIColor whiteColor];
@@ -43,12 +46,58 @@
         //
         self.goLabel= [[UILabel alloc]initWithFrame:CGRectMake(_tableView.frame.size.width - 30, self.memberImageView.frame.origin.y, 30, 20)];
         self.goLabel.text = @">";
-        //self.goLabel.backgroundColor = [UIColor blueColor];
+        self.goLabel.textColor = [UIColor grayColor];
         [self.contentView addSubview:self.goLabel];
         
     }
     return self;
 }
+-(void)lzhMakeConstrains{
+    [self.userImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.contentView).offset(SCREEN_HEIGHT * 0.011);
+        make.bottom.mas_equalTo(self.contentView).offset(-SCREEN_HEIGHT * 0.011);
+        make.width.mas_equalTo(self.userImageView.mas_height);
+        make.left.mas_equalTo(SCREEN_WIDTH * 0.026);
+    }];
+
+    [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.userImageView.mas_right).offset(SCREEN_WIDTH * 0.046);
+        make.top.mas_equalTo(self.userImageView);
+        make.width.mas_equalTo(SCREEN_WIDTH * 0.186);
+        make.height.mas_equalTo(self.userImageView.mas_height).multipliedBy(0.4);
+    }];
+    
+    [self.jobLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.userNameLabel);
+        make.width.mas_equalTo(self.userNameLabel.mas_width);
+        make.top.mas_equalTo(self.userNameLabel.mas_bottom).offset(SCREEN_HEIGHT * 0.013);
+        make.height.mas_equalTo(SCREEN_HEIGHT * 0.022);
+    }];
+    
+    [self.memberImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView.mas_right).offset(- 0.4 * SCREEN_WIDTH);
+        make.width.mas_equalTo(SCREEN_WIDTH * 0.06);
+        make.height.mas_equalTo(self.memberImageView.mas_width);
+        make.centerY.mas_equalTo(self.contentView);
+    }];
+    
+    [self.memberNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.memberImageView.mas_right).offset(SCREEN_WIDTH * 0.024);
+        make.width.mas_equalTo(SCREEN_WIDTH * 0.146);
+        make.height.mas_equalTo(self.memberImageView.mas_height).multipliedBy(0.9);
+        make.centerY.mas_equalTo(self.contentView);
+    }];
+    
+    [self.goLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.contentView).offset(-SCREEN_WIDTH * 0.026);
+        make.height.mas_equalTo(ROW_HEIGHT * 0.333);
+        make.width.mas_equalTo(self.goLabel.mas_height).multipliedBy(0.75);
+        make.centerY.mas_equalTo(self.contentView);
+    }];
+
+    
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

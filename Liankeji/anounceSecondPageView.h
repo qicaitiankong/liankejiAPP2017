@@ -22,8 +22,7 @@
 @property (strong,nonatomic)UILabel *ownTitleLabel;
 
 @property (strong,nonatomic)UIButton *photoButt;
-//窗口上的baseView
-@property (strong,nonatomic)UIView *baseView;
+
 
 @property (assign,nonatomic)id<announceSecondPageDelegate> delegate;
 

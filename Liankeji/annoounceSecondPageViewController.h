@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "anounceSecondPageView.h"
+#import "announceWindowView.h"
+
 
 @interface annoounceSecondPageViewController : UIViewController
 @property (strong,nonatomic)anounceSecondPageView *anounceView;
+
+@property (strong,nonatomic)announceWindowView *windowView;
 
 @end

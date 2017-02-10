@@ -14,8 +14,6 @@
 
 //6个按钮组的tag基数
 #define BUTTON_TAG 100
-//按钮最初开始的位置
-#define BUTTON_BEGIN_Y 300
 //按钮垂直间距
 #define BUTTON_VERTICAL_SPACE SCREEN_HEIGHT * 0.074
 
@@ -28,8 +26,6 @@
     UIButton *cancelButton;
     //按钮标题数组
     NSMutableArray *buttonTitleArray;
-    //上一个点击的tabbar按钮索引
-    NSInteger previousTabbarIndex;
     //第一行按钮
     NSMutableArray *buttonArr1;
     //第二行按钮
@@ -39,6 +35,7 @@
 
 @implementation announceWindowView
 
+@synthesize previousTabbarIndex;
 
 -(instancetype)initWithFrame:(CGRect)frame targetDelegate:(id)_delegate{
     self = [super initWithFrame:frame];
@@ -48,6 +45,7 @@
         buttonArr2 = [[NSMutableArray alloc]initWithCapacity:3];
         buttonTitleArray = [[NSMutableArray alloc]initWithObjects:@"发布技术",@"发布项目",@"发布需求",@"发布资金",@"发布设备",@"发布文章", nil];
         self.targetDelegate = _delegate;
+        self.logoDelegate = _delegate;
         [self addAnimationImageView];
         [self addGroupButton];
         [self addCancelButton];
@@ -55,14 +53,6 @@
     }
     return self;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 
 //添加logo
 - (void)addAnimationImageView{
@@ -113,7 +103,7 @@
 - (void)addCancelButton{
     cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelButton.frame = CGRectMake(0, SCREEN_HEIGHT - 80, SCREEN_WIDTH, 80);
-    cancelButton.backgroundColor = [UIColor whiteColor];
+    cancelButton.backgroundColor = [UIColor grayColor];
     
     [cancelButton setImage:[UIImage imageNamed:@"anounce1_cancel.@3x"] forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(cancelHandler:) forControlEvents:UIControlEventTouchUpInside];
@@ -135,13 +125,15 @@
 }
 //logo弹出动画
 - (void)animationLogoViewPopOut{
+   // __weak typeof(self) weakSelf = self;
+
     [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
         animationImageView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         if(finished){
             [[LZHTabBarController shareLZHTabbarController]tabBar:nil didClickBtn:previousTabbarIndex];
             [[LZHTabBarController shareLZHTabbarController].myTabBar setSelectIndex:previousTabbarIndex];
-            [self removeFromSuperview];
+            [self.logoDelegate logoOutComplete];
         }
     }];
 }
@@ -214,8 +206,14 @@
         make.top.mas_equalTo(top);
         make.height.mas_equalTo(button1.mas_width).multipliedBy(1.333);
     }];
-    
-    
+    //获取第二行按钮样本
+    UIButton *button2 = buttonArr2[0];
+    [cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(button2.mas_bottom).offset(SCREEN_HEIGHT * 0.097);
+        make.width.mas_equalTo(self).multipliedBy(0.6);
+        make.centerX.mas_equalTo(self.mas_centerX);
+        make.height.mas_equalTo(cancelButton.mas_width).multipliedBy(0.21);
+    }];
 }
 
 @end

@@ -23,23 +23,17 @@
     self.anounceView = [[anounceSecondPageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) delegate:self];
     self.anounceView.ownTitleLabel.text = @"发布技术";
     [self.view addSubview:self.anounceView];
-
+    
     // Do any additional setup after loading the view.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [UIView animateWithDuration:0.5 animations:^{
-        self.anounceView.transform = CGAffineTransformIdentity;
-    } completion:^(BOOL finished) {
-    }];
-}
+
 -(void)returnHandler{
         [UIView animateWithDuration:0.5 animations:^{
             self.anounceView.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width, 0);
-            self.anounceView.baseView.transform = CGAffineTransformIdentity;
+             self.windowView.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:NO completion:^{
-                
             }];
         }];
 }
