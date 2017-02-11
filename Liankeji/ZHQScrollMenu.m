@@ -15,10 +15,10 @@
 }
 @synthesize  lineView;
 //设置横竖屏的，用不到
--(void)updateUI
-{
-    self.frame=CGRectMake(0, self.frame.origin.y, self.superview.frame.size.width, self.frame.size.height);
-}
+//-(void)updateUI
+//{
+//    self.frame=CGRectMake(0, self.frame.origin.y, self.superview.frame.size.width, self.frame.size.height);
+//}
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self=[super initWithFrame:frame];
@@ -32,15 +32,16 @@
 }
 -(void)addButton:(UIButton *)btn
 {
+    //btn.backgroundColor = [UIColor grayColor];
     //调整按钮位置
-    btn.frame=CGRectMake(5*(buttons.count+1)+100*buttons.count, 0, 100, 40);
+    btn.frame=CGRectMake(SCREEN_WIDTH * 0.026*(buttons.count+1)+SCREEN_WIDTH * 0.133*buttons.count, 0, SCREEN_WIDTH * 0.133, self.bounds.size.height * 0.4);
     btn.center = CGPointMake(btn.center.x, self.bounds.size.height / 2);
     [btn setTitleColor:self.norMalTitleColor forState:UIControlStateNormal];
     //线
     if(buttons.count==0)//第一个按钮
     {
         [btn setTitleColor:self.changeTitleColor  forState:UIControlStateNormal];
-        lineView=[[UIView alloc]initWithFrame:CGRectMake(btn.frame.origin.x, btn.frame.origin.y + btn.frame.size.height + 3, 100, 1)];
+        lineView=[[UIView alloc]initWithFrame:CGRectMake(btn.frame.origin.x, btn.frame.origin.y + btn.frame.size.height + 3, SCREEN_WIDTH * 0.133, 1)];
         lineView.backgroundColor=self.lineColor;
         [self addSubview:lineView];
     }

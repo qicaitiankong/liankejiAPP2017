@@ -12,11 +12,8 @@
 #import "inforMationTableView.h"
 #import "informationTableViewCell.h"
 #import "informationDetailViewController.h"
-
-
 //滚动按钮标签基数
 #define SCROLLVIEW_BUTTON_TAG 100
-
 
 @interface informationViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>{
     //左右滑动按钮组
@@ -31,9 +28,13 @@
     inforMationTableView *ownCurrentTableView;
     //添加盛放tableView的滑动的scrollView
     UIScrollView *ownTableScrollView;
-    
     //标题数组
     NSArray *buttonTitles;
+    //滚动索引
+    CGFloat scrollIndex;
+    
+    CGFloat oldScrollIndex;
+
 }
 
 @end
@@ -47,7 +48,7 @@
     [self setNavigationButton];
     [self createScrollButtonGroup];
     [self addLeftAndRightScrollView];
-    
+    NSLog(@"screen width=%lf",SCREEN_WIDTH);
     // Do any additional setup after loading the view.
 }
 //设置导航栏的右按钮
@@ -64,7 +65,7 @@
 //创建滑动分类按钮组
 - (void)createScrollButtonGroup{
     //NSLog(@"导航栏高度：%lf", self.navigationController.navigationBar.frame.size.height);
-    scrollViewMenu = [[ZHQScrollMenu alloc]initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height, self.view.frame.size.width, 60)];
+    scrollViewMenu = [[ZHQScrollMenu alloc]initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height, self.view.frame.size.width, SCREEN_HEIGHT * 0.068)];
     scrollViewMenu.norMalTitleColor = RGBA(87, 87, 86, 1);
     scrollViewMenu.changeTitleColor = RGBA(35, 119, 212, 1);
     scrollViewMenu.lineColor = RGBA(35, 119,212, 1);
@@ -86,59 +87,65 @@
 //添加左右滑动切换页面的scrollView
 - (void)addLeftAndRightScrollView{
     ownTableScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT + STATUSBAR_HEIGHT + scrollViewMenu.bounds.size.height, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVIGATION_HEIGHT - scrollViewMenu.bounds.size.height)];
-    
     ownTableScrollView.delegate = self;
-    
     ownTableScrollView.contentSize = CGSizeMake(SCREEN_WIDTH *buttonTitles.count, ownTableScrollView.bounds.size.height);
-    
     for(int i = 0; i < buttonTitles.count; i ++){
-        
         inforMationTableView *ownTableView = [[inforMationTableView alloc]initWithFrame:CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, ownTableScrollView.bounds.size.height) style:UITableViewStylePlain];
         ownTableView.dataSource = self;
         ownTableView.delegate = self;
         ownTableView.tag = i;
         [ownTableView reloadData];
         [ownTableScrollView addSubview:ownTableView];
-        
     }
     ownTableScrollView.pagingEnabled = YES;
     //ownTableScrollView.backgroundColor = [UIColor redColor];
     [self.view addSubview:ownTableScrollView];
 }
-//需要改进，因为当拖动结束时不能准确计算X偏移量
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    //利用常用算法计算page
-    CGFloat pageWidth = ownTableScrollView.bounds.size.width;
-    int page = floor((ownTableScrollView.contentOffset.x - pageWidth / 2)/pageWidth) + 1;
-    
-    //NSLog(@"page=%d",page);
-    //NSLog(@"%lf,%lf",scrollView.contentOffset.x,SCREEN_WIDTH);
-    
-    // NSInteger X = scrollView.contentOffset.x / SCREEN_WIDTH;
-    
-    UIButton *button = [scrollViewMenu viewWithTag:SCROLLVIEW_BUTTON_TAG + page];
-    [scrollViewMenu selected:button];
-   //NSLog(@"title=%@",button.titleLabel.text);
-    
-    
-    //NSLog(@"结束拖动=%ld",X);
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //忽略垂直滚动
+    if(scrollView.contentOffset.y != 0){
+        return;
+    }
+    //NSLog(@"视图滚动");
+    CGFloat xioashuPart = 0;
+    //整数部分
+    CGFloat zhengshuPart = 0;
+    CGFloat index = scrollView.contentOffset.x / SCREEN_WIDTH;
+    scrollIndex = index;
+    if(scrollIndex < 0 || scrollIndex > 5){
+        //NSLog(@"不处理");
+        return;
+    }
+    NSString *indexStr = [NSString stringWithFormat:@"%.1lf",index];
+    NSArray *strArr = [indexStr componentsSeparatedByString:@"."];
+    NSString *str0 = strArr[0];
+      NSString *str1 = strArr[1];
+    zhengshuPart = [str0 floatValue];
+    xioashuPart = [str1 floatValue];
+    //NSLog(@"发生滚动：%lf,%lf",zhengshuPart,xiaoshuPart);
+    //当确保翻到另一页再更改按钮状态
+    if(oldScrollIndex != index && 0 == xioashuPart){
+        NSInteger page = zhengshuPart;
+        UIButton *button = [scrollViewMenu viewWithTag:SCROLLVIEW_BUTTON_TAG + page];
+        [scrollViewMenu selected:button];
+        scrollViewSelectButton = button;
+        oldScrollIndex = index;
+    }
 }
 //按钮组点击事件
 - (void)buttonHandler:(UIButton*)_b{
+      NSLog(@"当前点击按钮%li,上次点击的按钮 %li",_b.tag,scrollViewSelectButton.tag);
     if(scrollViewSelectButton != _b){
-        
-        
         [scrollViewMenu selected:_b];
-        
+        scrollViewSelectButton = _b;
         [UIView animateWithDuration:0.2 animations:^{
              ownTableScrollView.contentOffset = CGPointMake((_b.tag - SCROLLVIEW_BUTTON_TAG) * ownTableScrollView.bounds.size.width, 0);
         }];
          NSLog(@"点击按钮%li",_b.tag);
-        
         //重新加载新闻
     }
-    scrollViewSelectButton = _b;
-   
+    
 }
 
 
@@ -168,7 +175,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return SCREEN_HEIGHT * 0.149;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

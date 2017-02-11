@@ -30,7 +30,6 @@
     [super viewDidLoad];
     //self.isExchangeFromeOut = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-   
         // Do any additional setup after loading the view.
 }
 

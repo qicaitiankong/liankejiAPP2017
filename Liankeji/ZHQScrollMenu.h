@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "appCommonAttributes.h"
 
 @interface ZHQScrollMenu : UIScrollView
 //添加按钮

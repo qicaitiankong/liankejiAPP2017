@@ -12,8 +12,9 @@
 #import <Masonry.h>
 #import "appCommonAttributes.h"
 #import "infomaFirstPageViewForCell.h"
+#import "ownAnimation.h"
 
-#define CELL_HEIGHT 100
+#define CELL_HEIGHT SCREEN_HEIGHT * 0.149
 
 @interface informationTableViewCell(){
     ownImageviewAndLableView *firstSmallDisplayView;
@@ -33,16 +34,18 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView*)_tableView{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
+        
         //左边图片
         ownImageView = [[UIImageView alloc]init];
         ownImageView.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:ownImageView];
         //首标题LABLE
         firstLable = [[UILabel alloc]init];
-        //firstLable.backgroundColor = [UIColor grayColor];
+        firstLable.backgroundColor = [UIColor grayColor];
         firstLable.textColor = RGBA(87, 86, 86, 1);
         firstLable.numberOfLines = 2;
         firstLable.font = [UIFont systemFontOfSize:15];
+        
         [self.contentView addSubview:firstLable];
         
         //紧靠图片右边的种类lable
@@ -86,19 +89,20 @@
         make.right.mas_equalTo(self.contentView).offset(-SCREEN_WIDTH * 0.019);
         make.top.mas_equalTo(ownImageView.mas_top);
         
-        make.height.mas_equalTo(ownImageView.mas_height).multipliedBy(0.45);
+        make.height.mas_equalTo(ownImageView.mas_height).multipliedBy(0.75);
     }];
     //种类标题
     [secondLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(firstLable.mas_left);
-        make.width.mas_equalTo(50);
-        make.height.mas_equalTo(secondLable.mas_width).multipliedBy(0.5);
+        make.width.mas_equalTo(self.contentView.mas_width).multipliedBy(0.066);
+        //make.height.mas_equalTo(secondLable.mas_width).multipliedBy(0.5);
+        make.top.mas_equalTo(firstLable.mas_bottom);
         make.bottom.mas_equalTo(ownImageView.mas_bottom).offset(0);
     }];
     
     [groupView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(secondLable.mas_right).offset(20);
-        make.right.mas_equalTo(self.contentView.mas_right).offset(-10);
+        make.left.mas_equalTo(secondLable.mas_right).offset(SCREEN_WIDTH * 0.12);
+        make.right.mas_equalTo(self.contentView.mas_right).offset(-SCREEN_WIDTH * 0.018);
         make.height.mas_equalTo(secondLable.mas_height);
         make.bottom.mas_equalTo(secondLable.mas_bottom);
     }];
