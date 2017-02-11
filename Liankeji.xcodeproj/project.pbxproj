@@ -132,6 +132,7 @@
 		049261FD1E1F277F00AFC111 /* commentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FC1E1F277F00AFC111 /* commentView.m */; };
 		049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */; };
 		049262031E1F939A00AFC111 /* cellFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049262021E1F939A00AFC111 /* cellFootView.m */; };
+		049C63051E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C63041E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m */; };
 		04A2E9D71E23238500E7F9DF /* userCommentParentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2E9D61E23238500E7F9DF /* userCommentParentView.m */; };
 		04A2E9DA1E23290C00E7F9DF /* HotCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2E9D91E23290C00E7F9DF /* HotCommentView.m */; };
 		04A2E9E31E23357600E7F9DF /* centerButtonGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2E9E21E23357600E7F9DF /* centerButtonGroupViewController.m */; };
@@ -441,6 +442,8 @@
 		049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userWriteCommentView.m; sourceTree = "<group>"; };
 		049262011E1F939A00AFC111 /* cellFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellFootView.h; sourceTree = "<group>"; };
 		049262021E1F939A00AFC111 /* cellFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cellFootView.m; sourceTree = "<group>"; };
+		049C63031E4EF06700B83543 /* lzhRedeceTopSpaceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhRedeceTopSpaceLabel.h; sourceTree = "<group>"; };
+		049C63041E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhRedeceTopSpaceLabel.m; sourceTree = "<group>"; };
 		04A2E9D51E23238500E7F9DF /* userCommentParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userCommentParentView.h; sourceTree = "<group>"; };
 		04A2E9D61E23238500E7F9DF /* userCommentParentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userCommentParentView.m; sourceTree = "<group>"; };
 		04A2E9D81E23290C00E7F9DF /* HotCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCommentView.h; sourceTree = "<group>"; };
@@ -1227,6 +1230,8 @@
 				0435BF461E1B379C00DE859D /* ownImageviewAndLableView.m */,
 				0412CD9C1E499B5000F664BA /* infomaFirstPageViewForCell.h */,
 				0412CD9D1E499B5000F664BA /* infomaFirstPageViewForCell.m */,
+				049C63031E4EF06700B83543 /* lzhRedeceTopSpaceLabel.h */,
+				049C63041E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1890,6 +1895,7 @@
 				04764C6C1E2DFD3000704C96 /* annoounceSecondPageViewController.m in Sources */,
 				04764C691E2DA85A00704C96 /* lzhAlertControllerViewController.m in Sources */,
 				04A2EA5B1E23575900E7F9DF /* AddressPickerView.m in Sources */,
+				049C63051E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m in Sources */,
 				047335371E305BCF00671F44 /* findFirstPageCollectionViewCell.m in Sources */,
 				99AA38F01E092C8C000A57BC /* sideMenuButton.m in Sources */,
 				047A3A121E2CB3A800651C7E /* announSecondPageNextStepView.m in Sources */,

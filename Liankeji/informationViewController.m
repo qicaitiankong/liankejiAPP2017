@@ -12,6 +12,8 @@
 #import "inforMationTableView.h"
 #import "informationTableViewCell.h"
 #import "informationDetailViewController.h"
+#import "ownTextSpace.h"
+
 //滚动按钮标签基数
 #define SCROLLVIEW_BUTTON_TAG 100
 
@@ -43,6 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setNavigationButton];
@@ -145,10 +148,7 @@
          NSLog(@"点击按钮%li",_b.tag);
         //重新加载新闻
     }
-    
 }
-
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -167,6 +167,7 @@
     
     [cell.ownImageView setImage:[UIImage imageNamed:@"1"]];
     cell.firstLable.text = @"2016年科技发展技术情况签订协议结果将于2017年";
+    [ownTextSpace setTextSpace:cell.firstLable.text targetLable:cell.firstLable textSpace:3];
     cell.secondLable.text = @"科技";
     cell.firstSmallNumberString = @"7000";
     cell.secondSmallNumberString = @"8000";

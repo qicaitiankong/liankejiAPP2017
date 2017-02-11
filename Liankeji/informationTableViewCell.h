@@ -8,12 +8,13 @@
 //资讯的首页的自定义CELL
 
 #import <UIKit/UIKit.h>
+#import "lzhRedeceTopSpaceLabel.h"
 
 @interface informationTableViewCell : UITableViewCell
 
 @property (strong,nonatomic)UIImageView *ownImageView;
 
-@property (strong,nonatomic)UILabel *firstLable;
+@property (strong,nonatomic)lzhRedeceTopSpaceLabel *firstLable;
 
 @property (strong,nonatomic)UILabel *secondLable;
 

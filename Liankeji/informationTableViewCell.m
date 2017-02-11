@@ -12,7 +12,6 @@
 #import <Masonry.h>
 #import "appCommonAttributes.h"
 #import "infomaFirstPageViewForCell.h"
-#import "ownAnimation.h"
 
 #define CELL_HEIGHT SCREEN_HEIGHT * 0.149
 
@@ -37,15 +36,15 @@
         
         //左边图片
         ownImageView = [[UIImageView alloc]init];
-        ownImageView.backgroundColor = [UIColor grayColor];
+        //ownImageView.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:ownImageView];
         //首标题LABLE
-        firstLable = [[UILabel alloc]init];
-        firstLable.backgroundColor = [UIColor grayColor];
+        firstLable = [[lzhRedeceTopSpaceLabel alloc]init];
+        //firstLable.backgroundColor = [UIColor grayColor];
         firstLable.textColor = RGBA(87, 86, 86, 1);
         firstLable.numberOfLines = 2;
         firstLable.font = [UIFont systemFontOfSize:15];
-        
+        [firstLable setVerticalAlignment:VerticalAlignmentTop];
         [self.contentView addSubview:firstLable];
         
         //紧靠图片右边的种类lable
