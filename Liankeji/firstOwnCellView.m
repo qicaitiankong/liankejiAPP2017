@@ -16,28 +16,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        self.ownImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height * 0.66)];
-        self.ownImageView.backgroundColor = [UIColor blueColor];
+        self.ownImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height * 0.692)];
+        //self.ownImageView.backgroundColor = [UIColor blueColor];
         [self addSubview:self.ownImageView];
-       
-        
-        
-        self.ownFirstTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(5, self.ownImageView.frame.origin.y + self.ownImageView.frame.size.height + 10, self.frame.size.width - 2 * 5, 40)];
-        
+        //
+        self.ownFirstTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * 0.012, self.ownImageView.frame.origin.y + self.ownImageView.frame.size.height + 0.056 * self.ownImageView.frame.size.height, self.frame.size.width - 2 * SCREEN_WIDTH * 0.012, 0.126 * self.frame.size.height)];
         self.ownFirstTitleLable.textColor = RGBA(32, 32, 32, 1);
         self.ownFirstTitleLable.font = [UIFont systemFontOfSize:19.5];
         self.ownFirstTitleLable.numberOfLines = 0;
-        
-        //并不是单例，只是没有修改过来
-//        GetCellHeight *lableHeight = [GetCellHeight ShareCellHeight];
-//        CGFloat firLableHeight = [lableHeight cellHeight:self.ownFirstTitleLable content:titleStr Cellwidth:self.ownFirstTitleLable.frame.size.width];
-        //重新根据内容调整高度
-        self.ownFirstTitleLable.frame = CGRectMake(self.ownFirstTitleLable.frame.origin.x, self.ownFirstTitleLable.frame.origin.y, self.ownFirstTitleLable.frame.size.width, 20);
-        //self.ownFirstTitleLable.text = titleStr;
-       // self.ownFirstTitleLable.backgroundColor = UIColor redColor];
+        // self.ownFirstTitleLable.backgroundColor = UIColor redColor];
         [self addSubview:self.ownFirstTitleLable];
-        
-        self.ownAuthorLable = [[UILabel alloc]initWithFrame:CGRectMake(self.ownFirstTitleLable.frame.origin.x,self.frame.size.height - 25, self.ownFirstTitleLable.frame.size.width, 20)];
+        //
+        self.ownAuthorLable = [[UILabel alloc]initWithFrame:CGRectMake(self.ownFirstTitleLable.frame.origin.x,self.frame.size.height - self.frame.size.height * 0.052 - 2, self.ownFirstTitleLable.frame.size.width, self.frame.size.height * 0.052)];
         self.ownAuthorLable.textColor = [UIColor lightGrayColor];
         self.ownAuthorLable.font = [UIFont systemFontOfSize:13];
         //self.ownAuthorLable.backgroundColor = [UIColor greenColor];
@@ -48,7 +38,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.ownAuthorLable.frame.origin.y + self.ownAuthorLable.frame.size.height + 17.5);
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.ownAuthorLable.frame.origin.y + self.ownAuthorLable.frame.size.height + 5);
 }
 /*
 // Only override drawRect: if you perform custom drawing.

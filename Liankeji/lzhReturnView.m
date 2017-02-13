@@ -25,6 +25,10 @@
         self.ownTitleLabel.textAlignment = NSTextAlignmentCenter;
         //self.ownTitleLabel.backgroundColor = [UIColor grayColor];
         [self addSubview:self.ownTitleLabel];
+        //
+        UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, self.frame.size.height - 1, self.frame.size.width, 1)];
+        line.backgroundColor = [UIColor colorWithRed:246 green:246 blue:246 alpha:1];
+        [self addSubview:line];
     }
     return self;
 }

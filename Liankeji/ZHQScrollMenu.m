@@ -11,47 +11,53 @@
 @implementation ZHQScrollMenu
 {
     NSMutableArray * buttons;
+    UIButton *scrollViewSelectButton;
     
 }
 @synthesize  lineView;
-//设置横竖屏的，用不到
-//-(void)updateUI
-//{
-//    self.frame=CGRectMake(0, self.frame.origin.y, self.superview.frame.size.width, self.frame.size.height);
-//}
--(instancetype)initWithFrame:(CGRect)frame
+
+-(instancetype)initWithFrame:(CGRect)frame delegate:(id<categoryButtonClickDelegate>)delelgate
 {
     self=[super initWithFrame:frame];
     if(self)
     {
+        self.targetDelegate = delelgate;
         //self.backgroundColor = [UIColor grayColor];
         buttons=[[NSMutableArray alloc]init];
         self.showsHorizontalScrollIndicator=NO;
     }
     return self;
 }
--(void)addButton:(UIButton *)btn
+-(void)addButton:(NSArray*)buttonTitleArr titleFontSize:(CGFloat)size
 {
     //btn.backgroundColor = [UIColor grayColor];
     //调整按钮位置
-    btn.frame=CGRectMake(SCREEN_WIDTH * 0.026*(buttons.count+1)+SCREEN_WIDTH * 0.133*buttons.count, 0, SCREEN_WIDTH * 0.133, self.bounds.size.height * 0.4);
-    btn.center = CGPointMake(btn.center.x, self.bounds.size.height / 2);
-    [btn setTitleColor:self.norMalTitleColor forState:UIControlStateNormal];
-    //线
-    if(buttons.count==0)//第一个按钮
-    {
-        [btn setTitleColor:self.changeTitleColor  forState:UIControlStateNormal];
-        lineView=[[UIView alloc]initWithFrame:CGRectMake(btn.frame.origin.x, btn.frame.origin.y + btn.frame.size.height + 3, SCREEN_WIDTH * 0.133, 1)];
-        lineView.backgroundColor=self.lineColor;
-        [self addSubview:lineView];
-    }
-    //保存到数组中
-    [buttons addObject:btn];
-    //添加到界面
-    [self addSubview:btn];
-    if(btn.frame.origin.x+btn.frame.size.width>self.frame.size.width)//内容超出滚动视图范围
-    {
-        self.contentSize=CGSizeMake(btn.frame.origin.x+btn.frame.size.width, self.frame.size.height);
+    for(NSInteger i = 0; i <buttonTitleArr.count; i ++){
+        UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.tag = i;
+        btn.frame=CGRectMake(i * self.frame.size.width / buttonTitleArr.count, 0, self.frame.size.width / buttonTitleArr.count, self.bounds.size.height * 0.4);
+        btn.center = CGPointMake(btn.center.x, self.bounds.size.height / 2);
+        [btn setTitleColor:self.norMalTitleColor forState:UIControlStateNormal];
+        [btn setTitle:buttonTitleArr[i] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:size];
+        //btn.backgroundColor = [UIColor grayColor];
+        //添加到界面
+        [self addSubview:btn];
+        [btn addTarget:self action:@selector(buttonHandler:) forControlEvents:UIControlEventTouchUpInside];
+        if(i == 0)//第一个按 钮
+        {
+            [btn setTitleColor:self.changeTitleColor  forState:UIControlStateNormal];
+            lineView=[[UIView alloc]initWithFrame:CGRectMake(btn.frame.origin.x, btn.frame.origin.y + btn.frame.size.height + 3, btn.frame.size.width, 1)];
+            lineView.backgroundColor=self.lineColor;
+            [self addSubview:lineView];
+        }
+        //保存到数组中
+        [buttons addObject:btn];
+        
+        if(btn.frame.origin.x+btn.frame.size.width>self.frame.size.width)//内容超出滚动视图范围
+        {
+            //self.contentSize=CGSizeMake(btn.frame.origin.x+btn.frame.size.width, self.frame.size.height);
+        }
     }
 }
 //修改变化状态
@@ -70,4 +76,29 @@
         lineView.frame=CGRectMake(btn.frame.origin.x, lineView.frame.origin.y, lineView.frame.size.width, lineView.frame.size.height);
     }];
 }
+//设置按钮显示内容
+- (void)setButtonTitle:(NSString*)title index:(NSInteger)buttonIndex{
+    UIButton *button = buttons[buttonIndex];
+    [button setTitle:title forState:UIControlStateNormal];
+}
+
+
+- (void)buttonHandler:(UIButton*)_b{
+    if(self.targetDelegate){
+        if(self.repeatClick == YES){
+            UIButton *button = _b;
+            [self selected:button];
+            [self.targetDelegate categoryButtonHandler:_b.tag];
+            scrollViewSelectButton = _b;
+        }else{//默认不支持
+            if(scrollViewSelectButton!= _b){
+                UIButton *button = _b;
+                [self selected:button];
+                [self.targetDelegate categoryButtonHandler:_b.tag];
+                scrollViewSelectButton = _b;
+            }
+        }
+    }
+}
+
 @end

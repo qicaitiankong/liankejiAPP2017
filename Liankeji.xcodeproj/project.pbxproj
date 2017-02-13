@@ -132,7 +132,10 @@
 		049261FD1E1F277F00AFC111 /* commentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FC1E1F277F00AFC111 /* commentView.m */; };
 		049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */; };
 		049262031E1F939A00AFC111 /* cellFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049262021E1F939A00AFC111 /* cellFootView.m */; };
+		04976EB91E51877700116BE1 /* lzhPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04976EB81E51877700116BE1 /* lzhPickerView.m */; };
+		04976EBC1E5189AA00116BE1 /* lzhShadeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04976EBB1E5189AA00116BE1 /* lzhShadeButton.m */; };
 		049C63051E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C63041E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m */; };
+		049C63091E4EFB0400B83543 /* lzhRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C63081E4EFB0400B83543 /* lzhRefresh.m */; };
 		04A2E9D71E23238500E7F9DF /* userCommentParentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2E9D61E23238500E7F9DF /* userCommentParentView.m */; };
 		04A2E9DA1E23290C00E7F9DF /* HotCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2E9D91E23290C00E7F9DF /* HotCommentView.m */; };
 		04A2E9E31E23357600E7F9DF /* centerButtonGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2E9E21E23357600E7F9DF /* centerButtonGroupViewController.m */; };
@@ -442,8 +445,14 @@
 		049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userWriteCommentView.m; sourceTree = "<group>"; };
 		049262011E1F939A00AFC111 /* cellFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellFootView.h; sourceTree = "<group>"; };
 		049262021E1F939A00AFC111 /* cellFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cellFootView.m; sourceTree = "<group>"; };
+		04976EB71E51877700116BE1 /* lzhPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhPickerView.h; sourceTree = "<group>"; };
+		04976EB81E51877700116BE1 /* lzhPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhPickerView.m; sourceTree = "<group>"; };
+		04976EBA1E5189AA00116BE1 /* lzhShadeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhShadeButton.h; sourceTree = "<group>"; };
+		04976EBB1E5189AA00116BE1 /* lzhShadeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhShadeButton.m; sourceTree = "<group>"; };
 		049C63031E4EF06700B83543 /* lzhRedeceTopSpaceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhRedeceTopSpaceLabel.h; sourceTree = "<group>"; };
 		049C63041E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhRedeceTopSpaceLabel.m; sourceTree = "<group>"; };
+		049C63071E4EFB0400B83543 /* lzhRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhRefresh.h; sourceTree = "<group>"; };
+		049C63081E4EFB0400B83543 /* lzhRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhRefresh.m; sourceTree = "<group>"; };
 		04A2E9D51E23238500E7F9DF /* userCommentParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userCommentParentView.h; sourceTree = "<group>"; };
 		04A2E9D61E23238500E7F9DF /* userCommentParentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userCommentParentView.m; sourceTree = "<group>"; };
 		04A2E9D81E23290C00E7F9DF /* HotCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCommentView.h; sourceTree = "<group>"; };
@@ -917,6 +926,15 @@
 			name = "我的";
 			sourceTree = "<group>";
 		};
+		049C63061E4EFA7E00B83543 /* 自定义刷新控件 */ = {
+			isa = PBXGroup;
+			children = (
+				049C63071E4EFB0400B83543 /* lzhRefresh.h */,
+				049C63081E4EFB0400B83543 /* lzhRefresh.m */,
+			);
+			name = "自定义刷新控件";
+			sourceTree = "<group>";
+		};
 		04A2E9DE1E2333BB00E7F9DF /* M */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,6 +955,8 @@
 				04A2EA631E2374D700E7F9DF /* cityPickerDelegate.h */,
 				046CFB731E34548100E80E9F /* lzhDealNavigationColor.h */,
 				046CFB741E34548100E80E9F /* lzhDealNavigationColor.m */,
+				04976EB71E51877700116BE1 /* lzhPickerView.h */,
+				04976EB81E51877700116BE1 /* lzhPickerView.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1472,6 +1492,7 @@
 		99E41F7F1DED5C9100F32968 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				049C63061E4EFA7E00B83543 /* 自定义刷新控件 */,
 				0473353D1E30A6DA00671F44 /* C */,
 				047A39CC1E2C5FA800651C7E /* 自定义用于返回的view */,
 				047A39C01E2C4E1C00651C7E /* ownAnimation.h */,
@@ -1492,6 +1513,8 @@
 				9923B5921E05702A00420633 /* appCommonAttributes.h */,
 				04CDD9B41E1E44CB009330FD /* ownTextSpace.h */,
 				04CDD9B51E1E44CB009330FD /* ownTextSpace.m */,
+				04976EBA1E5189AA00116BE1 /* lzhShadeButton.h */,
+				04976EBB1E5189AA00116BE1 /* lzhShadeButton.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1913,7 +1936,9 @@
 				0435BF9D1E1B8ED300DE859D /* informationSecondPgeTavCell.m in Sources */,
 				047A39D21E2C678400651C7E /* anounceSecondPageView.m in Sources */,
 				0480EAF41E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m in Sources */,
+				04976EBC1E5189AA00116BE1 /* lzhShadeButton.m in Sources */,
 				047A3A0F1E2CACA600651C7E /* announceSecondPageNextStepButt.m in Sources */,
+				04976EB91E51877700116BE1 /* lzhPickerView.m in Sources */,
 				99E41F881DED7EDD00F32968 /* ShareUrlString.m in Sources */,
 				0434BDED1E1CD2060096136E /* ownHeaderViewForCell.m in Sources */,
 				99E41F731DED2B1E00F32968 /* PersonalTableViewCell.m in Sources */,
@@ -1928,6 +1953,7 @@
 				04CDD9B31E1DDD3B009330FD /* cellHeaderView3.m in Sources */,
 				0473353C1E30A6D300671F44 /* searchViewController.m in Sources */,
 				99AA38EC1E09053B000A57BC /* LMJScrollTextView.m in Sources */,
+				049C63091E4EFB0400B83543 /* lzhRefresh.m in Sources */,
 				99C1F9E61E1104F7004DE512 /* AnounceButtonView.m in Sources */,
 				0432CF891E15F88F00701F16 /* sateliteMenuCenterButton.m in Sources */,
 				0480EAB41E2F00D30000E084 /* personalViewOfFirstPage.m in Sources */,

@@ -18,6 +18,7 @@ sideMenuButton *sideButton;
 -(instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray*)_titleArr delegate:(id <pullDownMenuDelegate>) _delegate{
     self = [super initWithFrame:frame];
     if(self){
+        self.alpha = 0.1;
         NSMutableArray *buttonArr = [[NSMutableArray alloc]initWithCapacity:4];
         self.downMenuDelegate = _delegate;
         self.backgroundColor = [UIColor darkGrayColor];
@@ -73,8 +74,9 @@ sideMenuButton *sideButton;
 - (void)popAnimation:(BOOL)cancelButtonClick{
     if(cancelButtonClick){
         
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
             self.transform = CGAffineTransformMakeTranslation(self.frame.size.width, 0);
+            self.alpha = 1;
 
         } completion:^(BOOL finished) {
             self.isOut = YES;
@@ -82,6 +84,7 @@ sideMenuButton *sideButton;
     }else{
         [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
             self.transform = CGAffineTransformIdentity;
+            self.alpha = 0.1;
         } completion:^(BOOL finished) {
             self.isOut = NO;
         }];

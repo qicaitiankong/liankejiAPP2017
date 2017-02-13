@@ -24,8 +24,8 @@
 //屏幕高度、宽度
 #define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-
-#define NAVIGATION_HEIGHT self.navigationController.navigationBar.frame.size.height
+//导航栏
+#define NAVIGATION_HEIGHT [UIScreen mainScreen].bounds.size.height * 0.065
 //电池栏高度
 #define STATUSBAR_HEIGHT     [UIApplication sharedApplication].statusBarFrame.size.height
 

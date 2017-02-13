@@ -9,20 +9,30 @@
 #import <UIKit/UIKit.h>
 #import "appCommonAttributes.h"
 
+@protocol categoryButtonClickDelegate <NSObject>
+- (void)categoryButtonHandler:(NSInteger)tag;
+@end
+
 @interface ZHQScrollMenu : UIScrollView
+
+-(instancetype)initWithFrame:(CGRect)frame delegate:(id<categoryButtonClickDelegate>)delelgate;
+
 //添加按钮
--(void)addButton:(UIButton *)btn;
-//设置选中按钮
--(void)selected:(UIButton *)btn;
-//转屏更新控件（目前用不到）
--(void)updateUI;
+-(void)addButton:(NSArray*)buttonTitleArr titleFontSize:(CGFloat)size
+;
+//设置按钮标题
+- (void)setButtonTitle:(NSString*)title index:(NSInteger)buttonIndex;
 //标题的正常颜色
 @property (strong,nonatomic)UIColor *norMalTitleColor;
 //标题改变颜色
 @property (strong,nonatomic)UIColor *changeTitleColor;
 //线的颜色
 @property (strong,nonatomic)UIColor *lineColor;
-
+//细线
 @property (strong,nonatomic)UIView * lineView;
+//点击代理
+@property (assign,nonatomic) id<categoryButtonClickDelegate>targetDelegate;
+//按钮是否支持重复点击（由于该空间被在不同地方使用，功能也需要动态调节）
+@property (assign,nonatomic)BOOL repeatClick;
 
 @end

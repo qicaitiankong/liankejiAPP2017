@@ -61,6 +61,9 @@
     [self addSateliteMenu];
     [self initTableView];
     [self createSideMenu];
+    NSLog(@"导航栏高度 %lf screenheight = %lf",self.navigationController.navigationBar.frame.size.height,[UIScreen mainScreen].bounds.size.height);
+    
+    
 }
 //处理滑动导航栏的渐变
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

@@ -77,7 +77,7 @@
     UILabel *mainLable = [[UILabel alloc]init];
     mainLable.textAlignment = NSTextAlignmentLeft;
     mainLable.font = [UIFont systemFontOfSize:24];
-    NSString *detailContentString = @"央视新闻客户端1月4日消息，在“萨德”反导系统入韩问题上，韩国防部今天（4号）在工作汇报中称，“萨德”是韩方针对朝鲜威胁而采取的应对措施，绝无政治考量。韩方将依照日程正常推进“萨德”系统部署工作。韩国防部还称，将继续向中国政府介绍韩方立场。此前，中方曾多次表示，“萨德”反导系统覆盖范围远远超出半岛防卫需求，深入亚洲大陆腹地，严重损害包括中国在内的本地区有关国家战略安全利益，不利于维护朝鲜半岛的和平与稳定。希望有关国家正视中方合理关切，停止有关部署进程。";
+    NSString *detailContentString = @"央视新闻客户端1月4日消息，在“萨德”反导系统入韩问题上，韩国防部今天（4号）在工作汇报中称，“萨德”是韩方针对朝鲜威胁而采取的应对措施，绝无政治考量。韩方将依照日程正常推进“萨德”系统部署工作。韩国防部还称，将继续向中国政府介绍韩方立场。此前，中方曾多次表示.";
     
     UILabel *detailLable = [[UILabel alloc]init];
     detailLable.textAlignment = NSTextAlignmentLeft;
@@ -90,7 +90,8 @@
     ownHeaderViewForCell *view1 = [[ownHeaderViewForCell alloc]initWithFrame:CGRectMake(0,-(300 + 200 + headerView2Height + 150 + 50), self.view.frame.size.width, 300 + 200 + headerView2Height + 150 + 50) headerView2Height:headerView2Height mainTitleLabHeight:mainTitleLableHeigh detailLableHeight:detailTitleLableHeigh clickDelegate:self];
     //给view0传值
     [view1.firstView0ImageView setImage:[UIImage imageNamed:@"infotest01.jpeg"]];
-    view1.firstView0TitleLabel.text = @"链科技与众多企业合作完成了相关项目转接,准备为下期企业合作整合做准备";
+    view1.firstView0TitleLabel.text = @"链科技与众多企业合作完成了相关项目转接,准备为下期企业合作整合做准备链科技与众多企业合作完成了相关项目转接,";
+    
     [view1.firstView0TitleLabel sizeToFit];
     
     view1.firstView0AuthorLabel.text = @"作者：罗主席";
