@@ -23,7 +23,7 @@
         self.ownFirstTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * 0.012, self.ownImageView.frame.origin.y + self.ownImageView.frame.size.height + 0.056 * self.ownImageView.frame.size.height, self.frame.size.width - 2 * SCREEN_WIDTH * 0.012, 0.126 * self.frame.size.height)];
         self.ownFirstTitleLable.textColor = RGBA(32, 32, 32, 1);
         self.ownFirstTitleLable.font = [UIFont systemFontOfSize:19.5];
-        self.ownFirstTitleLable.numberOfLines = 0;
+        self.ownFirstTitleLable.numberOfLines = 3;
         // self.ownFirstTitleLable.backgroundColor = UIColor redColor];
         [self addSubview:self.ownFirstTitleLable];
         //

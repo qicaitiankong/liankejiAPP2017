@@ -18,15 +18,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        
-      firstOwnCellView *firstView = [[firstOwnCellView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300) titleString:@""];
+        //第一个view(上部图片标题加作者)
+      firstOwnCellView *firstView = [[firstOwnCellView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, SCREEN_HEIGHT * 0.506) titleString:@""];
         self.firstView0ImageView = firstView.ownImageView;
         self.firstView0TitleLabel = firstView.ownFirstTitleLable;
         self.firstView0AuthorLabel = firstView.ownAuthorLable;
         [self addSubview:firstView];
         
-        //第一个view(头像区域)
-        cellHeaderView1 *view1 = [[cellHeaderView1 alloc]initWithFrame:CGRectMake(0, firstView.frame.origin.y + firstView.frame.size.height, self.frame.size.width, 200)];
+        //第2个view(头像区域)
+        cellHeaderView1 *view1 = [[cellHeaderView1 alloc]initWithFrame:CGRectMake(0, firstView.frame.origin.y + firstView.frame.size.height, self.frame.size.width, SCREEN_HEIGHT * 0.272)];
         [self addSubview:view1];
         self.userImageView = view1.userImageView;
         self.userNameLable = view1.userNameLable;
@@ -34,17 +34,18 @@
         self.readImageView = view1.readImageView;
         self.readLable = view1.readLable;
         self.attentionButton = view1.attentionButton;
-        //第二个VIEW(标题及详情内容区域)
+        //第3个VIEW(标题及详情内容区域)
         cellHeaderView2 *view2 = [[cellHeaderView2 alloc]initWithFrame:CGRectMake(0, view1.frame.origin.y + view1.frame.size.height, self.frame.size.width, _headerView2Height) lable1Height:mainLableHeight lable2Height:detailHeight];
         self.mainTitleLable = view2.mainTitleLable;
         self.detailContentLable = view2.detailContentLable;
         [self addSubview:view2];
         //NSLog(@"组头前两个VIEW高度%lf",view2.frame.origin.y + view2.bounds.size.height);
         //添加分享模块
-        cellHeaderView3 *view3 = [[cellHeaderView3 alloc]initWithFrame:CGRectMake(0, view2.frame.origin.y + view2.frame.size.height, self.frame.size.width, 150) clickDelegate:ownDelegate];
+        cellHeaderView3 *view3 = [[cellHeaderView3 alloc]initWithFrame:CGRectMake(0, view2.frame.origin.y + view2.frame.size.height, self.frame.size.width, SCREEN_HEIGHT * 0.239) clickDelegate:ownDelegate];
         [self addSubview:view3];
         //添加热门评论
-        HotCommentView *hotView = [[HotCommentView alloc]initWithFrame:CGRectMake(0, view3.frame.origin.y + view3.frame.size.height, self.frame.size.width, 50)];
+        HotCommentView *hotView = [[HotCommentView alloc]initWithFrame:CGRectMake(0, view3.frame.origin.y + view3.frame.size.height, self.frame.size.width, SCREEN_HEIGHT * 0.07)];
+        //hotView.backgroundColor = [UIColor grayColor];
         [self addSubview:hotView];
     }
     return self;

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "cellHeaderView2.h"
 #import "cellHeaderView3.h"
+#import "lzhRedeceTopSpaceLabel.h"
 
 @interface ownHeaderViewForCell : UIView
 //第一个视图中的属性
@@ -25,7 +26,7 @@
 //名字
 @property (strong,nonatomic) UILabel *userNameLable;
 //介绍
-@property (strong,nonatomic) UILabel *introduceLable;
+@property (strong,nonatomic) lzhRedeceTopSpaceLabel *introduceLable;
 //阅读量图片
 @property (strong,nonatomic) UIImageView *readImageView;
 //阅读量
