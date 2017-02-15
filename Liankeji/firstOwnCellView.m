@@ -27,7 +27,13 @@
         // self.ownFirstTitleLable.backgroundColor = UIColor redColor];
         [self addSubview:self.ownFirstTitleLable];
         //
-        self.ownAuthorLable = [[UILabel alloc]initWithFrame:CGRectMake(self.ownFirstTitleLable.frame.origin.x,self.frame.size.height - self.frame.size.height * 0.052 - 2, self.ownFirstTitleLable.frame.size.width, self.frame.size.height * 0.052)];
+        UILabel *authorLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.ownFirstTitleLable.frame.origin.x,self.frame.size.height - self.frame.size.height * 0.052 - 2, SCREEN_WIDTH * 0.106, self.frame.size.height * 0.052)];
+        authorLabel.textColor = [UIColor lightGrayColor];
+        authorLabel.font = [UIFont systemFontOfSize:13];
+        authorLabel.text = @"作者:";
+        [self addSubview:authorLabel];
+        //
+        self.ownAuthorLable = [[UILabel alloc]initWithFrame:CGRectMake(authorLabel.frame.origin.x + authorLabel.frame.size.width,authorLabel.frame.origin.y, SCREEN_WIDTH * 0.206, authorLabel.frame.size.height)];
         self.ownAuthorLable.textColor = [UIColor lightGrayColor];
         self.ownAuthorLable.font = [UIFont systemFontOfSize:13];
         //self.ownAuthorLable.backgroundColor = [UIColor greenColor];

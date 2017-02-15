@@ -7,6 +7,7 @@
 //发布的二级页面中第一个VIEW
 
 #import <UIKit/UIKit.h>
+#import "BasicViewOfAddReturnView.h"
 
 @protocol announceSecondPageDelegate <NSObject>
 
@@ -16,7 +17,7 @@
 
 @end
 
-@interface anounceSecondPageView : UIView
+@interface anounceSecondPageView : BasicViewOfAddReturnView
 @property (strong,nonatomic)UIButton *ownButt;
 
 @property (strong,nonatomic)UILabel *ownTitleLabel;

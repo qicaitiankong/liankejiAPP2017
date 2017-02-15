@@ -73,9 +73,7 @@ static LZHTabBarController * shareTabBar = nil;
             [childView removeFromSuperview];
         }
     }
-
 }
-
 //添加自定义tabBar
 - (void)setOwnTabBar{
    self.myTabBar = [[LZHTabBar alloc]initWithFrame:self.tabBar.frame];

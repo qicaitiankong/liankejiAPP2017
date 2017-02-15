@@ -7,6 +7,8 @@
 //
 
 #import "GetCellHeight.h"
+#import "ownTextSpace.h"
+
  GetCellHeight *getCellHeight = nil;
 @implementation GetCellHeight
 + (GetCellHeight*)ShareCellHeight{
@@ -14,7 +16,8 @@
     return getCellHeight;
 }
 - (CGFloat)cellHeight:(UILabel*)targetLabel content:(NSString *)_contentString Cellwidth:(CGFloat)_width{
-    NSLog(@"%lf",targetLabel.frame.size.width);
+    CGFloat height = 0;
+    //NSLog(@"%lf",targetLabel.frame.size.width);
     UILabel *lable = [[UILabel alloc]init];
     lable.backgroundColor = [UIColor grayColor];
     lable.numberOfLines = 0;
@@ -22,7 +25,8 @@
     lable.font = targetLabel.font;
     lable.text = _contentString;
     NSDictionary *dict = [NSDictionary dictionaryWithObject:lable.font forKey:NSFontAttributeName];
-    CGRect rect = [lable.text boundingRectWithSize:CGSizeMake(_width, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesDeviceMetrics attributes:dict context:nil];
-    return rect.size.height;
+     CGRect rect = [lable.text boundingRectWithSize:CGSizeMake(_width, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesDeviceMetrics attributes:dict context:nil];
+    height = rect.size.height;
+    return height;
 }
 @end

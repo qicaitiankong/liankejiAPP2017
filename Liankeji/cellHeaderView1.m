@@ -32,7 +32,7 @@
         self.userImageView = [[UIImageView alloc]init];
         self.userImageView .frame = CGRectMake(5, spaceView.frame.origin.y + spaceView.frame.size.height + 0.05 * self.frame.size.height, SCREEN_WIDTH * 0.12, SCREEN_WIDTH * 0.12);
         self.userImageView .layer.cornerRadius = self.userImageView .frame.size.width / 2;
-        //self.userImageView .backgroundColor = [UIColor grayColor];
+        self.userImageView .backgroundColor = [UIColor grayColor];
         [self addSubview:self.userImageView ];
         //名字
         self.userNameLable  = [[UILabel alloc]initWithFrame:CGRectMake(self.userImageView .frame.origin.x + self.userImageView.frame.size.width + 5, self.userImageView.frame.origin.y + self.userImageView.frame.size.height / 2, SCREEN_WIDTH * 0.266, self.userImageView.frame.size.height *  0.444)];

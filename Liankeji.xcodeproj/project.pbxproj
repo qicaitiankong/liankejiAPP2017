@@ -129,6 +129,9 @@
 		0480EAEE1E2F302C0000E084 /* personalFirstPageMyMessage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480EAD31E2F302C0000E084 /* personalFirstPageMyMessage@3x.png */; };
 		0480EAF41E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0480EAF31E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m */; };
 		0489F3D91E4C3C3E0050AC8E /* announceWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489F3D81E4C3C3E0050AC8E /* announceWindowView.m */; };
+		048EB3BD1E5433580080F2E8 /* lzhGetCurrentTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 048EB3BC1E5433580080F2E8 /* lzhGetCurrentTime.m */; };
+		048EB3C01E54458A0080F2E8 /* BasicViewOfAddReturnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048EB3BF1E54458A0080F2E8 /* BasicViewOfAddReturnView.m */; };
+		048EB3C31E544A930080F2E8 /* BasicViewControllerForAddReturnview.m in Sources */ = {isa = PBXBuildFile; fileRef = 048EB3C21E544A930080F2E8 /* BasicViewControllerForAddReturnview.m */; };
 		049261FD1E1F277F00AFC111 /* commentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FC1E1F277F00AFC111 /* commentView.m */; };
 		049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049261FF1E1F3B9100AFC111 /* userWriteCommentView.m */; };
 		049262031E1F939A00AFC111 /* cellFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049262021E1F939A00AFC111 /* cellFootView.m */; };
@@ -439,6 +442,12 @@
 		0480EAF31E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personalFirstPageUserTableViewCell.m; sourceTree = "<group>"; };
 		0489F3D71E4C3C3E0050AC8E /* announceWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = announceWindowView.h; sourceTree = "<group>"; };
 		0489F3D81E4C3C3E0050AC8E /* announceWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = announceWindowView.m; sourceTree = "<group>"; };
+		048EB3BB1E5433580080F2E8 /* lzhGetCurrentTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhGetCurrentTime.h; sourceTree = "<group>"; };
+		048EB3BC1E5433580080F2E8 /* lzhGetCurrentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhGetCurrentTime.m; sourceTree = "<group>"; };
+		048EB3BE1E54458A0080F2E8 /* BasicViewOfAddReturnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewOfAddReturnView.h; sourceTree = "<group>"; };
+		048EB3BF1E54458A0080F2E8 /* BasicViewOfAddReturnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewOfAddReturnView.m; sourceTree = "<group>"; };
+		048EB3C11E544A930080F2E8 /* BasicViewControllerForAddReturnview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewControllerForAddReturnview.h; sourceTree = "<group>"; };
+		048EB3C21E544A930080F2E8 /* BasicViewControllerForAddReturnview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewControllerForAddReturnview.m; sourceTree = "<group>"; };
 		049261FB1E1F277F00AFC111 /* commentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentView.h; sourceTree = "<group>"; };
 		049261FC1E1F277F00AFC111 /* commentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentView.m; sourceTree = "<group>"; };
 		049261FE1E1F3B9100AFC111 /* userWriteCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userWriteCommentView.h; sourceTree = "<group>"; };
@@ -1515,6 +1524,12 @@
 				04CDD9B51E1E44CB009330FD /* ownTextSpace.m */,
 				04976EBA1E5189AA00116BE1 /* lzhShadeButton.h */,
 				04976EBB1E5189AA00116BE1 /* lzhShadeButton.m */,
+				048EB3BB1E5433580080F2E8 /* lzhGetCurrentTime.h */,
+				048EB3BC1E5433580080F2E8 /* lzhGetCurrentTime.m */,
+				048EB3BE1E54458A0080F2E8 /* BasicViewOfAddReturnView.h */,
+				048EB3BF1E54458A0080F2E8 /* BasicViewOfAddReturnView.m */,
+				048EB3C11E544A930080F2E8 /* BasicViewControllerForAddReturnview.h */,
+				048EB3C21E544A930080F2E8 /* BasicViewControllerForAddReturnview.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1908,6 +1923,7 @@
 				99AA38E81E08C454000A57BC /* scinenceHeaderView.m in Sources */,
 				99C1F9B41E10B11A004DE512 /* ZHQScrollMenu.m in Sources */,
 				04A2E9DA1E23290C00E7F9DF /* HotCommentView.m in Sources */,
+				048EB3C31E544A930080F2E8 /* BasicViewControllerForAddReturnview.m in Sources */,
 				99EF897F1E03B28F002836B3 /* firstPageHeaderCell.m in Sources */,
 				99E41F691DED29FD00F32968 /* FirstPageViewController.m in Sources */,
 				99E41F631DED270300F32968 /* NavViewControllerForFirstPage.m in Sources */,
@@ -1967,6 +1983,7 @@
 				04CDD9B61E1E44CB009330FD /* ownTextSpace.m in Sources */,
 				99554A4E1DF012BF0028A59E /* ShareHomePath.m in Sources */,
 				047A3A061E2C8EAC00651C7E /* announSecondPageSelectView.m in Sources */,
+				048EB3C01E54458A0080F2E8 /* BasicViewOfAddReturnView.m in Sources */,
 				9961CF9B1E02250D0021D123 /* CommunicateNavigationViewController.m in Sources */,
 				99E41F2C1DED0E0D00F32968 /* main.m in Sources */,
 				049262001E1F3B9100AFC111 /* userWriteCommentView.m in Sources */,
@@ -1976,6 +1993,7 @@
 				0480EAB11E2EFF740000E084 /* personalFirstPageViewController.m in Sources */,
 				992C69821E0A69890052D21B /* UINavigationBar+NavigationBarBackground.m in Sources */,
 				0435BF471E1B379C00DE859D /* ownImageviewAndLableView.m in Sources */,
+				048EB3BD1E5433580080F2E8 /* lzhGetCurrentTime.m in Sources */,
 				04A2EA5D1E23575900E7F9DF /* Province.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

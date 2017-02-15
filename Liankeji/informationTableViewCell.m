@@ -8,18 +8,13 @@
 
 #import "informationTableViewCell.h"
 #import"appCommonAttributes.h"
-#import "ownImageviewAndLableView.h"
 #import <Masonry.h>
 #import "appCommonAttributes.h"
-#import "infomaFirstPageViewForCell.h"
 
 #define CELL_HEIGHT SCREEN_HEIGHT * 0.149
 
 @interface informationTableViewCell(){
-    ownImageviewAndLableView *firstSmallDisplayView;
-    ownImageviewAndLableView *secondSmallDisplayView;
-    ownImageviewAndLableView *thirdSmallDisplayView;
-    infomaFirstPageViewForCell *groupView;
+    
 }
 @end
 
@@ -28,7 +23,7 @@
 @synthesize ownImageView;
 @synthesize firstLable;
 @synthesize secondLable;
-
+@synthesize groupView;
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView*)_tableView{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -55,9 +50,9 @@
         [self.contentView addSubview:secondLable];
         //浏览量评论量打赏的总VIEW
         groupView = [[infomaFirstPageViewForCell alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
-        firstSmallDisplayView = groupView.firstSmallDisplayView;
-        secondSmallDisplayView = groupView.secondSmallDisplayView;
-        thirdSmallDisplayView = groupView.thirdSmallDisplayView;
+//        firstSmallDisplayView = groupView.firstSmallDisplayView;
+//        secondSmallDisplayView = groupView.secondSmallDisplayView;
+//        thirdSmallDisplayView = groupView.thirdSmallDisplayView;
         [self.contentView addSubview:groupView];
         [self myUpdateConstraints];
 
@@ -68,9 +63,9 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     //赋值
-    firstSmallDisplayView.smallNumLable.text = self.firstSmallNumberString;
-    secondSmallDisplayView.smallNumLable.text = self.secondSmallNumberString;
-    thirdSmallDisplayView.smallNumLable.text = self.thirdSmallNumberString;
+//    firstSmallDisplayView.smallNumLable.text = self.firstSmallNumberString;
+//    secondSmallDisplayView.smallNumLable.text = self.secondSmallNumberString;
+//    thirdSmallDisplayView.smallNumLable.text = self.thirdSmallNumberString;
 }
 
 

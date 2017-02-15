@@ -7,7 +7,8 @@
 //
 //首页企业等按钮组的跳转二级页面
 #import <UIKit/UIKit.h>
+#import "BasicViewControllerForAddReturnview.h"
 
-@interface centerButtonGroupViewController : UIViewController
+@interface centerButtonGroupViewController : BasicViewControllerForAddReturnview
 
 @end

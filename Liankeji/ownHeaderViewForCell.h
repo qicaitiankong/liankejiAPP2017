@@ -28,7 +28,7 @@
 //介绍
 @property (strong,nonatomic) lzhRedeceTopSpaceLabel *introduceLable;
 //阅读量图片
-@property (strong,nonatomic) UIImageView *readImageView;
+//@property (strong,nonatomic) UIImageView *readImageView;
 //阅读量
 @property (strong,nonatomic) UILabel *readLable;
 //组头中的第二个VIEW

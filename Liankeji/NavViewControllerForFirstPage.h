@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "searchViewController.h"
 
 @interface NavViewControllerForFirstPage : UINavigationController
 

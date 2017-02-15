@@ -83,6 +83,7 @@
         //self.givePraiseButton.imageView.backgroundColor = [UIColor redColor];
         self.givePraiseButton.frame = CGRectMake(_tableView.frame.size.width - 100, self.userNameLable.frame.origin.y, 20, 20);
         [self.givePraiseButton setImage:[UIImage imageNamed:@"infoSecondPageNotGiveClick"] forState:UIControlStateNormal];
+        [self.givePraiseButton addTarget:self action:@selector(givePraiseHandler:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.givePraiseButton];
         
         [self.givePraiseButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -111,6 +112,20 @@
     }
     return self;
 }
+- (void)givePraiseHandler:(UIButton*)_b{
+    self.praised = !self.praised;
+     NSInteger readNum = [self.givePraiseLable.text integerValue];
+    if(self.praised){
+        [_b setImage:[UIImage imageNamed:@"infoSecondPageGivedClick"] forState:UIControlStateNormal];
+        readNum  = readNum + 1;
+    }else{
+         [self.givePraiseButton setImage:[UIImage imageNamed:@"infoSecondPageNotGiveClick"] forState:UIControlStateNormal];
+        readNum = readNum - 1;
+    }
+    self.givePraiseLable.text = [NSString stringWithFormat:@"%li",readNum];
+
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

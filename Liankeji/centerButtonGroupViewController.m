@@ -15,8 +15,6 @@
 #import "lzhShadeButton.h"
 
 @interface centerButtonGroupViewController ()<cityPickerDelegate,categoryButtonClickDelegate,pickerCompannyDelegate>{
-    //上部返回view
-    lzhReturnView *returnView;
     //企业类型
     NSArray *categoryTitleArr ;
     //行业类型
@@ -39,17 +37,14 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     categoryTitleArr = @[@"个人独资",@"合伙企业",@"公司"];
     jobArr = @[@"软件",@"养殖",@"工业",@"制造业"];
-    [self addReturnButton];
+    [self setReturnButton];
     [self AddButtonGroup];
     // Do any additional setup after loading the view.
 }
-//添加返回按钮
-- (void)addReturnButton{
-    returnView = [[lzhReturnView alloc]initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT, self.view.frame.size.width,NAVIGATION_HEIGHT)];
-    //returnView.ownButt.backgroundColor = [UIColor grayColor];
-    [returnView.ownButt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [returnView.ownButt addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:returnView];
+//返回按钮
+- (void)setReturnButton{
+    [self.returnView.ownButt addTarget:self action:@selector(returnButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.returnView];
 }
 //返回按钮点击
 - (void)returnButtonHandler:(UIButton*)_b{
@@ -59,7 +54,7 @@
 //添加上部按钮组
 - (void)AddButtonGroup{
     NSArray *titleArr = @[@"地区",@"企业类型",@"行业",@"筛选"];
-   categoryButtonGroup = [[ZHQScrollMenu alloc]initWithFrame:CGRectMake(0, returnView.frame.origin.y + returnView.frame.size.height, self.view.frame.size.width, 40) delegate:self];
+   categoryButtonGroup = [[ZHQScrollMenu alloc]initWithFrame:CGRectMake(0, self.returnView.frame.origin.y + self.returnView.frame.size.height, self.view.frame.size.width, 40) delegate:self];
     categoryButtonGroup.repeatClick = YES;
     [self.view addSubview:categoryButtonGroup];
     categoryButtonGroup.lineView.hidden = YES;
@@ -108,7 +103,7 @@
 }
 //处理第二个与第三个的点击弹出的内容
 - (void)displayOtherPickerView:(NSArray*)titleArr{
-     shadowButt = [[lzhShadeButton alloc]initWithFrame:CGRectMake(0, returnView.frame.origin.y + returnView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height -returnView.frame.origin.y - returnView.frame.size.height )];
+     shadowButt = [[lzhShadeButton alloc]initWithFrame:CGRectMake(0, self.returnView.frame.origin.y + self.returnView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height -self.returnView.frame.origin.y - self.returnView.frame.size.height )];
     [self.view addSubview:shadowButt];
     
     pickerView = [[lzhPickerView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.6, 150) titleArr:titleArr];

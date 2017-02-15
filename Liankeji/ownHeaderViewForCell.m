@@ -31,7 +31,8 @@
         self.userImageView = view1.userImageView;
         self.userNameLable = view1.userNameLable;
         self.introduceLable = view1.introduceLable;
-        self.readImageView = view1.readImageView;
+        //self.readImageView = view1.readImageView;
+        [view1.readImageView setImage:[UIImage imageNamed:@"infoSecondPageReadNumber"]];
         self.readLable = view1.readLable;
         self.attentionButton = view1.attentionButton;
         //第3个VIEW(标题及详情内容区域)

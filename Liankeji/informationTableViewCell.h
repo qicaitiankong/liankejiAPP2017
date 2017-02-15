@@ -9,6 +9,9 @@
 
 #import <UIKit/UIKit.h>
 #import "lzhRedeceTopSpaceLabel.h"
+#import "ownImageviewAndLableView.h"
+#import "infomaFirstPageViewForCell.h"
+
 
 @interface informationTableViewCell : UITableViewCell
 
@@ -18,15 +21,21 @@
 
 @property (strong,nonatomic)UILabel *secondLable;
 
+@property (strong,nonatomic) ownImageviewAndLableView *firstSmallDisplayView;
 
-@property (strong,nonnull)NSString *firstSmallNumberString;
+@property (strong,nonatomic) ownImageviewAndLableView *secondSmallDisplayView;
 
+@property (strong,nonatomic) ownImageviewAndLableView *thirdSmallDisplayView;
 
-@property (strong,nonnull)NSString *secondSmallNumberString;
+@property (strong,nonatomic) infomaFirstPageViewForCell *groupView;
 
-
-@property (strong,nonnull)NSString *thirdSmallNumberString;
-
+//@property (strong,nonnull)NSString *firstSmallNumberString;
+//
+//
+//@property (strong,nonnull)NSString *secondSmallNumberString;
+//
+//
+//@property (strong,nonnull)NSString *thirdSmallNumberString;
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView*)_tableView;
 

@@ -21,6 +21,8 @@
 @property (strong,nonatomic) UILabel *timeLable;
 //点赞量
 @property (strong,nonatomic) UILabel *givePraiseLable;
+//是否已经点赞
+@property (assign ,nonatomic)BOOL praised;
 //评论
 @property (strong,nonatomic) UILabel *commentLable;
 

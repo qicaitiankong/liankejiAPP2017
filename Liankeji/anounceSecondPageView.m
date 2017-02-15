@@ -21,7 +21,6 @@
 #define VERTICAL_SPACE 30
 
 @interface anounceSecondPageView ()<UITextFieldDelegate>{
-    lzhReturnView *returnView;
     announSecondPageNextStepView *nextView;
 }
 
@@ -36,17 +35,14 @@
         self.delegate = delegate;
         self.backgroundColor = [UIColor whiteColor];
         //添加上部返回view
-        returnView = [[lzhReturnView alloc]initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT, self.frame.size.width, 40)];
-        returnView.ownTitleLabel.textColor = [UIColor whiteColor];
-        self.ownButt = returnView.ownButt;
-        self.ownTitleLabel = returnView.ownTitleLabel;
+        self.ownButt = self.returnView.ownButt;
+        self.ownTitleLabel = self.returnView.ownTitleLabel;
         [self.ownButt setTitle:@"<<" forState:UIControlStateNormal];
-        [returnView.ownButt addTarget:self action:@selector(returnHandler:) forControlEvents:UIControlEventTouchUpInside];
-        returnView.backgroundColor = RGBA(135,206,250, 1);
-        [self addSubview:returnView];
+        [self.returnView.ownButt addTarget:self action:@selector(returnHandler:) forControlEvents:UIControlEventTouchUpInside];
+        self.returnView.backgroundColor = RGBA(135,206,250, 1);
         //上传图片按钮
         self.photoButt = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.photoButt.frame = CGRectMake(5, returnView.frame.origin.y + returnView.frame.size.height + VERTICAL_SPACE, 100, 100);
+        self.photoButt.frame = CGRectMake(5, self.returnView.frame.origin.y + self.returnView.frame.size.height + VERTICAL_SPACE, 100, 100);
          self.photoButt.center = CGPointMake(self.frame.size.width / 2, self.photoButt.center.y);
         //photoButt.backgroundColor = [UIColor grayColor];
         [ self.photoButt setImage:[UIImage imageNamed:@"anounSecondPhotoButt"] forState:UIControlStateNormal];
@@ -95,7 +91,7 @@
         [buttView.nextButt addTarget:self action:@selector(nextStepHandler:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttView];
         //
-        nextView = [[announSecondPageNextStepView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, returnView.frame.size.height + returnView.frame.origin.y, SCREEN_WIDTH, self.frame.size.height - returnView.frame.origin.y - returnView.frame.size.height)];
+        nextView = [[announSecondPageNextStepView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, self.returnView.frame.size.height + self.returnView.frame.origin.y, SCREEN_WIDTH, self.frame.size.height - self.returnView.frame.origin.y - self.returnView.frame.size.height)];
         [self addSubview:nextView];
     }
     return self;
