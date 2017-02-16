@@ -69,11 +69,13 @@
 		043FB00A1E24A96A0025EE61 /* infotest01.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 043FB0091E24A96A0025EE61 /* infotest01.jpeg */; };
 		043FB00D1E24AF400025EE61 /* exchangeView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FB00C1E24AF400025EE61 /* exchangeView1.m */; };
 		046CFB751E34548100E80E9F /* lzhDealNavigationColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CFB741E34548100E80E9F /* lzhDealNavigationColor.m */; };
-		047335371E305BCF00671F44 /* findFirstPageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047335361E305BCF00671F44 /* findFirstPageCollectionViewCell.m */; };
+		047335371E305BCF00671F44 /* searchFirstPageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047335361E305BCF00671F44 /* searchFirstPageCollectionViewCell.m */; };
 		047335391E308B1F00671F44 /* a2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047335381E308B1F00671F44 /* a2.jpg */; };
 		0473353C1E30A6D300671F44 /* searchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473353B1E30A6D300671F44 /* searchViewController.m */; };
 		04764C691E2DA85A00704C96 /* lzhAlertControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04764C681E2DA85A00704C96 /* lzhAlertControllerViewController.m */; };
 		04764C6C1E2DFD3000704C96 /* annoounceSecondPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04764C6B1E2DFD3000704C96 /* annoounceSecondPageViewController.m */; };
+		0479BE981E55358300FFF991 /* BasicViewControllerOfAllMainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0479BE971E55358300FFF991 /* BasicViewControllerOfAllMainPage.m */; };
+		0479BE9D1E55512C00FFF991 /* returnViewForSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0479BE9C1E55512C00FFF991 /* returnViewForSearchViewController.m */; };
 		047A39C21E2C4E1C00651C7E /* ownAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A39C11E2C4E1C00651C7E /* ownAnimation.m */; };
 		047A39C51E2C4E3500651C7E /* announceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A39C41E2C4E3500651C7E /* announceViewController.m */; };
 		047A39CF1E2C602100651C7E /* lzhReturnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A39CE1E2C602100651C7E /* lzhReturnView.m */; };
@@ -365,8 +367,8 @@
 		046CFB731E34548100E80E9F /* lzhDealNavigationColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhDealNavigationColor.h; sourceTree = "<group>"; };
 		046CFB741E34548100E80E9F /* lzhDealNavigationColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhDealNavigationColor.m; sourceTree = "<group>"; };
 		046F01841E4D710200EA36B2 /* LogoOutCompleteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoOutCompleteDelegate.h; sourceTree = "<group>"; };
-		047335351E305BCF00671F44 /* findFirstPageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = findFirstPageCollectionViewCell.h; sourceTree = "<group>"; };
-		047335361E305BCF00671F44 /* findFirstPageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = findFirstPageCollectionViewCell.m; sourceTree = "<group>"; };
+		047335351E305BCF00671F44 /* searchFirstPageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchFirstPageCollectionViewCell.h; sourceTree = "<group>"; };
+		047335361E305BCF00671F44 /* searchFirstPageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchFirstPageCollectionViewCell.m; sourceTree = "<group>"; };
 		047335381E308B1F00671F44 /* a2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a2.jpg; sourceTree = "<group>"; };
 		0473353A1E30A6D300671F44 /* searchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchViewController.h; sourceTree = "<group>"; };
 		0473353B1E30A6D300671F44 /* searchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchViewController.m; sourceTree = "<group>"; };
@@ -374,6 +376,10 @@
 		04764C681E2DA85A00704C96 /* lzhAlertControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhAlertControllerViewController.m; sourceTree = "<group>"; };
 		04764C6A1E2DFD3000704C96 /* annoounceSecondPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = annoounceSecondPageViewController.h; sourceTree = "<group>"; };
 		04764C6B1E2DFD3000704C96 /* annoounceSecondPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = annoounceSecondPageViewController.m; sourceTree = "<group>"; };
+		0479BE961E55358300FFF991 /* BasicViewControllerOfAllMainPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewControllerOfAllMainPage.h; sourceTree = "<group>"; };
+		0479BE971E55358300FFF991 /* BasicViewControllerOfAllMainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewControllerOfAllMainPage.m; sourceTree = "<group>"; };
+		0479BE9B1E55512C00FFF991 /* returnViewForSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = returnViewForSearchViewController.h; sourceTree = "<group>"; };
+		0479BE9C1E55512C00FFF991 /* returnViewForSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = returnViewForSearchViewController.m; sourceTree = "<group>"; };
 		047A39C01E2C4E1C00651C7E /* ownAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ownAnimation.h; sourceTree = "<group>"; };
 		047A39C11E2C4E1C00651C7E /* ownAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ownAnimation.m; sourceTree = "<group>"; };
 		047A39C31E2C4E3500651C7E /* announceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = announceViewController.h; sourceTree = "<group>"; };
@@ -815,19 +821,41 @@
 		047335341E305B9600671F44 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				047335351E305BCF00671F44 /* findFirstPageCollectionViewCell.h */,
-				047335361E305BCF00671F44 /* findFirstPageCollectionViewCell.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
 		};
-		0473353D1E30A6DA00671F44 /* C */ = {
+		0473353D1E30A6DA00671F44 /* searchController */ = {
 			isa = PBXGroup;
 			children = (
+				047335351E305BCF00671F44 /* searchFirstPageCollectionViewCell.h */,
+				047335361E305BCF00671F44 /* searchFirstPageCollectionViewCell.m */,
 				0473353A1E30A6D300671F44 /* searchViewController.h */,
 				0473353B1E30A6D300671F44 /* searchViewController.m */,
+				0479BE9B1E55512C00FFF991 /* returnViewForSearchViewController.h */,
+				0479BE9C1E55512C00FFF991 /* returnViewForSearchViewController.m */,
 			);
-			name = C;
+			name = searchController;
+			sourceTree = "<group>";
+		};
+		0479BE991E553B8700FFF991 /* BasicView */ = {
+			isa = PBXGroup;
+			children = (
+				048EB3BE1E54458A0080F2E8 /* BasicViewOfAddReturnView.h */,
+				048EB3BF1E54458A0080F2E8 /* BasicViewOfAddReturnView.m */,
+			);
+			name = BasicView;
+			sourceTree = "<group>";
+		};
+		0479BE9A1E553BBC00FFF991 /* BasicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				048EB3C11E544A930080F2E8 /* BasicViewControllerForAddReturnview.h */,
+				048EB3C21E544A930080F2E8 /* BasicViewControllerForAddReturnview.m */,
+				0479BE961E55358300FFF991 /* BasicViewControllerOfAllMainPage.h */,
+				0479BE971E55358300FFF991 /* BasicViewControllerOfAllMainPage.m */,
+			);
+			name = BasicViewController;
 			sourceTree = "<group>";
 		};
 		047A39C61E2C5CF300651C7E /* M */ = {
@@ -1501,8 +1529,10 @@
 		99E41F7F1DED5C9100F32968 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0479BE9A1E553BBC00FFF991 /* BasicViewController */,
+				0479BE991E553B8700FFF991 /* BasicView */,
 				049C63061E4EFA7E00B83543 /* 自定义刷新控件 */,
-				0473353D1E30A6DA00671F44 /* C */,
+				0473353D1E30A6DA00671F44 /* searchController */,
 				047A39CC1E2C5FA800651C7E /* 自定义用于返回的view */,
 				047A39C01E2C4E1C00651C7E /* ownAnimation.h */,
 				047A39C11E2C4E1C00651C7E /* ownAnimation.m */,
@@ -1526,10 +1556,6 @@
 				04976EBB1E5189AA00116BE1 /* lzhShadeButton.m */,
 				048EB3BB1E5433580080F2E8 /* lzhGetCurrentTime.h */,
 				048EB3BC1E5433580080F2E8 /* lzhGetCurrentTime.m */,
-				048EB3BE1E54458A0080F2E8 /* BasicViewOfAddReturnView.h */,
-				048EB3BF1E54458A0080F2E8 /* BasicViewOfAddReturnView.m */,
-				048EB3C11E544A930080F2E8 /* BasicViewControllerForAddReturnview.h */,
-				048EB3C21E544A930080F2E8 /* BasicViewControllerForAddReturnview.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1935,7 +1961,7 @@
 				04764C691E2DA85A00704C96 /* lzhAlertControllerViewController.m in Sources */,
 				04A2EA5B1E23575900E7F9DF /* AddressPickerView.m in Sources */,
 				049C63051E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m in Sources */,
-				047335371E305BCF00671F44 /* findFirstPageCollectionViewCell.m in Sources */,
+				047335371E305BCF00671F44 /* searchFirstPageCollectionViewCell.m in Sources */,
 				99AA38F01E092C8C000A57BC /* sideMenuButton.m in Sources */,
 				047A3A121E2CB3A800651C7E /* announSecondPageNextStepView.m in Sources */,
 				04A2E9E31E23357600E7F9DF /* centerButtonGroupViewController.m in Sources */,
@@ -1950,6 +1976,7 @@
 				9961CFA41E026DF20021D123 /* firstPageButtonGroup.m in Sources */,
 				999D99471DF04C950067CFBA /* ShareDataBase.m in Sources */,
 				0435BF9D1E1B8ED300DE859D /* informationSecondPgeTavCell.m in Sources */,
+				0479BE9D1E55512C00FFF991 /* returnViewForSearchViewController.m in Sources */,
 				047A39D21E2C678400651C7E /* anounceSecondPageView.m in Sources */,
 				0480EAF41E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m in Sources */,
 				04976EBC1E5189AA00116BE1 /* lzhShadeButton.m in Sources */,
@@ -1970,6 +1997,7 @@
 				0473353C1E30A6D300671F44 /* searchViewController.m in Sources */,
 				99AA38EC1E09053B000A57BC /* LMJScrollTextView.m in Sources */,
 				049C63091E4EFB0400B83543 /* lzhRefresh.m in Sources */,
+				0479BE981E55358300FFF991 /* BasicViewControllerOfAllMainPage.m in Sources */,
 				99C1F9E61E1104F7004DE512 /* AnounceButtonView.m in Sources */,
 				0432CF891E15F88F00701F16 /* sateliteMenuCenterButton.m in Sources */,
 				0480EAB41E2F00D30000E084 /* personalViewOfFirstPage.m in Sources */,

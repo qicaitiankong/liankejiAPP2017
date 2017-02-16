@@ -61,7 +61,7 @@
     [self addSateliteMenu];
     [self initTableView];
     [self createSideMenu];
-    NSLog(@"导航栏高度 %lf screenheight = %lf",self.navigationController.navigationBar.frame.size.height,[UIScreen mainScreen].bounds.size.height);
+    //NSLog(@"导航栏高度 %lf screenheight = %lf",self.navigationController.navigationBar.frame.size.height,[UIScreen mainScreen].bounds.size.height);
     
     
 }
@@ -69,14 +69,11 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [self.dealNavigationColor dealNavigationColor:scrollView navigation:self.navigationController];
 }
-//设置导航栏的左右按钮
+//设置导航栏的左按钮
 - (void)setNavigationButton{
-    self.navigationItem.title = @"链科技ChinaTech";
     self.dealNavigationColor = [lzhDealNavigationColor setNavigationControlerrTransparent:self.navigationController];
     //导航栏左按钮点击事件
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav1"] style:UIBarButtonItemStyleDone target:self action:@selector(leftNavBarHandler:)];
-    UIImage *searchImage = [UIImage imageNamed:@"nav2"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:searchImage style:UIBarButtonItemStyleDone target:self action:@selector(rightSearchHandler:)];
 }
 //点击左侧navgabar弹出菜单
 - (void)leftNavBarHandler:(UIBarButtonItem*)_u{
@@ -92,12 +89,7 @@
 -(void)downMenuSelect:(NSInteger)_index{
     NSLog(@"你点击了下拉菜单中的%li",_index);
 }
-//导航栏右侧搜索按钮
-- (void)rightSearchHandler:(UIBarButtonItem*)_u{
-    searchViewController *searchVC = [[searchViewController alloc]init];
-    [self presentViewController:searchVC animated:YES completion:^{
-    }];
-}
+
 //轮播点击
 -(void)scrollViewDidClickedAtPage:(NSInteger)pageNumber{
     NSLog(@"你点击了轮播中的%li",pageNumber);

@@ -7,7 +7,8 @@
 //发现首页
 
 #import <UIKit/UIKit.h>
+#import "BasicViewControllerOfAllMainPage.h"
 
-@interface CommunicateFirstViewController : UIViewController
+@interface CommunicateFirstViewController : BasicViewControllerOfAllMainPage
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2017年 haichuanhuiwulianxinxi. All rights reserved.
 //
 
-#import "findFirstPageCollectionViewCell.h"
+#import "searchFirstPageCollectionViewCell.h"
 
-@implementation findFirstPageCollectionViewCell
+@implementation searchFirstPageCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

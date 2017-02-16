@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface findFirstPageCollectionViewCell : UICollectionViewCell
+@interface searchFirstPageCollectionViewCell : UICollectionViewCell
 
 @property (strong,nonatomic)UIImageView *testImageView;
 

@@ -33,7 +33,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = RGBA(246, 246, 246, 1);
-    [self setNavigationButton];
     secondSectionImageArr = @[[UIImage imageNamed:@"personalFirstPageMyMessage"],[UIImage imageNamed:@"personalFirstPageMyPraise"],[UIImage imageNamed:@"personalFirstPageMyCollection"]];
      secondSectionTitleArr = @[@"我的消息",@"我的点赞",@"我的收藏"];
 
@@ -51,17 +50,7 @@
     
     // Do any additional setup after loading the view.
 }
-//设置导航栏的右按钮
-- (void)setNavigationButton{
-    UIImage *searchImage = [UIImage imageNamed:@"nav2"];
-    UIColor *titleColor = NAVIGATION_TITLE_COLOR;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:titleColor}];
-    self.navigationItem.title = @"链科技ChinaTech";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:searchImage style:UIBarButtonItemStyleDone target:self action:@selector(rightSearchHandler:)];
-}
--(void)rightSearchHandler:(UIBarButtonItem*)_b{
-    
-}
+
 
 - (void)initTableView{
     ownTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATION_HEIGHT, self.view.frame.size.width, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TABBAR_HEIGHT)];

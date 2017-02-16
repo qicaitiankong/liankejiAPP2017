@@ -32,21 +32,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self setNavigationButton];
     [self createScrollButtonGroup];
     [self addTableView];
 }
-//设置导航栏的右按钮
-- (void)setNavigationButton{
-    UIImage *searchImage = [UIImage imageNamed:@"nav2"];
-    UIColor *titleColor = NAVIGATION_TITLE_COLOR;
-     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:titleColor}];
-    self.navigationItem.title = @"链科技ChinaTech";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:searchImage style:UIBarButtonItemStyleDone target:self action:@selector(rightSearchHandler:)];
-}
--(void)rightSearchHandler:(UIBarButtonItem*)_b{
-    
-}
+
 //创建滑动分类按钮组
 - (void)createScrollButtonGroup{
     //NSLog(@"导航栏高度：%lf", self.navigationController.navigationBar.frame.size.height);

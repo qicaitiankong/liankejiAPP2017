@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BasicViewControllerOfAllMainPage.h"
 
-@interface informationViewController : UIViewController
+@interface informationViewController : BasicViewControllerOfAllMainPage
 
 @end
