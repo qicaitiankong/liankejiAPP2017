@@ -10,16 +10,14 @@
 #import "returnViewForSearchViewController.h"
 #import "appCommonAttributes.h"
 #import "searchFirstPageCollectionViewCell.h"
+#import "searchHistoryTableView.h"
 //
-#define LEFT_TABLE_TAG 10
-#define SEARCH_TABLE_TAG 11
-//
-@interface searchViewController ()<searchHistoryDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>{
+@interface searchViewController ()<searchHistoryReturnViewDelegate,searchHistoryTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>{
     returnViewForSearchViewController *returnView;
     
     UITableView *leftTableview;
     
-    UITableView *searchHistoryTableView;
+    searchHistoryTableView *searchHistoryTabView;
     
     UICollectionView *rightCollectionView;
     
@@ -28,7 +26,6 @@
     NSArray *leftTitleArr;
     
     NSMutableArray *searchHistoryArr;
-    
 }
 
 @end
@@ -44,7 +41,6 @@
     [self addReturnView];
     [self initTableview];
     [self initCollectionView];
-    [self initHistoryTable];
     // Do any additional setup after loading the view.
 }
 //添加上部返回view
@@ -58,38 +54,56 @@
 - (void)returnHandler:(UIButton*)_b{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-//展现历史记录
--(void)setSearchHistoryView{
-    if(searchHistoryArr.count > 0 ){
-        searchHistoryTableView.alpha = 1;
-        [searchHistoryTableView reloadData];
+
+//展现历史记录(代理)
+-(void)displaySearchHistoryView{
+    if(searchHistoryArr.count > 0){
+        searchHistoryTabView = [[searchHistoryTableView alloc]initWithFrame:CGRectMake(returnView.searchField.frame.origin.x, returnView.frame.origin.y + returnView.frame.size.height, returnView.searchField.frame.size.width, (searchHistoryArr.count + 2) * SCREEN_HEIGHT * 0.04) style:UITableViewStyleGrouped];
+        searchHistoryTabView.targetDelegate = self;
+        searchHistoryTabView.contentArr = searchHistoryArr;
+        [self.view addSubview:searchHistoryTabView];
+         [searchHistoryTabView reloadData];
     }
 }
-//点击了键盘搜索按钮
+
+//点击了键盘搜索按钮（代理）
 -(void)clickSearch:(UITextField *)textField{
     if([textField.text isEqualToString:@""]){
         return;
     }
     NSString *searchStr = textField.text;
     [searchHistoryArr addObject:searchStr];
+    [searchHistoryTabView removeFromSuperview];
+}
+//历史记录表的代理方法
+//点击了历史记录某一条
+-(void)setHistoryContentGiveTextField:(NSString *)contentStr{
+    returnView.searchField.text = contentStr;
+    NSLog(@"点击的记录:%@",contentStr);
+     [searchHistoryTabView removeFromSuperview];
+}
+//删除点击的记录
+-(void)deleteSingleHistoryContent:(NSInteger)tag{
+        NSIndexPath *path = [NSIndexPath indexPathForRow:tag inSection:0];
+        [searchHistoryArr removeObjectAtIndex:tag];
     
+    NSLog(@"搜索历史数组 ：%@",searchHistoryArr);
+        [searchHistoryTabView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+        [searchHistoryTabView reloadData];
+    NSLog(@"删除某一条记录");
+}
+//清除所有记录
+-(void)deleteAllHistoryContent{
+    NSLog(@"清除所有记录");
+    [searchHistoryTabView removeFromSuperview];
 }
 
-//历史记录表
-- (void)initHistoryTable{
-    searchHistoryTableView = [[UITableView alloc]initWithFrame:CGRectMake(returnView.searchField.frame.origin.x, returnView.frame.origin.y + returnView.frame.size.height, returnView.searchField.frame.size.width, 300) style:UITableViewStylePlain];
-    searchHistoryTableView.delegate =self;
-    searchHistoryTableView.dataSource = self;
-    searchHistoryTableView.tag = SEARCH_TABLE_TAG;
-    searchHistoryTableView.alpha = 0;
-    [self.view addSubview:searchHistoryTableView];
-}
+
 
 //
 //左边表示图
 - (void)initTableview{
     leftTableview = [[UITableView alloc]initWithFrame:CGRectMake(0,returnView.frame.origin.y + returnView.frame.size.height, self.view.frame.size.width * 0.3, self.view.frame.size.height - returnView.frame.origin.y - returnView.frame.size.height) style:UITableViewStylePlain];
-    leftTableview.tag = LEFT_TABLE_TAG;
     leftTableview.delegate = self;
     leftTableview.dataSource = self;
     [self.view addSubview:leftTableview];
@@ -101,30 +115,17 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSInteger count = 0;
-    if(tableView.tag == LEFT_TABLE_TAG){
-        count = leftTitleArr.count;
-    }else{
-        count = searchHistoryArr.count;
-    }
+    count = leftTitleArr.count;
     return count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = nil;
-    if(tableView.tag == LEFT_TABLE_TAG){
        cell = [tableView dequeueReusableCellWithIdentifier:@"findFirstPageLeftCell"];
         if(nil == cell){
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"findFirstPageLeftCell"];
         }
         cell.textLabel.text = leftTitleArr[indexPath.row];
-    }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:@"searchHistoryCell"];
-        if(nil == cell){
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchHistoryCell"];
-        }
-        NSLog(@"历史记录: %@",searchHistoryArr[indexPath.row]);
-        cell.textLabel.text = searchHistoryArr[indexPath.row];
-    }
-    return cell;
+        return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -156,27 +157,6 @@
             break;
     }
 }
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *headerView = nil;
-    if(tableView.tag == SEARCH_TABLE_TAG){
-        UILabel *searchHeaderView = [[UILabel alloc]initWithFrame:CGRectMake(0, -50, tableView.frame.size.width, 50)];
-        searchHeaderView.text = @"搜索记录";
-        searchHeaderView.textAlignment = NSTextAlignmentCenter;
-        headerView = searchHeaderView;
-    }
-    return headerView;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    CGFloat height = 0;
-    //622700000011979
-    if(tableView.tag == SEARCH_TABLE_TAG){
-        height = 50;
-    }
-    return height;
-}
-
-
 
 //右边流式布局
 - (void)initCollectionView{

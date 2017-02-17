@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol searchHistoryDelegate <NSObject>
-//添加搜索历史记录
-- (void)setSearchHistoryView;
+@protocol searchHistoryReturnViewDelegate <NSObject>
+//显示搜索历史记录
+- (void)displaySearchHistoryView;
 //点击了搜索
 - (void)clickSearch:(UITextField*)textField;
 
@@ -24,6 +24,6 @@
 
 @property (strong,nonatomic)UIButton *searchButt;
 
-@property (assign,nonatomic) id<searchHistoryDelegate> targetDelegate;
+@property (assign,nonatomic) id<searchHistoryReturnViewDelegate> targetDelegate;
 
 @end
