@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @protocol searchHistoryTableViewDelegate <NSObject>
-
+//设置历史记录给输入框
 -(void)setHistoryContentGiveTextField:(NSString*)contentStr;
 
--(void)deleteSingleHistoryContent:(NSInteger)tag;
-
+//-(void)deleteSingleHistoryContent:(NSInteger)tag;
+//清除历史记录
 -(void)deleteAllHistoryContent;
 
 @end

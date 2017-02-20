@@ -230,6 +230,7 @@
 }
 //更多评论按钮点击
 - (void)footButtonHandler:(UIButton*)_b{
+    
     NSLog(@"加载更多评论");
 }
 - (void)didReceiveMemoryWarning {

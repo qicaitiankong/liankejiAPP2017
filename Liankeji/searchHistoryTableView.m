@@ -43,7 +43,7 @@
     if(nil == cell){
         cell2 = [[searchHistoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchHistoryCell" tableView:self];
     }
-    cell2.historyLabel.text = _contentArr[indexPath.row];
+    cell2.historyLabel.text = self.contentArr[indexPath.row];
     cell2.cancelButt.tag = indexPath.row;
     [cell2.cancelButt addTarget:self action:@selector(deleteCell:) forControlEvents:UIControlEventTouchUpInside];
     return cell2;
@@ -73,7 +73,7 @@
     CGFloat height = CELL_HEIGHT;
     UIButton *butt = [UIButton buttonWithType:UIButtonTypeCustom];
     butt.frame = CGRectMake(0, tableView.frame.size.height, tableView.frame.size.height, height);
-    butt.backgroundColor = [UIColor grayColor];
+    butt.backgroundColor = [UIColor redColor];
     [butt setTitle:@"清除记录" forState:UIControlStateNormal];
     [butt addTarget:self action:@selector(clearHandler:) forControlEvents:UIControlEventTouchUpInside];
     return butt;
@@ -93,10 +93,10 @@
 //    NSIndexPath *path = [NSIndexPath indexPathForRow:_b.tag inSection:0];
 //    UITableView *tableView = self;
 //    [tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
-    if(self.targetDelegate){
-        //NSLog(@"点击的按钮tag=%li",_b.tag);
-        [self.targetDelegate deleteSingleHistoryContent:_b.tag];
-    }
+//    if(self.targetDelegate){
+//        //NSLog(@"点击的按钮tag=%li",_b.tag);
+//        //[self.targetDelegate deleteSingleHistoryContent:_b.tag];
+//    }
 }
 
 //全部清除按钮

@@ -11,6 +11,7 @@
 #import "appCommonAttributes.h"
 #import "searchFirstPageCollectionViewCell.h"
 #import "searchHistoryTableView.h"
+#import "ShareDataBase.h"
 //
 @interface searchViewController ()<searchHistoryReturnViewDelegate,searchHistoryTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>{
     returnViewForSearchViewController *returnView;
@@ -73,32 +74,53 @@
     }
     NSString *searchStr = textField.text;
     [searchHistoryArr addObject:searchStr];
+    //向本地数据库中写入
+    ShareDataBase *dataBase = [ShareDataBase shareDataBase];
+    BOOL isEqual = NO;
+    if([dataBase openDataBase]){
+        FMResultSet *result =  [dataBase searchTable:@"select * from SearchHistoryTable" searchValues:nil error:nil];
+        NSInteger index = 0;
+        while (result.next) {
+            index ++;
+          NSString *content = [result objectForColumnName:@"content"];
+            if([searchStr isEqualToString:content]){
+                isEqual = YES;
+                break;
+            }
+        }
+        if(index < 5 && isEqual == NO){//插入
+            NSNumber *indexid = [NSNumber numberWithInteger:index];
+           BOOL insertSuc = [dataBase insertDataIntoTable:@"insert into SearchHistoryTable(indexid,content) values('%li','%s')" insertDataArray:@[indexid,searchStr] error:nil];
+            if(insertSuc){
+                NSLog(@"插入成功");
+            }else{
+                NSLog(@"插入失败");
+            }
+        }else{
+           // [dataBase updateDataBase:@"update SearchHistoryTable set content = %s where indexid = %li" updateContentArray:@[] error:nil];
+        }
+    }
+    
+
     [searchHistoryTabView removeFromSuperview];
 }
+
 //历史记录表的代理方法
 //点击了历史记录某一条
 -(void)setHistoryContentGiveTextField:(NSString *)contentStr{
     returnView.searchField.text = contentStr;
     NSLog(@"点击的记录:%@",contentStr);
-     [searchHistoryTabView removeFromSuperview];
-}
-//删除点击的记录
--(void)deleteSingleHistoryContent:(NSInteger)tag{
-        NSIndexPath *path = [NSIndexPath indexPathForRow:tag inSection:0];
-        [searchHistoryArr removeObjectAtIndex:tag];
-    
-    NSLog(@"搜索历史数组 ：%@",searchHistoryArr);
-        [searchHistoryTabView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-        [searchHistoryTabView reloadData];
-    NSLog(@"删除某一条记录");
+    [searchHistoryTabView removeFromSuperview];
 }
 //清除所有记录
 -(void)deleteAllHistoryContent{
     NSLog(@"清除所有记录");
+    //将本地数据库中的内容删除
+    [searchHistoryArr removeAllObjects];
+    
+    NSLog(@"历史记录数组：%@",searchHistoryTabView.contentArr);
     [searchHistoryTabView removeFromSuperview];
 }
-
-
 
 //
 //左边表示图

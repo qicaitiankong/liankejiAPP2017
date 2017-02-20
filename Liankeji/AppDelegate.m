@@ -10,6 +10,8 @@
 #import "LZHTabBarController.h"
 #import <Hyphenate_CN/EMSDKFull.h>
 #import <EaseUI.h>
+#import "ShareDataBase.h"
+#import "ShareHomePath.h"
 
 @interface AppDelegate ()
 
@@ -29,8 +31,29 @@
         [[EaseSDKHelper shareHelper]hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:@"1190161211178584#communicatetestlzh" apnsCertName:@"" otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
     }
     self.window = [[UIWindow alloc]init];
+    //自定义标签栏
     LZHTabBarController *tab = [LZHTabBarController shareLZHTabbarController];
     self.window.rootViewController = tab;
+    //创建数据库
+    ShareDataBase *dataBase = [ShareDataBase shareDataBase];
+    [dataBase getDataBase:@"liankeji.db"];
+    NSString *doucments = [[ShareHomePath GetShareHome] getDocumentsPath];
+    NSLog(@"数据库路径:%@",doucments);
+    BOOL suc = [dataBase openDataBase];
+    if(suc){
+        //创建历史记录表
+        NSString *createSt = @"create table if not exists SearchHistoryTable(indexid integer not null primary key autoincrement,content text not null)";
+        BOOL suc = [dataBase createTable:createSt];
+        if(suc){
+            NSLog(@"建表成功");
+            
+            
+        }else{
+            NSLog(@"建表失败");
+        }
+    }
+   // [dataBase createTable:@"SearchHistoryTabel"];
+    //
     [self.window makeKeyAndVisible];
     
     

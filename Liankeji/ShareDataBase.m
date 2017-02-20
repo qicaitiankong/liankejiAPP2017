@@ -30,13 +30,14 @@ FMDatabase *dataBase = nil;
     if(dataBase){
         suc = [dataBase open];
         if(suc){
-            NSLog(@"success");
+            NSLog(@"open success");
         }else{
             NSLog(@"error");
         }
     }
     return suc;
 }
+
 /**
  *  建表
  *

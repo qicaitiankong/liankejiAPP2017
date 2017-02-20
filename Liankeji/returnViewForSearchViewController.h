@@ -22,8 +22,6 @@
 
 @property (strong,nonatomic)UITextField *searchField;
 
-@property (strong,nonatomic)UIButton *searchButt;
-
 @property (assign,nonatomic) id<searchHistoryReturnViewDelegate> targetDelegate;
 
 @end

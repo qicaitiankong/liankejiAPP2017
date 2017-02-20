@@ -9,7 +9,7 @@
 #import "ShareNetWorkState.h"
 
 
-//并不做成单例,
+//并没做成单例,只是名字没有修改过来
 static ShareNetWorkState *ShareGetNetState = nil;
 static AFHTTPSessionManager *manager = nil;
 
@@ -61,10 +61,10 @@ static AFHTTPSessionManager *manager = nil;
 }
 - (void)getDataWithUrl:(NSString*)url parameters:(NSDictionary*)parameterDict sucess:(Success)success failuer:(Failure)failure{
     [manager GET:url parameters:parameterDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        NSLog(@"下载线程%@",[NSThread currentThread]);
+        //NSLog(@"下载线程%@",[NSThread currentThread]);
         //NSLog(@"%@",downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"当前线程%@",[NSThread currentThread]);
+        //NSLog(@"当前线程%@",[NSThread currentThread]);
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
