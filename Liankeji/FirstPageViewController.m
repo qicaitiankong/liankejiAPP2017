@@ -33,7 +33,7 @@
 //科技头条
 #define SCIENCE_HEADER_HEIGHT SCREEN_HEIGHT * 0.1
 
-@interface FirstPageViewController ()<FFScrollViewDelegate,clickSubButtonDelegate,pullDownMenuDelegate,groupButtonDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface FirstPageViewController ()<FFScrollViewDelegate,pullDownMenuDelegate,groupButtonDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (strong,nonatomic)lzhDealNavigationColor* dealNavigationColor;
 
@@ -58,7 +58,6 @@
     self.newsArr = [[NSMutableArray alloc]initWithCapacity:2];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setNavigationButton];
-    [self addSateliteMenu];
     [self initTableView];
     [self createSideMenu];
     //NSLog(@"导航栏高度 %lf screenheight = %lf",self.navigationController.navigationBar.frame.size.height,[UIScreen mainScreen].bounds.size.height);
@@ -100,17 +99,6 @@
     centerButtonGroupViewController *detailVC = [[centerButtonGroupViewController alloc]init];
     [self presentViewController:detailVC animated:YES completion:nil];
     //[self.navigationController pushViewController:detailVC animated:YES];
-}
-//添加卫星菜单
-- (void)addSateliteMenu{
-    NSArray *windowArr = [UIApplication sharedApplication].windows;
-    UIWindow *window = windowArr[0];
-    UIView *sateliteView =  [[sateliteMenuCenterButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 60, SCREEN_HEIGHT  - 64 - 49, 60, 60) _delegate:self];
-    [window addSubview:sateliteView];
-}
-//卫星菜单点击事件
--(void)dealClickHandler:(NSInteger)buttonIndex{
-    NSLog(@"点击了卫星菜单中的：%li",buttonIndex);
 }
 //添加表头
 - (UIView*)crateTableHeaderView{
@@ -166,11 +154,9 @@
     BOOL tableCreateSuc = NO;
     BOOL dataInsertTableSuc = NO;
     if(dataBaseSuc){
-        //建立News1表
-        //NSString *createTabelSql = @"create table if not exists News(flag integer not null primary key autoincrement, title text not null,click integer not null,image blob not null)";
         //建立News2表
         NSString *createTabelSql = @"create table if not exists News2(flag integer not null primary key autoincrement, title2 text not null,click2 integer not null,image2 blob not null)";
-        tableCreateSuc = [dataBaseClass createTable:createTabelSql];
+        //tableCreateSuc = [dataBaseClass createTable:createTabelSql];
     }
     if(tableCreateSuc){
        // NSLog(@"成功");

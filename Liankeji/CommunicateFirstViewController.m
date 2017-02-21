@@ -7,13 +7,10 @@
 //
 
 #import "CommunicateFirstViewController.h"
-#import <Hyphenate_CN/EMSDKFull.h>
-#import <EaseUI.h>
 #import "appCommonAttributes.h"
 
 @interface CommunicateFirstViewController ()<UITableViewDelegate,UITableViewDataSource>{
-    UITableView *leftTableview;
-    UIImage *imageTest;
+    UITableView *findTableview;
 }
 
 @end
@@ -23,17 +20,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = RGBA(246, 246, 246, 1);
-    imageTest = [UIImage imageNamed:@"a1"];
     [self initTableview];
     // Do any additional setup after loading the view.
 }
 
-//左边表示图
+//表示图
 - (void)initTableview{
-    leftTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height) style:UITableViewStylePlain];
-    leftTableview.delegate = self;
-    leftTableview.dataSource = self;
-    [self.view addSubview:leftTableview];
+    findTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height) style:UITableViewStylePlain];
+    findTableview.delegate = self;
+    findTableview.dataSource = self;
+    [self.view addSubview:findTableview];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -52,40 +48,26 @@
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view  =nil;
+    return view;
+}
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
 }
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 5;
-}
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 8;
-}
-
-
 
 - (void)communicatePage{
-    //环信注册登录测试
-    [[EMClient sharedClient]registerWithUsername:@"lzhlsh2017" password:@"123" completion:^(NSString *aUsername, EMError *aError) {
-        if(!aError){
-            NSLog(@"注册成功");
-        }else{
-            NSLog(@"注册失败");
-        }
-    }];
-    [[EMClient sharedClient]loginWithUsername:@"lzhlsh2017" password:@"123" completion:^(NSString *aUsername, EMError *aError) {
-        if(!aError){
-            NSLog(@"登录成功");
-            EaseMessageViewController *messageVC = [[EaseMessageViewController  alloc]initWithConversationChatter:@"lsh" conversationType:EMConversationTypeChat];
-            [self.navigationController pushViewController:messageVC animated:NO];
-        }else{
-            NSLog(@"登录失败");
-        }
-    }];
-
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

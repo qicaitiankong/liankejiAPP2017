@@ -7,7 +7,6 @@
 //
 
 #import "lzhGetCurrentTime.h"
-#import <NSDate+Category.h>
 
 @implementation lzhGetCurrentTime
 //

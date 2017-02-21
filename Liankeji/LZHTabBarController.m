@@ -14,7 +14,6 @@
 
 @property (strong,nonatomic)NSMutableArray *items;
 
-
 @property (assign,nonatomic)NSInteger lastSelectIndex;
 
 @property (strong,nonatomic)id popDelegate;

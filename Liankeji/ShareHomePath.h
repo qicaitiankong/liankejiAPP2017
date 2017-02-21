@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @interface ShareHomePath : NSObject
 +(ShareHomePath*)GetShareHome;
-- (NSString*)getDocumentsPath;
+- (NSMutableString*)getDocumentsPath;
 - (NSString *)getCachePath;
 - (NSString *)getTmpPath;
 - (NSString *)getImagePath:(NSString*)imageName format:(NSString*)format;//获取当前应用程序中一个图片的路径

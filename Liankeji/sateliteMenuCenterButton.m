@@ -62,12 +62,9 @@
         CGFloat subButton_y = self.frame.origin.y;
         CGFloat subButton_w = centerButton.frame.size.width / 2;
         CGFloat subButton_h = subButton_w;
-        
-        
         subButton.frame = CGRectMake(subButton_x, subButton_y, subButton_w, subButton_h);
         subButton.center = self.center;
         subButton.layer.cornerRadius = subButton.bounds.size.width / 2;
-        
         
         subButton.backgroundColor = [UIColor yellowColor];
         subButton.tag = i +1 ;
@@ -76,10 +73,7 @@
         [subButttonArr addObject:subButton];
         UIWindow *window = [UIApplication sharedApplication].windows[0];
         [window addSubview:subButton];
-        
         subButton.hidden = YES;
-        
-    
     }
     
     [self dealAnimation];
@@ -111,8 +105,6 @@
         NSMutableArray *subButtPosArr = [self getXWithTanAngle:tanAngle isSame:NO];
         [subButtonPositionArr addObject:subButtPosArr];
     }
-    
-    
     //    double tan1 = tan(M_PI * 2 / (n - 1));
     //    double tan2 = tan((M_PI * 2 / (n - 1) * 2));
     
@@ -122,8 +114,6 @@
     else {
         [self popSubbutton];
     }
-    
-    
 }
 
 //弹出子安扭

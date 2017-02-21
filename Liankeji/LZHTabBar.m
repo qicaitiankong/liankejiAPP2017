@@ -37,9 +37,10 @@ UIImageView *backImageView;
     self.backgroundColor = [UIColor grayColor];
     if(self){
             //设置背景图片
-        backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 49)];
+        //判断是否是苹果7（）
+        backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,-20, [UIScreen mainScreen].bounds.size.width, self.frame.size.height + 20)];
         UIImage *image = [UIImage imageNamed:@"tab_group_back@3x"];
-        backImageView.contentMode = UIViewContentModeBottom;
+        backImageView.contentMode = UIViewContentModeScaleAspectFill;
         image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
        // backImageView.backgroundColor = [UIColor redColor];
             [backImageView setImage:image];

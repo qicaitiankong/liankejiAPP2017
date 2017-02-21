@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "LZHTabBarController.h"
-#import <Hyphenate_CN/EMSDKFull.h>
-#import <EaseUI.h>
 #import "ShareDataBase.h"
 #import "ShareHomePath.h"
 
@@ -22,38 +20,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"%lf,%lf",[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
-    //初始化环信
-    EMOptions *option = [EMOptions optionsWithAppkey:@"1190161211178584#communicatetestlzh"];
-    option.apnsCertName = @"";
-    EMError *err = [[EMClient sharedClient]initializeSDKWithOptions:option];
-    if(!err){
-        NSLog(@"初始化成功");
-        [[EaseSDKHelper shareHelper]hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:@"1190161211178584#communicatetestlzh" apnsCertName:@"" otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
-    }
     self.window = [[UIWindow alloc]init];
     //自定义标签栏
     LZHTabBarController *tab = [LZHTabBarController shareLZHTabbarController];
     self.window.rootViewController = tab;
-    //创建数据库
-    ShareDataBase *dataBase = [ShareDataBase shareDataBase];
-    [dataBase getDataBase:@"liankeji.db"];
-    NSString *doucments = [[ShareHomePath GetShareHome] getDocumentsPath];
-    NSLog(@"数据库路径:%@",doucments);
-    BOOL suc = [dataBase openDataBase];
-    if(suc){
-        //创建历史记录表
-        NSString *createSt = @"create table if not exists SearchHistoryTable(indexid integer not null primary key autoincrement,content text not null)";
-        BOOL suc = [dataBase createTable:createSt];
-        if(suc){
-            NSLog(@"建表成功");
-            
-            
-        }else{
-            NSLog(@"建表失败");
-        }
-    }
-   // [dataBase createTable:@"SearchHistoryTabel"];
-    //
+    
     [self.window makeKeyAndVisible];
     
     
@@ -67,14 +38,13 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[EMClient sharedClient]applicationDidEnterBackground:application];
+
     
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[EMClient sharedClient]applicationWillEnterForeground:application];
     
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }

@@ -100,14 +100,6 @@
         make.left.top.mas_equalTo(self);
         make.right.bottom.mas_equalTo(self);
     }];
-    //对轮播图片没有masonry做适配,和动画冲突
-    //[contentViewArr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:-sourceArr.count * SCREEN_WIDTH];
-    //[contentViewArr mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.scrollView);
-//        make.width.mas_equalTo((sourceArr.count + 2)* SCREEN_WIDTH);
-//        make.height.mas_equalTo(self.scrollView);
-//    }];
-    
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         //0.022
         make.left.right.mas_equalTo(self);

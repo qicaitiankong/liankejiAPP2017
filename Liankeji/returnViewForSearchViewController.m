@@ -58,7 +58,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    //NSLog(@"开始编辑");
+    NSLog(@"开始编辑");
     if(self.targetDelegate){//历史记录
         [self.targetDelegate displaySearchHistoryView];
     }

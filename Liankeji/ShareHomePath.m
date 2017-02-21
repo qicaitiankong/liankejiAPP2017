@@ -16,9 +16,9 @@ static ShareHomePath *shareHomePath = nil;
     });
     return shareHomePath;
 }
-- (NSString*)getDocumentsPath{//存放数据
+- (NSMutableString*)getDocumentsPath{//存放数据
     NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath = [arr objectAtIndex:0];
+    NSMutableString *documentPath = [arr objectAtIndex:0];
     return documentPath;
 }
 - (NSString *)getCachePath{//下次启动需要的缓存文件

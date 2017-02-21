@@ -23,7 +23,6 @@
     //表视图
     inforMationTableView *ownTableView;
 }
-
 @end
 
 @implementation informationViewController

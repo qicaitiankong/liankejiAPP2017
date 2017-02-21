@@ -108,8 +108,6 @@ sideMenuButton *sideButton;
 }
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self popAnimation:NO];
-    
-    
 }
 
 @end
