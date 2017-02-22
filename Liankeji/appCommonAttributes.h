@@ -21,6 +21,7 @@
 #define CYAN_COLOR RGBA(0,127,255,1);
 #define BLUE_COLOR RGBA(0,0,255,1);
 #define PURPER_COLOR RGBA(139,0,255,1);
+#define BLACK_COLOR RGBA(76,76,76,1);
 //屏幕高度、宽度
 #define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -34,5 +35,11 @@
 
 //主窗口
 #define APP_MAIN_WINDOW [UIApplication sharedApplication].windows[0]
+
+// 获取系统版本号
+#define SysVer [[[UIDevice currentDevice] systemVersion] floatValue]
+// 改写为弱引用
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
 
 #endif /* appCommonAttributes_h */

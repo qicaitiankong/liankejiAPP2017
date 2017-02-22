@@ -8,6 +8,11 @@
 
 #import "CommunicateFirstViewController.h"
 #import "appCommonAttributes.h"
+#import "lzhFindPageTableHeader.h"
+#import "LCReleaseCell.h"
+#import "LCBiddingCell.h"
+#import "LCRecruitCell.h"
+#import "lzhFindJobCell.h"
 
 @interface CommunicateFirstViewController ()<UITableViewDelegate,UITableViewDataSource>{
     UITableView *findTableview;
@@ -26,39 +31,80 @@
 
 //表示图
 - (void)initTableview{
-    findTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height) style:UITableViewStylePlain];
+    findTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height) style:UITableViewStyleGrouped];
+    findTableview.showsVerticalScrollIndicator = false;
+    [findTableview setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [findTableview setSeparatorColor:[UIColor grayColor]];
     findTableview.delegate = self;
     findTableview.dataSource = self;
     [self.view addSubview:findTableview];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 4;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    if (section == 0) {
+        return 1;
+    }else if (section == 1){
+        return 4;
+    }else if (section ==2){
+        return 3;
+    }else{
+        return 4;
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"findFirstPageLeftCell"];
-    if(nil == cell){
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"findFirstPageLeftCell"];
+    if (indexPath.section == 0) {
+        LCReleaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LCReleaseCell"];
+        if(cell == nil){
+            cell = [[LCReleaseCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LCReleaseCell"];
+            cell.releaseDic = nil;
+        }
+        return cell;
+    }else if (indexPath.section == 1){
+        LCBiddingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LCBiddingCell"];
+        if(cell == nil){
+            cell = [[LCBiddingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LCBiddingCell"];
+            cell.biddingDic = nil;
+        }
+        return cell;
+    }else if (indexPath.section == 2){
+        LCRecruitCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LCRecruitCell"];
+        if(cell == nil){
+            cell = [[LCRecruitCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LCRecruitCell"];
+            cell.LCRecruitDic = nil;
+        }
+        return cell;
+    }else{
+        lzhFindJobCell *cell = [tableView dequeueReusableCellWithIdentifier:@"lzhFindJobCell"];
+        if(cell == nil){
+            cell = [[lzhFindJobCell alloc]initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"lzhFindJobCell" targetTableView:tableView];
+        }
+        return cell;
     }
-    cell.textLabel.text = @"项目技术";
-    return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    if (indexPath.section == 0) {
+        return SCREEN_WIDTH/3.0*1.5+20;
+    }else if (indexPath.section == 1){
+        return 100;
+    }else if (indexPath.section == 2){
+        return 230;
+    }else{
+        return 100;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 20;
+    return 100;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *view  =nil;
-    return view;
+    lzhFindPageTableHeader *hederView = [[lzhFindPageTableHeader alloc]initWithFrame:CGRectMake(0, -100, SCREEN_WIDTH, 100) isFindPerson:YES];
+    return hederView;
 }
 
 
