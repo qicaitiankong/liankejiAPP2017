@@ -155,6 +155,36 @@
 		04CDD9B61E1E44CB009330FD /* ownTextSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD9B51E1E44CB009330FD /* ownTextSpace.m */; };
 		04EC82031E5BCB1600CDA9C9 /* lzhOperationFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC82021E5BCB1600CDA9C9 /* lzhOperationFile.m */; };
 		04EC82061E5C0F1B00CDA9C9 /* rightCollectionViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC82051E5C0F1B00CDA9C9 /* rightCollectionViewHeaderView.m */; };
+		60180E1D1E5D1F4E00570818 /* LCReleaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60180E1C1E5D1F4E00570818 /* LCReleaseCell.m */; };
+		60180E201E5D2B1100570818 /* LCBiddingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60180E1F1E5D2B1100570818 /* LCBiddingCell.m */; };
+		60180E231E5D54C700570818 /* LCRecruitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60180E221E5D54C700570818 /* LCRecruitCell.m */; };
+		60180E291E5D5E3B00570818 /* u=933971716,719375787&fm=23&gp=0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60180E281E5D5E3B00570818 /* u=933971716,719375787&fm=23&gp=0.jpg */; };
+		60180E2B1E5D66D900570818 /* u=115513520,62143900&fm=23&gp=0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60180E2A1E5D66D900570818 /* u=115513520,62143900&fm=23&gp=0.jpg */; };
+		60180E321E5D796D00570818 /* lzhFindJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 60180E2D1E5D796D00570818 /* lzhFindJobCell.m */; };
+		60180E331E5D796D00570818 /* lzhFindJobCellGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60180E2F1E5D796D00570818 /* lzhFindJobCellGroupView.m */; };
+		60180E341E5D796D00570818 /* lzhFindJobCellSmallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60180E311E5D796D00570818 /* lzhFindJobCellSmallView.m */; };
+		60180E4A1E5D79A500570818 /* findFirstPageAcademic.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E351E5D79A500570818 /* findFirstPageAcademic.png */; };
+		60180E4B1E5D79A500570818 /* findFirstPageAcademic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E361E5D79A500570818 /* findFirstPageAcademic@2x.png */; };
+		60180E4C1E5D79A500570818 /* findFirstPageAcademic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E371E5D79A500570818 /* findFirstPageAcademic@3x.png */; };
+		60180E4D1E5D79A500570818 /* findFirstPageExperience.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E381E5D79A500570818 /* findFirstPageExperience.png */; };
+		60180E4E1E5D79A500570818 /* findFirstPageExperience@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E391E5D79A500570818 /* findFirstPageExperience@2x.png */; };
+		60180E4F1E5D79A500570818 /* findFirstPageExperience@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E3A1E5D79A500570818 /* findFirstPageExperience@3x.png */; };
+		60180E501E5D79A500570818 /* findFirstPageFindJob.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E3B1E5D79A500570818 /* findFirstPageFindJob.png */; };
+		60180E511E5D79A500570818 /* findFirstPageFindJob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E3C1E5D79A500570818 /* findFirstPageFindJob@2x.png */; };
+		60180E521E5D79A500570818 /* findFirstPageFindJob@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E3D1E5D79A500570818 /* findFirstPageFindJob@3x.png */; };
+		60180E531E5D79A500570818 /* findFirstPageFindPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E3E1E5D79A500570818 /* findFirstPageFindPerson.png */; };
+		60180E541E5D79A500570818 /* findFirstPageFindPerson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E3F1E5D79A500570818 /* findFirstPageFindPerson@2x.png */; };
+		60180E551E5D79A500570818 /* findFirstPageFindPerson@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E401E5D79A500570818 /* findFirstPageFindPerson@3x.png */; };
+		60180E561E5D79A500570818 /* findFirstPageLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E411E5D79A500570818 /* findFirstPageLocation.png */; };
+		60180E571E5D79A500570818 /* findFirstPageLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E421E5D79A500570818 /* findFirstPageLocation@2x.png */; };
+		60180E581E5D79A500570818 /* findFirstPageLocation@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E431E5D79A500570818 /* findFirstPageLocation@3x.png */; };
+		60180E591E5D79A500570818 /* findFirstPageNewAnnounce.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E441E5D79A500570818 /* findFirstPageNewAnnounce.png */; };
+		60180E5A1E5D79A500570818 /* findFirstPageNewAnnounce@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E451E5D79A500570818 /* findFirstPageNewAnnounce@2x.png */; };
+		60180E5B1E5D79A500570818 /* findFirstPageNewAnnounce@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E461E5D79A500570818 /* findFirstPageNewAnnounce@3x.png */; };
+		60180E5C1E5D79A500570818 /* findFirstPagePrice.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E471E5D79A500570818 /* findFirstPagePrice.png */; };
+		60180E5D1E5D79A500570818 /* findFirstPagePrice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E481E5D79A500570818 /* findFirstPagePrice@2x.png */; };
+		60180E5E1E5D79A500570818 /* findFirstPagePrice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60180E491E5D79A500570818 /* findFirstPagePrice@3x.png */; };
+		60180E611E5D86EB00570818 /* lzhFindPageTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 60180E601E5D86EB00570818 /* lzhFindPageTableHeader.m */; };
 		7B3C91A23811F61D8BFFF1E5 /* libPods-Liankeji.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F252549BA2B14C997713502 /* libPods-Liankeji.a */; };
 		992180091E0788AD00070D46 /* newAnnouncementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 992180081E0788AD00070D46 /* newAnnouncementView.m */; };
 		9921800C1E07AF9700070D46 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9921800A1E07AF9700070D46 /* 1.png */; };
@@ -501,6 +531,43 @@
 		04EC82041E5C0F1B00CDA9C9 /* rightCollectionViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rightCollectionViewHeaderView.h; sourceTree = "<group>"; };
 		04EC82051E5C0F1B00CDA9C9 /* rightCollectionViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rightCollectionViewHeaderView.m; sourceTree = "<group>"; };
 		171D16133C96CADD3DD4CC71 /* Pods-Liankeji.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liankeji.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liankeji/Pods-Liankeji.debug.xcconfig"; sourceTree = "<group>"; };
+		60180E1B1E5D1F4E00570818 /* LCReleaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCReleaseCell.h; sourceTree = "<group>"; };
+		60180E1C1E5D1F4E00570818 /* LCReleaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCReleaseCell.m; sourceTree = "<group>"; };
+		60180E1E1E5D2B1100570818 /* LCBiddingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCBiddingCell.h; sourceTree = "<group>"; };
+		60180E1F1E5D2B1100570818 /* LCBiddingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCBiddingCell.m; sourceTree = "<group>"; };
+		60180E211E5D54C700570818 /* LCRecruitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCRecruitCell.h; sourceTree = "<group>"; };
+		60180E221E5D54C700570818 /* LCRecruitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCRecruitCell.m; sourceTree = "<group>"; };
+		60180E281E5D5E3B00570818 /* u=933971716,719375787&fm=23&gp=0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "u=933971716,719375787&fm=23&gp=0.jpg"; sourceTree = "<group>"; };
+		60180E2A1E5D66D900570818 /* u=115513520,62143900&fm=23&gp=0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "u=115513520,62143900&fm=23&gp=0.jpg"; sourceTree = "<group>"; };
+		60180E2C1E5D796D00570818 /* lzhFindJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhFindJobCell.h; sourceTree = "<group>"; };
+		60180E2D1E5D796D00570818 /* lzhFindJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhFindJobCell.m; sourceTree = "<group>"; };
+		60180E2E1E5D796D00570818 /* lzhFindJobCellGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhFindJobCellGroupView.h; sourceTree = "<group>"; };
+		60180E2F1E5D796D00570818 /* lzhFindJobCellGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhFindJobCellGroupView.m; sourceTree = "<group>"; };
+		60180E301E5D796D00570818 /* lzhFindJobCellSmallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhFindJobCellSmallView.h; sourceTree = "<group>"; };
+		60180E311E5D796D00570818 /* lzhFindJobCellSmallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhFindJobCellSmallView.m; sourceTree = "<group>"; };
+		60180E351E5D79A500570818 /* findFirstPageAcademic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findFirstPageAcademic.png; sourceTree = "<group>"; };
+		60180E361E5D79A500570818 /* findFirstPageAcademic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageAcademic@2x.png"; sourceTree = "<group>"; };
+		60180E371E5D79A500570818 /* findFirstPageAcademic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageAcademic@3x.png"; sourceTree = "<group>"; };
+		60180E381E5D79A500570818 /* findFirstPageExperience.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findFirstPageExperience.png; sourceTree = "<group>"; };
+		60180E391E5D79A500570818 /* findFirstPageExperience@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageExperience@2x.png"; sourceTree = "<group>"; };
+		60180E3A1E5D79A500570818 /* findFirstPageExperience@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageExperience@3x.png"; sourceTree = "<group>"; };
+		60180E3B1E5D79A500570818 /* findFirstPageFindJob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findFirstPageFindJob.png; sourceTree = "<group>"; };
+		60180E3C1E5D79A500570818 /* findFirstPageFindJob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageFindJob@2x.png"; sourceTree = "<group>"; };
+		60180E3D1E5D79A500570818 /* findFirstPageFindJob@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageFindJob@3x.png"; sourceTree = "<group>"; };
+		60180E3E1E5D79A500570818 /* findFirstPageFindPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findFirstPageFindPerson.png; sourceTree = "<group>"; };
+		60180E3F1E5D79A500570818 /* findFirstPageFindPerson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageFindPerson@2x.png"; sourceTree = "<group>"; };
+		60180E401E5D79A500570818 /* findFirstPageFindPerson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageFindPerson@3x.png"; sourceTree = "<group>"; };
+		60180E411E5D79A500570818 /* findFirstPageLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findFirstPageLocation.png; sourceTree = "<group>"; };
+		60180E421E5D79A500570818 /* findFirstPageLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageLocation@2x.png"; sourceTree = "<group>"; };
+		60180E431E5D79A500570818 /* findFirstPageLocation@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageLocation@3x.png"; sourceTree = "<group>"; };
+		60180E441E5D79A500570818 /* findFirstPageNewAnnounce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findFirstPageNewAnnounce.png; sourceTree = "<group>"; };
+		60180E451E5D79A500570818 /* findFirstPageNewAnnounce@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageNewAnnounce@2x.png"; sourceTree = "<group>"; };
+		60180E461E5D79A500570818 /* findFirstPageNewAnnounce@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPageNewAnnounce@3x.png"; sourceTree = "<group>"; };
+		60180E471E5D79A500570818 /* findFirstPagePrice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findFirstPagePrice.png; sourceTree = "<group>"; };
+		60180E481E5D79A500570818 /* findFirstPagePrice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPagePrice@2x.png"; sourceTree = "<group>"; };
+		60180E491E5D79A500570818 /* findFirstPagePrice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findFirstPagePrice@3x.png"; sourceTree = "<group>"; };
+		60180E5F1E5D86EB00570818 /* lzhFindPageTableHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzhFindPageTableHeader.h; sourceTree = "<group>"; };
+		60180E601E5D86EB00570818 /* lzhFindPageTableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lzhFindPageTableHeader.m; sourceTree = "<group>"; };
 		6F252549BA2B14C997713502 /* libPods-Liankeji.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Liankeji.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		992180051E077F7000070D46 /* groupButttonClickDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = groupButttonClickDelegate.h; sourceTree = "<group>"; };
 		992180071E0788AD00070D46 /* newAnnouncementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newAnnouncementView.h; sourceTree = "<group>"; };
@@ -833,6 +900,20 @@
 		047335341E305B9600671F44 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				60180E1B1E5D1F4E00570818 /* LCReleaseCell.h */,
+				60180E1C1E5D1F4E00570818 /* LCReleaseCell.m */,
+				60180E1E1E5D2B1100570818 /* LCBiddingCell.h */,
+				60180E1F1E5D2B1100570818 /* LCBiddingCell.m */,
+				60180E211E5D54C700570818 /* LCRecruitCell.h */,
+				60180E221E5D54C700570818 /* LCRecruitCell.m */,
+				60180E2C1E5D796D00570818 /* lzhFindJobCell.h */,
+				60180E2D1E5D796D00570818 /* lzhFindJobCell.m */,
+				60180E2E1E5D796D00570818 /* lzhFindJobCellGroupView.h */,
+				60180E2F1E5D796D00570818 /* lzhFindJobCellGroupView.m */,
+				60180E301E5D796D00570818 /* lzhFindJobCellSmallView.h */,
+				60180E311E5D796D00570818 /* lzhFindJobCellSmallView.m */,
+				60180E5F1E5D86EB00570818 /* lzhFindPageTableHeader.h */,
+				60180E601E5D86EB00570818 /* lzhFindPageTableHeader.m */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -1081,6 +1162,44 @@
 				9961CF9A1E02250D0021D123 /* CommunicateNavigationViewController.m */,
 			);
 			name = C;
+			sourceTree = "<group>";
+		};
+		60180E241E5D5BDD00570818 /* 发现 */ = {
+			isa = PBXGroup;
+			children = (
+				60180E251E5D5BF000570818 /* 一级界面 */,
+			);
+			name = "发现";
+			sourceTree = "<group>";
+		};
+		60180E251E5D5BF000570818 /* 一级界面 */ = {
+			isa = PBXGroup;
+			children = (
+				60180E281E5D5E3B00570818 /* u=933971716,719375787&fm=23&gp=0.jpg */,
+				60180E2A1E5D66D900570818 /* u=115513520,62143900&fm=23&gp=0.jpg */,
+				60180E351E5D79A500570818 /* findFirstPageAcademic.png */,
+				60180E361E5D79A500570818 /* findFirstPageAcademic@2x.png */,
+				60180E371E5D79A500570818 /* findFirstPageAcademic@3x.png */,
+				60180E381E5D79A500570818 /* findFirstPageExperience.png */,
+				60180E391E5D79A500570818 /* findFirstPageExperience@2x.png */,
+				60180E3A1E5D79A500570818 /* findFirstPageExperience@3x.png */,
+				60180E3B1E5D79A500570818 /* findFirstPageFindJob.png */,
+				60180E3C1E5D79A500570818 /* findFirstPageFindJob@2x.png */,
+				60180E3D1E5D79A500570818 /* findFirstPageFindJob@3x.png */,
+				60180E3E1E5D79A500570818 /* findFirstPageFindPerson.png */,
+				60180E3F1E5D79A500570818 /* findFirstPageFindPerson@2x.png */,
+				60180E401E5D79A500570818 /* findFirstPageFindPerson@3x.png */,
+				60180E411E5D79A500570818 /* findFirstPageLocation.png */,
+				60180E421E5D79A500570818 /* findFirstPageLocation@2x.png */,
+				60180E431E5D79A500570818 /* findFirstPageLocation@3x.png */,
+				60180E441E5D79A500570818 /* findFirstPageNewAnnounce.png */,
+				60180E451E5D79A500570818 /* findFirstPageNewAnnounce@2x.png */,
+				60180E461E5D79A500570818 /* findFirstPageNewAnnounce@3x.png */,
+				60180E471E5D79A500570818 /* findFirstPagePrice.png */,
+				60180E481E5D79A500570818 /* findFirstPagePrice@2x.png */,
+				60180E491E5D79A500570818 /* findFirstPagePrice@3x.png */,
+			);
+			name = "一级界面";
 			sourceTree = "<group>";
 		};
 		82A04DE6B425D207E39EFC6B /* Frameworks */ = {
@@ -1567,6 +1686,7 @@
 			children = (
 				047335381E308B1F00671F44 /* a2.jpg */,
 				99EF89791E038AD6002836B3 /* a1.png */,
+				60180E241E5D5BDD00570818 /* 发现 */,
 				0480EAB81E2F2FFF0000E084 /* 我的 */,
 				0435BF321E1B35DD00DE859D /* 资讯页 */,
 				99C1F9BF1E1102DC004DE512 /* 发布页 */,
@@ -1758,17 +1878,21 @@
 				0435BF951E1B7F5B00DE859D /* infoSecondPageQQ.png in Resources */,
 				99C1F99A1E10A79D004DE512 /* firstpage_buttonGroup_00@3x.png in Resources */,
 				0435BF871E1B7F5B00DE859D /* infoSecondPageComment@3x.png in Resources */,
+				60180E5C1E5D79A500570818 /* findFirstPagePrice.png in Resources */,
 				0435BF7F1E1B7F5B00DE859D /* infoSecondPageUserImage.png in Resources */,
 				0480EAED1E2F302C0000E084 /* personalFirstPageMyMessage@2x.png in Resources */,
 				0435BF941E1B7F5B00DE859D /* 咨询 2级_spec.png in Resources */,
 				99E27A0D1E0E101E008BCE57 /* icon_shouye_dianji@2x.png in Resources */,
 				0480EAE81E2F302C0000E084 /* personalFirstPageMyWallet@3x.png in Resources */,
 				99E27A241E0E1083008BCE57 /* icon_shequ_weidianji@3x.png in Resources */,
+				60180E5B1E5D79A500570818 /* findFirstPageNewAnnounce@3x.png in Resources */,
 				0435BF921E1B7F5B00DE859D /* infoSecondPageReadNumber@2x.png in Resources */,
+				60180E541E5D79A500570818 /* findFirstPageFindPerson@2x.png in Resources */,
 				0432CF851E15F82400701F16 /* firstpage_buttonGroup_04.png in Resources */,
 				99C1F9D31E1102FD004DE512 /* anounce1_4@2x.png in Resources */,
 				99EF898C1E03D232002836B3 /* nav2.png in Resources */,
 				99E27A041E0E0FE3008BCE57 /* icon_zixun_dianji@3x.png in Resources */,
+				60180E5E1E5D79A500570818 /* findFirstPagePrice@3x.png in Resources */,
 				0435BF441E1B360200DE859D /* informationComment@3x.png in Resources */,
 				9921800D1E07AF9700070D46 /* 2.png in Resources */,
 				99C1F9921E10A79D004DE512 /* firstpage_buttonGroup_05.png in Resources */,
@@ -1783,10 +1907,13 @@
 				99E27A221E0E1083008BCE57 /* icon_shequ_weidianji.png in Resources */,
 				0480EAEA1E2F302C0000E084 /* personalFirstPageMyCollection@2x.png in Resources */,
 				0432CF871E15F82400701F16 /* firstpage_buttonGroup_04@3x.png in Resources */,
+				60180E521E5D79A500570818 /* findFirstPageFindJob@3x.png in Resources */,
+				60180E4A1E5D79A500570818 /* findFirstPageAcademic.png in Resources */,
 				99C1F9D81E1102FD004DE512 /* anounce1_1.png in Resources */,
 				99EF89881E03D0B8002836B3 /* nav3.png in Resources */,
 				99FADC681E1214B700DA4FB6 /* anounce1_0@3x.png in Resources */,
 				047A39EC1E2C768000651C7E /* previosButton.png in Resources */,
+				60180E4D1E5D79A500570818 /* findFirstPageExperience.png in Resources */,
 				047A39F71E2C768000651C7E /* nextButton@3x.png in Resources */,
 				99FADC691E1214B700DA4FB6 /* anounce1_2.png in Resources */,
 				992C69361E0A0DE00052D21B /* user.png in Resources */,
@@ -1798,27 +1925,33 @@
 				99E27A211E0E1083008BCE57 /* icon_shequ_dianji@3x.png in Resources */,
 				047A39FC1E2C768000651C7E /* anounSecondDidNotSelectButt@3x.png in Resources */,
 				04A2EA5A1E23575900E7F9DF /* address.txt in Resources */,
+				60180E4F1E5D79A500570818 /* findFirstPageExperience@3x.png in Resources */,
 				0435BF9A1E1B7F5B00DE859D /* infoSecondPageQZone@3x.png in Resources */,
 				99C1F9E31E1102FD004DE512 /* anounce_logo@3x.png in Resources */,
+				60180E561E5D79A500570818 /* findFirstPageLocation.png in Resources */,
 				99C1F9DC1E1102FD004DE512 /* anounce1_3@2x.png in Resources */,
 				99EF897B1E038AD6002836B3 /* a1.png in Resources */,
 				99FADC6B1E1214B700DA4FB6 /* anounce1_2@3x.png in Resources */,
 				0435BF981E1B7F5B00DE859D /* infoSecondPageQZone.png in Resources */,
 				99C1F9931E10A79D004DE512 /* firstpage_buttonGroup_05@2x.png in Resources */,
 				99C1F9AF1E10AE99004DE512 /* icon_wode_weidianji@2x.png in Resources */,
+				60180E4B1E5D79A500570818 /* findFirstPageAcademic@2x.png in Resources */,
 				0435BF861E1B7F5B00DE859D /* infoSecondPageComment@2x.png in Resources */,
 				99C1F9AB1E10AE99004DE512 /* icon_wode_dianji.png in Resources */,
 				99E27A111E0E101E008BCE57 /* icon_shouye_weidianji@3x.png in Resources */,
 				0480EADA1E2F302C0000E084 /* personalFirstPageMemberCenter.png in Resources */,
+				60180E5A1E5D79A500570818 /* findFirstPageNewAnnounce@2x.png in Resources */,
 				99C1F9A21E10AD44004DE512 /* firstpage_buttonGroup_01.png in Resources */,
 				0480EAE41E2F302C0000E084 /* personalFirstPageMyJifen@2x.png in Resources */,
 				99AA38E01E08C1F6000A57BC /* sidemenu_241.png in Resources */,
+				60180E501E5D79A500570818 /* findFirstPageFindJob.png in Resources */,
 				0435BF931E1B7F5B00DE859D /* infoSecondPageReadNumber@3x.png in Resources */,
 				997546BC1E081887003AB8CF /* 1_50.png in Resources */,
 				99C1F9911E10A79D004DE512 /* firstpage_buttonGroup_03@3x.png in Resources */,
 				9953E2FD1E0D255500F55604 /* tab_group_back@3x.png in Resources */,
 				0480EAEB1E2F302C0000E084 /* personalFirstPageMyCollection@3x.png in Resources */,
 				0435BF761E1B7F5B00DE859D /* infoSecondPageReward.png in Resources */,
+				60180E591E5D79A500570818 /* findFirstPageNewAnnounce.png in Resources */,
 				99E27A101E0E101E008BCE57 /* icon_shouye_weidianji@2x.png in Resources */,
 				0435BF421E1B360200DE859D /* informationComment.png in Resources */,
 				99E279FF1E0E0FE3008BCE57 /* icon_zixun_weidianji.png in Resources */,
@@ -1828,6 +1961,7 @@
 				047A39EE1E2C768000651C7E /* previosButton@2x.png in Resources */,
 				99E41F3A1DED0E0D00F32968 /* LaunchScreen.storyboard in Resources */,
 				99C1F98F1E10A79D004DE512 /* firstpage_buttonGroup_03.png in Resources */,
+				60180E571E5D79A500570818 /* findFirstPageLocation@2x.png in Resources */,
 				99C1F9DD1E1102FD004DE512 /* anounce1_3@3x.png in Resources */,
 				0480EAE51E2F302C0000E084 /* personalFirstPageMyJifen@3x.png in Resources */,
 				0435BF431E1B360200DE859D /* informationComment@2x.png in Resources */,
@@ -1873,12 +2007,14 @@
 				99C1F9E01E1102FD004DE512 /* anounce1_cancel.@3x.png in Resources */,
 				0480EADE1E2F302C0000E084 /* personalFirstPageCustomer@2x.png in Resources */,
 				0435BF801E1B7F5B00DE859D /* infoSecondPageUserImage@2x.png in Resources */,
+				60180E4C1E5D79A500570818 /* findFirstPageAcademic@3x.png in Resources */,
 				0480EAE11E2F302C0000E084 /* personalFirstPageMyPraise@2x.png in Resources */,
 				043FB00A1E24A96A0025EE61 /* infotest01.jpeg in Resources */,
 				0480EADF1E2F302C0000E084 /* personalFirstPageCustomer@3x.png in Resources */,
 				99E27A171E0E1063008BCE57 /* icon_fabu@2x.png in Resources */,
 				0435BF411E1B360200DE859D /* informationSkim@3x.png in Resources */,
 				047A3A0C1E2C907200651C7E /* announSecondPageSelectTrue@3x.png in Resources */,
+				60180E4E1E5D79A500570818 /* findFirstPageExperience@2x.png in Resources */,
 				0480EAE21E2F302C0000E084 /* personalFirstPageMyPraise@3x.png in Resources */,
 				0435BF971E1B7F5B00DE859D /* infoSecondPageQQ@3x.png in Resources */,
 				0435BF8A1E1B7F5B00DE859D /* infoSecondPageCommentUserImage@3x.png in Resources */,
@@ -1890,22 +2026,28 @@
 				0435BF791E1B7F5B00DE859D /* infoSecondPageNotGiveClick.png in Resources */,
 				0435BF781E1B7F5B00DE859D /* infoSecondPageReward@3x.png in Resources */,
 				0435BF7B1E1B7F5B00DE859D /* infoSecondPageNotGiveClick@3x.png in Resources */,
+				60180E291E5D5E3B00570818 /* u=933971716,719375787&fm=23&gp=0.jpg in Resources */,
 				0435BF901E1B7F5B00DE859D /* infoSecondPageGivedClick@3x.png in Resources */,
 				0435BF3C1E1B360200DE859D /* informationReward.png in Resources */,
 				997546BB1E081887003AB8CF /* 1_25.png in Resources */,
+				60180E5D1E5D79A500570818 /* findFirstPagePrice@2x.png in Resources */,
 				997546BD1E081887003AB8CF /* 1_75.png in Resources */,
+				60180E551E5D79A500570818 /* findFirstPageFindPerson@3x.png in Resources */,
 				047A39FE1E2C768000651C7E /* anounSecondPhotoButt.png in Resources */,
 				99AA38E11E08C1F6000A57BC /* sidemenu_362.png in Resources */,
 				047A3A031E2C768000651C7E /* anounSecondPhotoButt@3x.png in Resources */,
 				0435BF7C1E1B7F5B00DE859D /* infoSecondPageGiveAttention.png in Resources */,
 				0435BF991E1B7F5B00DE859D /* infoSecondPageQZone@2x.png in Resources */,
+				60180E2B1E5D66D900570818 /* u=115513520,62143900&fm=23&gp=0.jpg in Resources */,
 				9921800C1E07AF9700070D46 /* 1.png in Resources */,
 				0435BF401E1B360200DE859D /* informationSkim@2x.png in Resources */,
 				047A3A0B1E2C907200651C7E /* announSecondPageSelectTrue@2x.png in Resources */,
 				0435BF821E1B7F5B00DE859D /* infoSecondPageFriend.png in Resources */,
 				047A3A0A1E2C907200651C7E /* announSecondPageSelectTrue.png in Resources */,
+				60180E511E5D79A500570818 /* findFirstPageFindJob@2x.png in Resources */,
 				99E27A0C1E0E101E008BCE57 /* icon_shouye_dianji.png in Resources */,
 				99E27A0E1E0E101E008BCE57 /* icon_shouye_dianji@3x.png in Resources */,
+				60180E581E5D79A500570818 /* findFirstPageLocation@3x.png in Resources */,
 				99FADC661E1214B700DA4FB6 /* anounce1_0.png in Resources */,
 				99E27A011E0E0FE3008BCE57 /* icon_zixun_weidianji@3x.png in Resources */,
 				0435BF7E1E1B7F5B00DE859D /* infoSecondPageGiveAttention@3x.png in Resources */,
@@ -1913,6 +2055,7 @@
 				0480EAEC1E2F302C0000E084 /* personalFirstPageMyMessage.png in Resources */,
 				047A39F01E2C768000651C7E /* previosButton@3x.png in Resources */,
 				0480EADB1E2F302C0000E084 /* personalFirstPageMemberCenter@2x.png in Resources */,
+				60180E531E5D79A500570818 /* findFirstPageFindPerson.png in Resources */,
 				0480EADD1E2F302C0000E084 /* personalFirstPageCustomer.png in Resources */,
 				99E27A031E0E0FE3008BCE57 /* icon_zixun_dianji@2x.png in Resources */,
 				99FADC6A1E1214B700DA4FB6 /* anounce1_2@2x.png in Resources */,
@@ -2007,12 +2150,15 @@
 				99E41F631DED270300F32968 /* NavViewControllerForFirstPage.m in Sources */,
 				049B18451E56850A008013FB /* searchHistoryTableViewCell.m in Sources */,
 				0434BDEA1E1CC44B0096136E /* cellHeaderView2.m in Sources */,
+				60180E1D1E5D1F4E00570818 /* LCReleaseCell.m in Sources */,
 				046CFB751E34548100E80E9F /* lzhDealNavigationColor.m in Sources */,
 				992D730E1DF1557300FFD2DD /* GetCellHeight.m in Sources */,
 				049261FD1E1F277F00AFC111 /* commentView.m in Sources */,
 				04764C6C1E2DFD3000704C96 /* annoounceSecondPageViewController.m in Sources */,
 				04764C691E2DA85A00704C96 /* lzhAlertControllerViewController.m in Sources */,
+				60180E201E5D2B1100570818 /* LCBiddingCell.m in Sources */,
 				04A2EA5B1E23575900E7F9DF /* AddressPickerView.m in Sources */,
+				60180E341E5D796D00570818 /* lzhFindJobCellSmallView.m in Sources */,
 				049C63051E4EF06700B83543 /* lzhRedeceTopSpaceLabel.m in Sources */,
 				047335371E305BCF00671F44 /* searchFirstPageCollectionViewCell.m in Sources */,
 				99AA38F01E092C8C000A57BC /* sideMenuButton.m in Sources */,
@@ -2026,6 +2172,7 @@
 				99AA38E31E08C296000A57BC /* lzhdownMenuView.m in Sources */,
 				9953E2EE1E0D238700F55604 /* LZHTabBigButton.m in Sources */,
 				0489F3D91E4C3C3E0050AC8E /* announceWindowView.m in Sources */,
+				60180E321E5D796D00570818 /* lzhFindJobCell.m in Sources */,
 				99C1F9BE1E10C247004DE512 /* inforMationTableView.m in Sources */,
 				9961CFA41E026DF20021D123 /* firstPageButtonGroup.m in Sources */,
 				999D99471DF04C950067CFBA /* ShareDataBase.m in Sources */,
@@ -2035,6 +2182,7 @@
 				047A39D21E2C678400651C7E /* anounceSecondPageView.m in Sources */,
 				0480EAF41E2F3CD90000E084 /* personalFirstPageUserTableViewCell.m in Sources */,
 				04976EBC1E5189AA00116BE1 /* lzhShadeButton.m in Sources */,
+				60180E611E5D86EB00570818 /* lzhFindPageTableHeader.m in Sources */,
 				047A3A0F1E2CACA600651C7E /* announceSecondPageNextStepButt.m in Sources */,
 				04976EB91E51877700116BE1 /* lzhPickerView.m in Sources */,
 				99E41F881DED7EDD00F32968 /* ShareUrlString.m in Sources */,
@@ -2061,12 +2209,14 @@
 				04A2EA601E23641C00E7F9DF /* cityPickerView.m in Sources */,
 				049262031E1F939A00AFC111 /* cellFootView.m in Sources */,
 				047A39C51E2C4E3500651C7E /* announceViewController.m in Sources */,
+				60180E231E5D54C700570818 /* LCRecruitCell.m in Sources */,
 				9953E2F01E0D238700F55604 /* LZHTabBar.m in Sources */,
 				99C1F9B71E10BE81004DE512 /* informationTableViewCell.m in Sources */,
 				047F2C4F1E4AC3C900A2C059 /* lzhTableHeaderViewForFirstPage.m in Sources */,
 				04CDD9B61E1E44CB009330FD /* ownTextSpace.m in Sources */,
 				99554A4E1DF012BF0028A59E /* ShareHomePath.m in Sources */,
 				047A3A061E2C8EAC00651C7E /* announSecondPageSelectView.m in Sources */,
+				60180E331E5D796D00570818 /* lzhFindJobCellGroupView.m in Sources */,
 				048EB3C01E54458A0080F2E8 /* BasicViewOfAddReturnView.m in Sources */,
 				9961CF9B1E02250D0021D123 /* CommunicateNavigationViewController.m in Sources */,
 				99E41F2C1DED0E0D00F32968 /* main.m in Sources */,
