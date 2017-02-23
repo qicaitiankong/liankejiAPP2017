@@ -73,7 +73,6 @@ sideMenuButton *sideButton;
 //弹出动画
 - (void)popAnimation:(BOOL)cancelButtonClick{
     if(cancelButtonClick){
-        
         [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
             self.transform = CGAffineTransformMakeTranslation(self.frame.size.width, 0);
             self.alpha = 1;
@@ -87,6 +86,7 @@ sideMenuButton *sideButton;
             self.alpha = 0.1;
         } completion:^(BOOL finished) {
             self.isOut = NO;
+            [self removeFromSuperview];
         }];
     }
 }
